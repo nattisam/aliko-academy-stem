@@ -33,14 +33,14 @@ const ProgramDetail = () => {
   }
 
   const levelClasses = {
-    Beginner: "bg-green-100 text-green-800 border-green-200",
-    Intermediate: "bg-amber-100 text-amber-800 border-amber-200",
-    Professional: "bg-purple-100 text-purple-800 border-purple-200",
+    Beginner: "bg-green-900/50 text-green-300 border-green-700/50",
+    Intermediate: "bg-amber-900/50 text-amber-300 border-amber-700/50",
+    Professional: "bg-purple-900/50 text-purple-300 border-purple-700/50",
   };
 
   const deliveryClasses = {
-    Online: "bg-blue-100 text-blue-800 border-blue-200",
-    Hybrid: "bg-teal-100 text-teal-800 border-teal-200",
+    Online: "bg-blue-900/50 text-blue-300 border-blue-700/50",
+    Hybrid: "bg-teal-900/50 text-teal-300 border-teal-700/50",
   };
 
   return (
@@ -219,12 +219,12 @@ const ProgramDetail = () => {
               </div>
 
               {/* Certification Disclaimer */}
-              <div className="bg-amber-50 border border-amber-200 rounded-xl p-6">
+              <div className="bg-amber-900/20 border border-amber-700/50 rounded-xl p-6">
                 <div className="flex items-start gap-3">
-                  <AlertCircle className="h-5 w-5 text-amber-600 mt-0.5 flex-shrink-0" />
+                  <AlertCircle className="h-5 w-5 text-amber-400 mt-0.5 flex-shrink-0" />
                   <div>
-                    <h3 className="font-medium text-amber-900">Certification Disclaimer</h3>
-                    <p className="mt-1 text-sm text-amber-800">
+                    <h3 className="font-medium text-amber-300">Certification Disclaimer</h3>
+                    <p className="mt-1 text-sm text-amber-200/80">
                       Certification exams and credentials are administered by third-party vendors. 
                       Aliko Academy – STEM provides training and preparation only and does not 
                       guarantee exam outcomes.

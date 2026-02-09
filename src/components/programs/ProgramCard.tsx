@@ -13,14 +13,14 @@ interface ProgramCardProps {
 
 export function ProgramCard({ program, variant = "default" }: ProgramCardProps) {
   const levelClasses = {
-    Beginner: "bg-green-100 text-green-800 border-green-200",
-    Intermediate: "bg-amber-100 text-amber-800 border-amber-200",
-    Professional: "bg-purple-100 text-purple-800 border-purple-200",
+    Beginner: "bg-green-900/50 text-green-300 border-green-700/50",
+    Intermediate: "bg-amber-900/50 text-amber-300 border-amber-700/50",
+    Professional: "bg-purple-900/50 text-purple-300 border-purple-700/50",
   };
 
   const deliveryClasses = {
-    Online: "bg-blue-100 text-blue-800 border-blue-200",
-    Hybrid: "bg-teal-100 text-teal-800 border-teal-200",
+    Online: "bg-blue-900/50 text-blue-300 border-blue-700/50",
+    Hybrid: "bg-teal-900/50 text-teal-300 border-teal-700/50",
   };
 
   if (variant === "compact") {
