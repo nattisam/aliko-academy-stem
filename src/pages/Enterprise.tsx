@@ -29,19 +29,19 @@ import {
 import { toast } from "sonner";
 
 const whoWeServe = [
-  { icon: Factory, title: "Engineering & Construction Firms", description: "EPC contractors and engineering consultancies" },
-  { icon: Building2, title: "Infrastructure & Utilities", description: "Power, water, and transportation authorities" },
-  { icon: GraduationCap, title: "Universities & TVETs", description: "Engineering faculties and technical institutes" },
-  { icon: Landmark, title: "Government Agencies", description: "Infrastructure and development ministries" },
-  { icon: Globe, title: "NGOs & Development Partners", description: "International development organizations" },
+  { icon: Factory, title: "Engineering & Construction Firms", description: "EPC contractors and engineering consultancies", iconBg: "bg-primary/15 border border-primary/30", iconColor: "text-primary" },
+  { icon: Building2, title: "Infrastructure & Utilities", description: "Power, water, and transportation authorities", iconBg: "bg-accent/15 border border-accent/30", iconColor: "text-accent" },
+  { icon: GraduationCap, title: "Universities & TVETs", description: "Engineering faculties and technical institutes", iconBg: "bg-accent-green/15 border border-accent-green/30", iconColor: "text-accent-green" },
+  { icon: Landmark, title: "Government Agencies", description: "Infrastructure and development ministries", iconBg: "bg-accent-orange/15 border border-accent-orange/30", iconColor: "text-accent-orange" },
+  { icon: Globe, title: "NGOs & Development Partners", description: "International development organizations", iconBg: "bg-primary/15 border border-primary/30", iconColor: "text-primary" },
 ];
 
 const trainingModels = [
-  { icon: BookOpen, title: "Custom Curriculum Design", description: "Tailored content aligned to your technology stack and workflows" },
-  { icon: Users, title: "Cohort-Based Training", description: "Structured programs for groups of 10-100+ participants" },
-  { icon: GraduationCap, title: "Faculty & Trainer Enablement", description: "Train-the-trainer programs for internal capacity building" },
-  { icon: Settings, title: "Software Transformation Support", description: "Implementation support during technology transitions" },
-  { icon: MonitorPlay, title: "Flexible Delivery", description: "Online, hybrid, or fully onsite options" },
+  { icon: BookOpen, title: "Custom Curriculum Design", description: "Tailored content aligned to your technology stack and workflows", iconBg: "bg-primary/15", iconColor: "text-primary" },
+  { icon: Users, title: "Cohort-Based Training", description: "Structured programs for groups of 10-100+ participants", iconBg: "bg-accent/15", iconColor: "text-accent" },
+  { icon: GraduationCap, title: "Faculty & Trainer Enablement", description: "Train-the-trainer programs for internal capacity building", iconBg: "bg-accent-green/15", iconColor: "text-accent-green" },
+  { icon: Settings, title: "Software Transformation Support", description: "Implementation support during technology transitions", iconBg: "bg-accent-orange/15", iconColor: "text-accent-orange" },
+  { icon: MonitorPlay, title: "Flexible Delivery", description: "Online, hybrid, or fully onsite options", iconBg: "bg-primary/15", iconColor: "text-primary" },
 ];
 
 const programAreas = [
@@ -80,14 +80,10 @@ const Enterprise = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    // Simulate form submission
     await new Promise(resolve => setTimeout(resolve, 1500));
-    
     toast.success("Thank you for your inquiry!", {
       description: "Our enterprise training team will contact you within 2 business days.",
     });
-    
     setFormData({
       organizationName: "",
       contactName: "",
@@ -116,40 +112,39 @@ const Enterprise = () => {
   return (
     <Layout>
       {/* Hero */}
-      <section className="gradient-hero py-16 lg:py-20">
+      <section className="gradient-hero py-20 lg:py-28">
         <div className="container-content">
           <div className="max-w-3xl">
-            <h1 className="font-display text-4xl font-bold text-foreground sm:text-5xl">
-              Customized Engineering & STEM Training for Organizations
+            <h1 className="font-display text-5xl font-extrabold text-foreground sm:text-6xl leading-tight">
+              Customized <span className="text-accent-orange text-glow-orange">Engineering</span> & STEM Training
             </h1>
-            <p className="mt-6 text-lg text-muted-foreground">
+            <p className="mt-6 text-xl text-muted-foreground leading-relaxed">
               Cohort-based upskilling, curriculum customization, and faculty enablement 
-              aligned to industry tools and infrastructure workflows. We partner with 
-              organizations of all sizes to develop engineering talent.
+              aligned to industry tools and infrastructure workflows.
             </p>
           </div>
         </div>
       </section>
 
       {/* Who We Serve */}
-      <section className="section-padding bg-card">
+      <section className="section-padding bg-surface-elevated border-y border-divider">
         <div className="container-content">
-          <h2 className="font-display text-3xl font-bold text-foreground text-center mb-12">
-            Who We Serve
+          <h2 className="font-display text-4xl font-bold text-foreground text-center mb-14">
+            Who We <span className="text-primary">Serve</span>
           </h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-6">
             {whoWeServe.map((item) => {
               const Icon = item.icon;
               return (
-                <Card key={item.title} className="border-divider text-center">
-                  <CardContent className="p-6">
-                    <div className="h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center mx-auto">
-                      <Icon className="h-6 w-6 text-primary" />
+                <Card key={item.title} className="border-divider text-center card-hover bg-card">
+                  <CardContent className="p-7">
+                    <div className={`h-14 w-14 rounded-xl ${item.iconBg} flex items-center justify-center mx-auto`}>
+                      <Icon className={`h-7 w-7 ${item.iconColor}`} />
                     </div>
-                    <h3 className="mt-4 font-display font-semibold text-foreground">
+                    <h3 className="mt-5 font-display font-bold text-foreground">
                       {item.title}
                     </h3>
-                    <p className="mt-2 text-sm text-muted-foreground">
+                    <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
                       {item.description}
                     </p>
                   </CardContent>
@@ -163,26 +158,26 @@ const Enterprise = () => {
       {/* Training Models */}
       <section className="section-padding">
         <div className="container-content">
-          <h2 className="font-display text-3xl font-bold text-foreground text-center mb-4">
-            Training Models
+          <h2 className="font-display text-4xl font-bold text-foreground text-center mb-5">
+            Training <span className="text-accent">Models</span>
           </h2>
-          <p className="text-muted-foreground text-center max-w-2xl mx-auto mb-12">
+          <p className="text-lg text-muted-foreground text-center max-w-2xl mx-auto mb-14">
             Flexible training solutions designed to meet your organization's unique requirements
           </p>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {trainingModels.map((model) => {
               const Icon = model.icon;
               return (
-                <Card key={model.title} className="border-divider">
-                  <CardContent className="p-6 flex items-start gap-4">
-                    <div className="h-10 w-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                      <Icon className="h-5 w-5 text-primary" />
+                <Card key={model.title} className="border-divider card-hover bg-card">
+                  <CardContent className="p-7 flex items-start gap-5">
+                    <div className={`h-12 w-12 rounded-xl ${model.iconBg} flex items-center justify-center flex-shrink-0`}>
+                      <Icon className={`h-6 w-6 ${model.iconColor}`} />
                     </div>
                     <div>
-                      <h3 className="font-display font-semibold text-foreground">
+                      <h3 className="font-display font-bold text-lg text-foreground">
                         {model.title}
                       </h3>
-                      <p className="mt-1 text-sm text-muted-foreground">
+                      <p className="mt-2 text-base text-muted-foreground leading-relaxed">
                         {model.description}
                       </p>
                     </div>
@@ -195,19 +190,19 @@ const Enterprise = () => {
       </section>
 
       {/* Program Areas */}
-      <section className="section-padding bg-card">
+      <section className="section-padding bg-surface-elevated border-y border-divider">
         <div className="container-content">
-          <h2 className="font-display text-3xl font-bold text-foreground text-center mb-12">
-            Program Areas
+          <h2 className="font-display text-4xl font-bold text-foreground text-center mb-14">
+            Program <span className="text-accent-green text-glow-green">Areas</span>
           </h2>
           <div className="flex flex-wrap justify-center gap-4">
             {programAreas.map((area) => (
               <div
                 key={area}
-                className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-background border border-divider"
+                className="inline-flex items-center gap-3 px-6 py-4 rounded-xl bg-card border border-primary/25 shadow-lg hover:shadow-primary/15 transition-all duration-300"
               >
-                <CheckCircle2 className="h-5 w-5 text-primary" />
-                <span className="font-medium text-foreground">{area}</span>
+                <CheckCircle2 className="h-6 w-6 text-primary" />
+                <span className="font-bold text-foreground text-lg">{area}</span>
               </div>
             ))}
           </div>
@@ -218,140 +213,77 @@ const Enterprise = () => {
       <section className="section-padding" id="request-form">
         <div className="container-content">
           <div className="max-w-3xl mx-auto">
-            <div className="text-center mb-10">
-              <h2 className="font-display text-3xl font-bold text-foreground">
-                Request a Training Proposal
+            <div className="text-center mb-12">
+              <h2 className="font-display text-4xl font-bold text-foreground">
+                Request a <span className="text-primary">Training Proposal</span>
               </h2>
-              <p className="mt-4 text-muted-foreground">
+              <p className="mt-4 text-lg text-muted-foreground">
                 Tell us about your training needs and our team will prepare a customized proposal.
               </p>
             </div>
 
-            <Card className="border-divider">
-              <CardContent className="p-6 lg:p-8">
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  {/* Organization Info */}
-                  <div className="grid sm:grid-cols-2 gap-4">
+            <Card className="border-divider bg-card shadow-2xl">
+              <CardContent className="p-8 lg:p-10">
+                <form onSubmit={handleSubmit} className="space-y-7">
+                  <div className="grid sm:grid-cols-2 gap-5">
                     <div className="space-y-2">
-                      <Label htmlFor="organizationName">Organization Name *</Label>
-                      <Input
-                        id="organizationName"
-                        required
-                        value={formData.organizationName}
-                        onChange={(e) => setFormData(prev => ({ ...prev, organizationName: e.target.value }))}
-                        placeholder="Your organization"
-                      />
+                      <Label htmlFor="organizationName" className="font-bold">Organization Name *</Label>
+                      <Input id="organizationName" required value={formData.organizationName} onChange={(e) => setFormData(prev => ({ ...prev, organizationName: e.target.value }))} placeholder="Your organization" className="h-12" />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="organizationType">Organization Type *</Label>
-                      <Select
-                        value={formData.organizationType}
-                        onValueChange={(value) => setFormData(prev => ({ ...prev, organizationType: value }))}
-                      >
-                        <SelectTrigger id="organizationType" className="bg-background">
-                          <SelectValue placeholder="Select type" />
-                        </SelectTrigger>
+                      <Label htmlFor="organizationType" className="font-bold">Organization Type *</Label>
+                      <Select value={formData.organizationType} onValueChange={(value) => setFormData(prev => ({ ...prev, organizationType: value }))}>
+                        <SelectTrigger id="organizationType" className="bg-background h-12"><SelectValue placeholder="Select type" /></SelectTrigger>
                         <SelectContent className="bg-card border-divider">
-                          {organizationTypes.map((type) => (
-                            <SelectItem key={type} value={type}>{type}</SelectItem>
-                          ))}
+                          {organizationTypes.map((type) => (<SelectItem key={type} value={type}>{type}</SelectItem>))}
                         </SelectContent>
                       </Select>
                     </div>
                   </div>
 
-                  {/* Contact Info */}
-                  <div className="grid sm:grid-cols-2 gap-4">
+                  <div className="grid sm:grid-cols-2 gap-5">
                     <div className="space-y-2">
-                      <Label htmlFor="contactName">Contact Person *</Label>
-                      <Input
-                        id="contactName"
-                        required
-                        value={formData.contactName}
-                        onChange={(e) => setFormData(prev => ({ ...prev, contactName: e.target.value }))}
-                        placeholder="Full name"
-                      />
+                      <Label htmlFor="contactName" className="font-bold">Contact Person *</Label>
+                      <Input id="contactName" required value={formData.contactName} onChange={(e) => setFormData(prev => ({ ...prev, contactName: e.target.value }))} placeholder="Full name" className="h-12" />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="email">Email Address *</Label>
-                      <Input
-                        id="email"
-                        type="email"
-                        required
-                        value={formData.email}
-                        onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
-                        placeholder="email@organization.com"
-                      />
+                      <Label htmlFor="email" className="font-bold">Email Address *</Label>
+                      <Input id="email" type="email" required value={formData.email} onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))} placeholder="email@organization.com" className="h-12" />
                     </div>
                   </div>
 
-                  <div className="grid sm:grid-cols-2 gap-4">
+                  <div className="grid sm:grid-cols-2 gap-5">
                     <div className="space-y-2">
-                      <Label htmlFor="phone">Phone Number</Label>
-                      <Input
-                        id="phone"
-                        type="tel"
-                        value={formData.phone}
-                        onChange={(e) => setFormData(prev => ({ ...prev, phone: e.target.value }))}
-                        placeholder="+1 234 567 8900"
-                      />
+                      <Label htmlFor="phone" className="font-bold">Phone Number</Label>
+                      <Input id="phone" type="tel" value={formData.phone} onChange={(e) => setFormData(prev => ({ ...prev, phone: e.target.value }))} placeholder="+1 234 567 8900" className="h-12" />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="location">Country / City *</Label>
-                      <Input
-                        id="location"
-                        required
-                        value={formData.location}
-                        onChange={(e) => setFormData(prev => ({ ...prev, location: e.target.value }))}
-                        placeholder="e.g., Dubai, UAE"
-                      />
+                      <Label htmlFor="location" className="font-bold">Country / City *</Label>
+                      <Input id="location" required value={formData.location} onChange={(e) => setFormData(prev => ({ ...prev, location: e.target.value }))} placeholder="e.g., Dubai, UAE" className="h-12" />
                     </div>
                   </div>
 
-                  {/* Training Areas */}
                   <div className="space-y-3">
-                    <Label>Training Areas of Interest *</Label>
+                    <Label className="font-bold">Training Areas of Interest *</Label>
                     <div className="grid sm:grid-cols-2 gap-3">
                       {programAreas.map((area) => (
-                        <div key={area} className="flex items-center space-x-2">
-                          <Checkbox
-                            id={area}
-                            checked={formData.trainingAreas.includes(area)}
-                            onCheckedChange={() => toggleTrainingArea(area)}
-                          />
-                          <label
-                            htmlFor={area}
-                            className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 cursor-pointer"
-                          >
-                            {area}
-                          </label>
+                        <div key={area} className="flex items-center space-x-3 p-3 rounded-lg bg-secondary/50 border border-divider">
+                          <Checkbox id={area} checked={formData.trainingAreas.includes(area)} onCheckedChange={() => toggleTrainingArea(area)} />
+                          <label htmlFor={area} className="text-sm font-semibold leading-none cursor-pointer text-foreground">{area}</label>
                         </div>
                       ))}
                     </div>
                   </div>
 
-                  {/* Training Details */}
-                  <div className="grid sm:grid-cols-3 gap-4">
+                  <div className="grid sm:grid-cols-3 gap-5">
                     <div className="space-y-2">
-                      <Label htmlFor="participantCount">Number of Participants</Label>
-                      <Input
-                        id="participantCount"
-                        type="number"
-                        min="1"
-                        value={formData.participantCount}
-                        onChange={(e) => setFormData(prev => ({ ...prev, participantCount: e.target.value }))}
-                        placeholder="e.g., 25"
-                      />
+                      <Label htmlFor="participantCount" className="font-bold">Participants</Label>
+                      <Input id="participantCount" type="number" min="1" value={formData.participantCount} onChange={(e) => setFormData(prev => ({ ...prev, participantCount: e.target.value }))} placeholder="e.g., 25" className="h-12" />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="deliveryPreference">Delivery Preference</Label>
-                      <Select
-                        value={formData.deliveryPreference}
-                        onValueChange={(value) => setFormData(prev => ({ ...prev, deliveryPreference: value }))}
-                      >
-                        <SelectTrigger id="deliveryPreference" className="bg-background">
-                          <SelectValue placeholder="Select" />
-                        </SelectTrigger>
+                      <Label htmlFor="deliveryPreference" className="font-bold">Delivery</Label>
+                      <Select value={formData.deliveryPreference} onValueChange={(value) => setFormData(prev => ({ ...prev, deliveryPreference: value }))}>
+                        <SelectTrigger id="deliveryPreference" className="bg-background h-12"><SelectValue placeholder="Select" /></SelectTrigger>
                         <SelectContent className="bg-card border-divider">
                           <SelectItem value="Online">Online</SelectItem>
                           <SelectItem value="Hybrid">Hybrid</SelectItem>
@@ -361,37 +293,19 @@ const Enterprise = () => {
                       </Select>
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="timeframe">Preferred Timeframe</Label>
-                      <Input
-                        id="timeframe"
-                        value={formData.timeframe}
-                        onChange={(e) => setFormData(prev => ({ ...prev, timeframe: e.target.value }))}
-                        placeholder="e.g., Q2 2024"
-                      />
+                      <Label htmlFor="timeframe" className="font-bold">Timeframe</Label>
+                      <Input id="timeframe" value={formData.timeframe} onChange={(e) => setFormData(prev => ({ ...prev, timeframe: e.target.value }))} placeholder="e.g., Q2 2026" className="h-12" />
                     </div>
                   </div>
 
-                  {/* Notes */}
                   <div className="space-y-2">
-                    <Label htmlFor="notes">Additional Requirements or Notes</Label>
-                    <Textarea
-                      id="notes"
-                      rows={4}
-                      value={formData.notes}
-                      onChange={(e) => setFormData(prev => ({ ...prev, notes: e.target.value }))}
-                      placeholder="Tell us more about your training needs, specific software requirements, or any other details..."
-                    />
+                    <Label htmlFor="notes" className="font-bold">Additional Notes</Label>
+                    <Textarea id="notes" rows={4} value={formData.notes} onChange={(e) => setFormData(prev => ({ ...prev, notes: e.target.value }))} placeholder="Tell us more about your training needs..." />
                   </div>
 
-                  <Button 
-                    type="submit" 
-                    size="lg" 
-                    variant="hero"
-                    className="w-full sm:w-auto"
-                    disabled={isSubmitting || formData.trainingAreas.length === 0}
-                  >
+                  <Button type="submit" size="lg" variant="hero" className="w-full sm:w-auto" disabled={isSubmitting || formData.trainingAreas.length === 0}>
                     {isSubmitting ? "Submitting..." : "Submit Training Request"}
-                    <ArrowRight className="ml-2 h-4 w-4" />
+                    <ArrowRight className="ml-2 h-5 w-5" />
                   </Button>
                 </form>
               </CardContent>

@@ -32,65 +32,41 @@ import { ArrowRight, Filter, Building2, Building, Cog, Zap, Calendar, Globe, Hom
 import { cn } from "@/lib/utils";
 
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
-  Building2,
-  Building,
-  Home,
-  Cog,
-  Zap,
-  Calendar,
-  Globe,
-  Plane,
+  Building2, Building, Home, Cog, Zap, Calendar, Globe, Plane,
 };
 
-// Enhanced contrast - brighter text colors for dark backgrounds
-const domainColorMap: Record<string, { bg: string; border: string; text: string; headerBg: string }> = {
+const domainColorMap: Record<string, { bg: string; border: string; text: string; headerBg: string; shadow: string }> = {
   "Civil Engineering": {
-    bg: "bg-accent-orange/10",
-    border: "border-accent-orange/30",
-    text: "text-[hsl(40_95%_72%)]",
-    headerBg: "bg-gradient-to-r from-accent-orange/12 to-transparent"
+    bg: "bg-accent-orange/12", border: "border-accent-orange/35", text: "text-accent-orange",
+    headerBg: "bg-gradient-to-r from-accent-orange/15 to-transparent", shadow: "shadow-accent-orange/15"
   },
   "Structural / BIM & Infrastructure": {
-    bg: "bg-primary/10",
-    border: "border-primary/30",
-    text: "text-[hsl(207_90%_72%)]",
-    headerBg: "bg-gradient-to-r from-primary/12 to-transparent"
+    bg: "bg-primary/12", border: "border-primary/35", text: "text-primary",
+    headerBg: "bg-gradient-to-r from-primary/15 to-transparent", shadow: "shadow-primary/15"
   },
   "Architectural Engineering": {
-    bg: "bg-accent/10",
-    border: "border-accent/30",
-    text: "text-[hsl(195_100%_75%)]",
-    headerBg: "bg-gradient-to-r from-accent/12 to-transparent"
+    bg: "bg-accent/12", border: "border-accent/35", text: "text-accent",
+    headerBg: "bg-gradient-to-r from-accent/15 to-transparent", shadow: "shadow-accent/15"
   },
   "Mechanical Engineering": {
-    bg: "bg-accent-green/10",
-    border: "border-accent-green/30",
-    text: "text-[hsl(80_70%_70%)]",
-    headerBg: "bg-gradient-to-r from-accent-green/12 to-transparent"
+    bg: "bg-accent-green/12", border: "border-accent-green/35", text: "text-accent-green",
+    headerBg: "bg-gradient-to-r from-accent-green/15 to-transparent", shadow: "shadow-accent-green/15"
   },
   "Electrical Engineering": {
-    bg: "bg-[hsl(280_68%_55%)]/10",
-    border: "border-[hsl(280_68%_55%)]/30",
-    text: "text-[hsl(280_68%_78%)]",
-    headerBg: "bg-gradient-to-r from-[hsl(280_68%_55%)]/12 to-transparent"
+    bg: "bg-[hsl(280_68%_60%)]/12", border: "border-[hsl(280_68%_60%)]/35", text: "text-[hsl(280_68%_75%)]",
+    headerBg: "bg-gradient-to-r from-[hsl(280_68%_60%)]/15 to-transparent", shadow: "shadow-[hsl(280_68%_60%)]/15"
   },
   "Construction Planning & Project Controls": {
-    bg: "bg-primary/10",
-    border: "border-primary/30",
-    text: "text-[hsl(207_90%_72%)]",
-    headerBg: "bg-gradient-to-r from-primary/12 to-transparent"
+    bg: "bg-primary/12", border: "border-primary/35", text: "text-primary",
+    headerBg: "bg-gradient-to-r from-primary/15 to-transparent", shadow: "shadow-primary/15"
   },
   "GIS & Infrastructure Intelligence": {
-    bg: "bg-accent-green/10",
-    border: "border-accent-green/30",
-    text: "text-[hsl(80_70%_70%)]",
-    headerBg: "bg-gradient-to-r from-accent-green/12 to-transparent"
+    bg: "bg-accent-green/12", border: "border-accent-green/35", text: "text-accent-green",
+    headerBg: "bg-gradient-to-r from-accent-green/15 to-transparent", shadow: "shadow-accent-green/15"
   },
   "Aviation & Aerospace Engineering": {
-    bg: "bg-accent/10",
-    border: "border-accent/30",
-    text: "text-[hsl(195_100%_75%)]",
-    headerBg: "bg-gradient-to-r from-accent/12 to-transparent"
+    bg: "bg-accent/12", border: "border-accent/35", text: "text-accent",
+    headerBg: "bg-gradient-to-r from-accent/15 to-transparent", shadow: "shadow-accent/15"
   }
 };
 
@@ -128,40 +104,39 @@ const Programs = () => {
         key={domainName} 
         value={domainName} 
         className={cn(
-          "border rounded-2xl overflow-hidden mb-4 transition-all duration-300",
+          "border-2 rounded-2xl overflow-hidden mb-5 transition-all duration-300",
           colorStyle.border,
-          "data-[state=open]:shadow-lg"
+          `data-[state=open]:shadow-xl data-[state=open]:${colorStyle.shadow}`
         )}
       >
         <AccordionTrigger className={cn(
-          "hover:no-underline px-6 py-5",
+          "hover:no-underline px-7 py-6",
           colorStyle.headerBg,
           "data-[state=open]:border-b",
           colorStyle.border
         )}>
-          <div className="flex items-center gap-4 text-left">
+          <div className="flex items-center gap-5 text-left">
             <div className={cn(
-              "h-11 w-11 rounded-xl flex items-center justify-center flex-shrink-0 border",
+              "h-13 w-13 rounded-xl flex items-center justify-center flex-shrink-0 border-2 shadow-md",
               colorStyle.bg,
               colorStyle.border
-            )}>
-              <Icon className={cn("h-5 w-5", colorStyle.text)} />
+            )} style={{ height: '3.25rem', width: '3.25rem' }}>
+              <Icon className={cn("h-6 w-6", colorStyle.text)} />
             </div>
             <div>
-              <span className="font-display font-semibold text-lg text-foreground">
+              <span className={cn("font-display font-bold text-xl", colorStyle.text)}>
                 {domainName}
               </span>
-              <div className="flex items-center gap-2 mt-0.5">
-                <Badge variant="outline" className={cn("text-xs font-normal", colorStyle.bg, colorStyle.text, colorStyle.border)}>
+              <div className="flex items-center gap-2 mt-1">
+                <Badge variant="outline" className={cn("text-xs font-bold", colorStyle.bg, colorStyle.text, colorStyle.border)}>
                   {filteredPrograms.length} programs
                 </Badge>
               </div>
             </div>
           </div>
         </AccordionTrigger>
-        <AccordionContent className="px-6 py-6 bg-card/50">
-          {/* Visual Grid - Software Icons */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3">
+        <AccordionContent className="px-7 py-7 bg-card/50">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
             {filteredPrograms.map((program) => (
               <ProgramCard key={program.id} program={program} variant="visual" />
             ))}
@@ -169,12 +144,12 @@ const Programs = () => {
           
           {domain && (
             <div className={cn(
-              "mt-6 p-3 rounded-lg border",
+              "mt-7 p-4 rounded-xl border-2",
               colorStyle.bg,
               colorStyle.border
             )}>
               <p className="text-sm text-muted-foreground">
-                <span className={cn("font-medium", colorStyle.text)}>Suggested path:</span>{" "}
+                <span className={cn("font-bold", colorStyle.text)}>Suggested path:</span>{" "}
                 {domain.progressionPath}
               </p>
             </div>
@@ -187,21 +162,21 @@ const Programs = () => {
   return (
     <Layout>
       {/* Hero */}
-      <section className="gradient-hero py-16 lg:py-20">
+      <section className="gradient-hero py-20 lg:py-28">
         <div className="container-content">
           <div className="max-w-3xl">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="h-12 w-12 rounded-xl bg-primary/20 flex items-center justify-center">
-                <Layers className="h-6 w-6 text-primary" />
+            <div className="flex items-center gap-4 mb-5">
+              <div className="h-14 w-14 rounded-xl bg-primary/20 border border-primary/30 flex items-center justify-center">
+                <Layers className="h-7 w-7 text-primary" />
               </div>
-              <span className="text-sm font-medium text-primary uppercase tracking-wider">
+              <span className="text-sm font-bold text-primary uppercase tracking-widest">
                 Program Catalog
               </span>
             </div>
-            <h1 className="font-display text-4xl lg:text-5xl font-bold text-foreground">
+            <h1 className="font-display text-5xl lg:text-6xl font-extrabold text-foreground leading-tight">
               Engineering <span className="text-glow text-primary">Software Training</span>
             </h1>
-            <p className="mt-4 text-lg text-muted-foreground">
+            <p className="mt-5 text-xl text-muted-foreground leading-relaxed">
               Browse our comprehensive software training programs by domain. 
               Click each domain to explore available courses.
             </p>
@@ -210,17 +185,15 @@ const Programs = () => {
       </section>
 
       {/* Filters */}
-      <section className="border-b border-divider bg-card/80 backdrop-blur-sm sticky top-16 lg:top-20 z-40">
-        <div className="container-content py-4">
-          <div className="flex flex-wrap items-center gap-4">
-            <div className="flex items-center gap-2 text-sm text-muted-foreground">
+      <section className="border-b border-divider bg-surface-elevated backdrop-blur-sm sticky top-18 lg:top-20 z-40">
+        <div className="container-content py-5">
+          <div className="flex flex-wrap items-center gap-5">
+            <div className="flex items-center gap-2 text-sm text-muted-foreground font-bold">
               <Filter className="h-4 w-4" />
               <span>Filters:</span>
             </div>
             <Select value={levelFilter} onValueChange={setLevelFilter}>
-              <SelectTrigger className="w-[160px] bg-background">
-                <SelectValue placeholder="Level" />
-              </SelectTrigger>
+              <SelectTrigger className="w-[170px] bg-background h-11 font-bold"><SelectValue placeholder="Level" /></SelectTrigger>
               <SelectContent className="bg-card border-divider">
                 <SelectItem value="all">All Levels</SelectItem>
                 <SelectItem value="Beginner">Beginner</SelectItem>
@@ -229,19 +202,14 @@ const Programs = () => {
               </SelectContent>
             </Select>
             <Select value={deliveryFilter} onValueChange={setDeliveryFilter}>
-              <SelectTrigger className="w-[160px] bg-background">
-                <SelectValue placeholder="Delivery" />
-              </SelectTrigger>
+              <SelectTrigger className="w-[170px] bg-background h-11 font-bold"><SelectValue placeholder="Delivery" /></SelectTrigger>
               <SelectContent className="bg-card border-divider">
                 <SelectItem value="all">All Modes</SelectItem>
                 <SelectItem value="Online">Online</SelectItem>
                 <SelectItem value="Hybrid">Hybrid</SelectItem>
               </SelectContent>
             </Select>
-            <div className={cn(
-              "ml-auto px-3 py-1.5 rounded-full text-sm font-medium",
-              "bg-primary/10 text-primary border border-primary/30"
-            )}>
+            <div className="ml-auto px-4 py-2 rounded-full text-sm font-bold bg-primary/15 text-primary border border-primary/30">
               {totalFilteredCount} programs
             </div>
           </div>
@@ -251,42 +219,30 @@ const Programs = () => {
       {/* Program Catalog */}
       <section className="section-padding">
         <div className="container-content">
-          {/* Engineering Domains */}
-          <div className="mb-12">
-            <h2 className="font-display text-2xl font-bold text-foreground mb-6 flex items-center gap-3">
-              <Building2 className="h-6 w-6 text-primary" />
-              Engineering Domains
+          <div className="mb-14">
+            <h2 className="font-display text-3xl font-bold text-foreground mb-8 flex items-center gap-4">
+              <Building2 className="h-7 w-7 text-primary" />
+              <span>Engineering <span className="text-primary">Domains</span></span>
             </h2>
             <Accordion type="single" collapsible className="space-y-0">
               {engineeringDomains.map(renderDomainAccordion)}
             </Accordion>
           </div>
 
-          {/* Industry & Regional Systems */}
           <div>
-            <h2 className="font-display text-2xl font-bold text-foreground mb-6 flex items-center gap-3">
-              <Globe className="h-6 w-6 text-accent-green" />
-              Industry & Regional Systems
+            <h2 className="font-display text-3xl font-bold text-foreground mb-8 flex items-center gap-4">
+              <Globe className="h-7 w-7 text-accent-green" />
+              <span>Industry & <span className="text-accent-green">Regional Systems</span></span>
             </h2>
             <Accordion type="single" collapsible className="space-y-0">
               {industryDomains.map(renderDomainAccordion)}
             </Accordion>
           </div>
 
-          {/* No results */}
           {totalFilteredCount === 0 && (
-            <div className="text-center py-12">
-              <p className="text-muted-foreground">
-                No programs match your current filters.
-              </p>
-              <Button 
-                variant="outline" 
-                className="mt-4"
-                onClick={() => {
-                  setLevelFilter("all");
-                  setDeliveryFilter("all");
-                }}
-              >
+            <div className="text-center py-16">
+              <p className="text-lg text-muted-foreground">No programs match your current filters.</p>
+              <Button variant="outline" className="mt-4" onClick={() => { setLevelFilter("all"); setDeliveryFilter("all"); }}>
                 Clear Filters
               </Button>
             </div>
@@ -295,15 +251,15 @@ const Programs = () => {
       </section>
 
       {/* Enterprise CTA */}
-      <section className="py-12 bg-card border-t border-divider">
+      <section className="py-16 bg-surface-elevated border-t border-divider">
         <div className="container-content text-center">
-          <p className="text-muted-foreground mb-4">
-            Looking for customized training for your organization?
-          </p>
-          <Button asChild variant="hero">
+          <h3 className="font-display text-2xl font-bold text-foreground mb-4">
+            Looking for customized training?
+          </h3>
+          <Button asChild variant="hero" size="lg">
             <Link to="/enterprise">
               Request Enterprise Training
-              <ArrowRight className="ml-2 h-4 w-4" />
+              <ArrowRight className="ml-2 h-5 w-5" />
             </Link>
           </Button>
         </div>
