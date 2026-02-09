@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { GraduationCap, Mail, MapPin, Phone } from "lucide-react";
+import { GraduationCap, Mail, MapPin } from "lucide-react";
 
 const footerLinks = {
   programs: [
@@ -22,30 +22,30 @@ const footerLinks = {
 
 export function Footer() {
   return (
-    <footer className="border-t border-divider bg-card">
-      <div className="container-content py-12 lg:py-16">
-        <div className="grid grid-cols-1 gap-8 lg:grid-cols-4">
+    <footer className="border-t border-divider bg-surface-elevated">
+      <div className="container-content py-14 lg:py-20">
+        <div className="grid grid-cols-1 gap-10 lg:grid-cols-4">
           {/* Brand */}
           <div className="lg:col-span-1">
-            <Link to="/" className="flex items-center gap-2">
-              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary">
-                <GraduationCap className="h-6 w-6 text-primary-foreground" />
+            <Link to="/" className="flex items-center gap-3">
+              <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-accent shadow-lg shadow-primary/30">
+                <GraduationCap className="h-6 w-6 text-white" />
               </div>
               <div className="flex flex-col">
-                <span className="font-display text-lg font-bold text-foreground">Aliko Academy</span>
-                <span className="text-xs font-medium text-primary">STEM</span>
+                <span className="font-display text-xl font-extrabold text-foreground">Aliko Academy</span>
+                <span className="text-xs font-bold text-primary tracking-widest">STEM</span>
               </div>
             </Link>
-            <p className="mt-4 text-sm text-muted-foreground max-w-xs">
+            <p className="mt-5 text-base text-muted-foreground max-w-xs leading-relaxed">
               Industry-aligned engineering and STEM training for students, professionals, and organizations.
             </p>
-            <div className="mt-6 space-y-2">
-              <a href="mailto:stem@alikogroup.com" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors">
-                <Mail className="h-4 w-4" />
+            <div className="mt-7 space-y-3">
+              <a href="mailto:stem@alikogroup.com" className="flex items-center gap-3 text-sm text-muted-foreground hover:text-primary transition-colors font-medium">
+                <Mail className="h-4 w-4 text-primary" />
                 stem@alikogroup.com
               </a>
-              <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                <MapPin className="h-4 w-4" />
+              <div className="flex items-center gap-3 text-sm text-muted-foreground font-medium">
+                <MapPin className="h-4 w-4 text-accent" />
                 Middle East & International
               </div>
             </div>
@@ -53,16 +53,11 @@ export function Footer() {
 
           {/* Programs */}
           <div>
-            <h3 className="font-display font-semibold text-foreground">Programs</h3>
-            <ul className="mt-4 space-y-2">
+            <h3 className="font-display font-bold text-lg text-foreground">Programs</h3>
+            <ul className="mt-5 space-y-3">
               {footerLinks.programs.map((link) => (
                 <li key={link.name}>
-                  <Link
-                    to={link.href}
-                    className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-                  >
-                    {link.name}
-                  </Link>
+                  <Link to={link.href} className="text-base text-muted-foreground hover:text-primary transition-colors font-medium">{link.name}</Link>
                 </li>
               ))}
             </ul>
@@ -70,41 +65,26 @@ export function Footer() {
 
           {/* Company */}
           <div>
-            <h3 className="font-display font-semibold text-foreground">Company</h3>
-            <ul className="mt-4 space-y-2">
+            <h3 className="font-display font-bold text-lg text-foreground">Company</h3>
+            <ul className="mt-5 space-y-3">
               {footerLinks.company.map((link) => (
                 <li key={link.name}>
-                  <Link
-                    to={link.href}
-                    className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-                  >
-                    {link.name}
-                  </Link>
+                  <Link to={link.href} className="text-base text-muted-foreground hover:text-primary transition-colors font-medium">{link.name}</Link>
                 </li>
               ))}
               <li>
-                <Link
-                  to="/student-login"
-                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  Student Login
-                </Link>
+                <Link to="/student-login" className="text-base text-muted-foreground hover:text-primary transition-colors font-medium">Student Login</Link>
               </li>
             </ul>
           </div>
 
           {/* Legal */}
           <div>
-            <h3 className="font-display font-semibold text-foreground">Legal</h3>
-            <ul className="mt-4 space-y-2">
+            <h3 className="font-display font-bold text-lg text-foreground">Legal</h3>
+            <ul className="mt-5 space-y-3">
               {footerLinks.legal.map((link) => (
                 <li key={link.name}>
-                  <Link
-                    to={link.href}
-                    className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-                  >
-                    {link.name}
-                  </Link>
+                  <Link to={link.href} className="text-base text-muted-foreground hover:text-primary transition-colors font-medium">{link.name}</Link>
                 </li>
               ))}
             </ul>
@@ -112,9 +92,9 @@ export function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-12 pt-8 border-t border-divider">
+        <div className="mt-14 pt-8 border-t border-divider">
           <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
-            <p className="text-sm text-muted-foreground">
+            <p className="text-sm text-muted-foreground font-medium">
               © {new Date().getFullYear()} Aliko Academy – STEM. All rights reserved.
             </p>
             <p className="text-xs text-muted-foreground">

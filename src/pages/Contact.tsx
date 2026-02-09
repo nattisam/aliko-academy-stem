@@ -5,7 +5,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { Mail, MapPin, ArrowRight } from "lucide-react";
+import { Mail, MapPin, ArrowRight, Phone } from "lucide-react";
 import { toast } from "sonner";
 
 const Contact = () => {
@@ -23,10 +23,12 @@ const Contact = () => {
 
   return (
     <Layout>
-      <section className="gradient-hero py-16 lg:py-20">
+      <section className="gradient-hero py-20 lg:py-28">
         <div className="container-content">
-          <h1 className="font-display text-4xl font-bold text-foreground">Contact Us</h1>
-          <p className="mt-4 text-lg text-muted-foreground max-w-2xl">
+          <h1 className="font-display text-5xl font-extrabold text-foreground">
+            Contact <span className="text-primary text-glow">Us</span>
+          </h1>
+          <p className="mt-5 text-xl text-muted-foreground max-w-2xl leading-relaxed">
             Have questions about our programs? Get in touch with our team.
           </p>
         </div>
@@ -34,40 +36,54 @@ const Contact = () => {
 
       <section className="section-padding">
         <div className="container-content">
-          <div className="grid lg:grid-cols-2 gap-12">
+          <div className="grid lg:grid-cols-2 gap-14">
             <div>
-              <h2 className="font-display text-2xl font-bold text-foreground mb-6">Get in Touch</h2>
-              <div className="space-y-4 mb-8">
-                <div className="flex items-center gap-3">
-                  <Mail className="h-5 w-5 text-primary" />
-                  <span className="text-muted-foreground">stem@alikogroup.com</span>
+              <h2 className="font-display text-3xl font-bold text-foreground mb-8">Get in Touch</h2>
+              <div className="space-y-5 mb-10">
+                <div className="flex items-center gap-4 p-4 rounded-xl bg-primary/10 border border-primary/25">
+                  <div className="h-12 w-12 rounded-lg bg-primary/20 flex items-center justify-center">
+                    <Mail className="h-6 w-6 text-primary" />
+                  </div>
+                  <div>
+                    <p className="text-sm text-muted-foreground">Email</p>
+                    <span className="font-bold text-foreground">stem@alikogroup.com</span>
+                  </div>
                 </div>
-                <div className="flex items-center gap-3">
-                  <MapPin className="h-5 w-5 text-primary" />
-                  <span className="text-muted-foreground">Middle East & International</span>
+                <div className="flex items-center gap-4 p-4 rounded-xl bg-accent/10 border border-accent/25">
+                  <div className="h-12 w-12 rounded-lg bg-accent/20 flex items-center justify-center">
+                    <MapPin className="h-6 w-6 text-accent" />
+                  </div>
+                  <div>
+                    <p className="text-sm text-muted-foreground">Location</p>
+                    <span className="font-bold text-foreground">Middle East & International</span>
+                  </div>
                 </div>
               </div>
-              <Button asChild variant="outline">
-                <a href="/enterprise">Request Enterprise Training <ArrowRight className="ml-2 h-4 w-4" /></a>
+              <Button asChild variant="outline" size="lg">
+                <a href="/enterprise">
+                  Request Enterprise Training 
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </a>
               </Button>
             </div>
 
-            <Card className="border-divider">
-              <CardContent className="p-6">
-                <form onSubmit={handleSubmit} className="space-y-4">
+            <Card className="border-divider bg-card shadow-2xl">
+              <CardContent className="p-8">
+                <h3 className="font-display text-2xl font-bold text-foreground mb-6">Send a Message</h3>
+                <form onSubmit={handleSubmit} className="space-y-5">
                   <div className="space-y-2">
-                    <Label htmlFor="name">Name *</Label>
-                    <Input id="name" required value={formData.name} onChange={(e) => setFormData(p => ({ ...p, name: e.target.value }))} />
+                    <Label htmlFor="name" className="font-bold">Name *</Label>
+                    <Input id="name" required value={formData.name} onChange={(e) => setFormData(p => ({ ...p, name: e.target.value }))} className="h-12" />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="email">Email *</Label>
-                    <Input id="email" type="email" required value={formData.email} onChange={(e) => setFormData(p => ({ ...p, email: e.target.value }))} />
+                    <Label htmlFor="email" className="font-bold">Email *</Label>
+                    <Input id="email" type="email" required value={formData.email} onChange={(e) => setFormData(p => ({ ...p, email: e.target.value }))} className="h-12" />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="message">Message *</Label>
-                    <Textarea id="message" rows={4} required value={formData.message} onChange={(e) => setFormData(p => ({ ...p, message: e.target.value }))} />
+                    <Label htmlFor="message" className="font-bold">Message *</Label>
+                    <Textarea id="message" rows={5} required value={formData.message} onChange={(e) => setFormData(p => ({ ...p, message: e.target.value }))} />
                   </div>
-                  <Button type="submit" variant="hero" disabled={isSubmitting}>
+                  <Button type="submit" variant="hero" size="lg" disabled={isSubmitting} className="w-full">
                     {isSubmitting ? "Sending..." : "Send Message"}
                   </Button>
                 </form>

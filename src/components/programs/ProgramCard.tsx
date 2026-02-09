@@ -13,16 +13,15 @@ interface ProgramCardProps {
 }
 
 export function ProgramCard({ program, variant = "default" }: ProgramCardProps) {
-  // Enhanced contrast - brighter text colors
   const levelClasses = {
-    Beginner: "bg-accent-green/12 text-[hsl(80_70%_70%)] border-accent-green/30",
-    Intermediate: "bg-accent-orange/12 text-[hsl(40_95%_72%)] border-accent-orange/30",
-    Professional: "bg-primary/12 text-[hsl(207_90%_72%)] border-primary/30",
+    Beginner: "bg-accent-green/15 text-accent-green border-accent-green/40 font-bold",
+    Intermediate: "bg-accent-orange/15 text-accent-orange border-accent-orange/40 font-bold",
+    Professional: "bg-primary/15 text-primary border-primary/40 font-bold",
   };
 
   const deliveryClasses = {
-    Online: "bg-accent/12 text-[hsl(195_100%_75%)] border-accent/30",
-    Hybrid: "bg-accent-green/12 text-[hsl(80_70%_70%)] border-accent-green/30",
+    Online: "bg-accent/15 text-accent border-accent/40 font-bold",
+    Hybrid: "bg-accent-green/15 text-accent-green border-accent-green/40 font-bold",
   };
 
   const softwareIcon = getSoftwareIcon(program.slug);
@@ -34,15 +33,15 @@ export function ProgramCard({ program, variant = "default" }: ProgramCardProps) 
       <Link to={`/programs/${program.slug}`} className="group">
         <Card className={cn(
           "border transition-all duration-300 overflow-hidden h-full",
-          "hover:shadow-xl hover:-translate-y-1",
+          "hover:shadow-2xl hover:-translate-y-1.5 hover:scale-[1.03]",
           colorStyle.border,
-          "bg-card/80 hover:bg-card"
+          "bg-card hover:bg-surface-elevated"
         )}>
-          <CardContent className="p-4 flex flex-col items-center text-center">
+          <CardContent className="p-5 flex flex-col items-center text-center">
             {/* Software Icon */}
             <div className={cn(
-              "w-14 h-14 rounded-xl flex items-center justify-center text-lg font-bold mb-3 transition-all",
-              "border-2 group-hover:scale-110",
+              "w-16 h-16 rounded-xl flex items-center justify-center text-lg font-extrabold mb-3 transition-all",
+              "border-2 group-hover:scale-110 shadow-md",
               colorStyle.bg,
               colorStyle.text,
               colorStyle.border
@@ -51,12 +50,12 @@ export function ProgramCard({ program, variant = "default" }: ProgramCardProps) 
             </div>
             
             {/* Program Title */}
-            <h3 className="font-display font-semibold text-sm text-foreground group-hover:text-primary transition-colors line-clamp-2">
+            <h3 className="font-display font-bold text-sm text-foreground group-hover:text-primary transition-colors line-clamp-2">
               {program.title}
             </h3>
             
             {/* Vendor Tag */}
-            <span className={cn("text-xs mt-1", colorStyle.text)}>
+            <span className={cn("text-xs font-semibold mt-1", colorStyle.text)}>
               {softwareIcon.vendor}
             </span>
             
@@ -73,11 +72,10 @@ export function ProgramCard({ program, variant = "default" }: ProgramCardProps) 
   if (variant === "compact") {
     return (
       <Card className="card-hover border-divider bg-card shimmer group">
-        <CardContent className="p-4">
-          <div className="flex items-start gap-3">
-            {/* Software Icon */}
+        <CardContent className="p-5">
+          <div className="flex items-start gap-4">
             <div className={cn(
-              "w-10 h-10 rounded-lg flex items-center justify-center text-xs font-bold flex-shrink-0 border",
+              "w-12 h-12 rounded-lg flex items-center justify-center text-sm font-bold flex-shrink-0 border-2 shadow-md",
               colorStyle.bg,
               colorStyle.text,
               colorStyle.border
@@ -85,15 +83,15 @@ export function ProgramCard({ program, variant = "default" }: ProgramCardProps) 
               {softwareIcon.initials}
             </div>
             <div className="flex-1 min-w-0">
-              <h3 className="font-display font-semibold text-foreground truncate">
+              <h3 className="font-display font-bold text-foreground truncate text-base">
                 {program.title}
               </h3>
-              <p className="mt-0.5 text-xs text-muted-foreground line-clamp-1">
+              <p className="mt-1 text-sm text-muted-foreground line-clamp-1">
                 {program.shortDescription}
               </p>
             </div>
           </div>
-          <div className="mt-3 flex flex-wrap items-center gap-2">
+          <div className="mt-4 flex flex-wrap items-center gap-2">
             <Badge variant="outline" className={cn("text-xs", levelClasses[program.level])}>
               {program.level}
             </Badge>
@@ -102,8 +100,8 @@ export function ProgramCard({ program, variant = "default" }: ProgramCardProps) 
             </Badge>
           </div>
         </CardContent>
-        <CardFooter className="p-4 pt-0">
-          <Button asChild variant="ghost" size="sm" className="w-full justify-between">
+        <CardFooter className="p-5 pt-0">
+          <Button asChild variant="ghost" size="sm" className="w-full justify-between font-bold">
             <Link to={`/programs/${program.slug}`}>
               View Program
               <ArrowRight className="h-4 w-4" />
@@ -116,11 +114,11 @@ export function ProgramCard({ program, variant = "default" }: ProgramCardProps) 
 
   return (
     <Card className="card-hover border-divider bg-card overflow-hidden shimmer group">
-      <CardContent className="p-6">
-        <div className="flex items-start gap-4 mb-4">
+      <CardContent className="p-7">
+        <div className="flex items-start gap-4 mb-5">
           {/* Software Icon */}
           <div className={cn(
-            "w-12 h-12 rounded-xl flex items-center justify-center text-sm font-bold flex-shrink-0 border-2 transition-all group-hover:scale-105",
+            "w-14 h-14 rounded-xl flex items-center justify-center text-base font-extrabold flex-shrink-0 border-2 transition-all group-hover:scale-110 shadow-lg",
             colorStyle.bg,
             colorStyle.text,
             colorStyle.border
@@ -136,28 +134,28 @@ export function ProgramCard({ program, variant = "default" }: ProgramCardProps) 
                 {program.deliveryMode}
               </Badge>
             </div>
-            <span className={cn("text-xs", colorStyle.text)}>{softwareIcon.vendor}</span>
+            <span className={cn("text-xs font-bold", colorStyle.text)}>{softwareIcon.vendor}</span>
           </div>
         </div>
-        <h3 className="font-display text-xl font-semibold text-foreground">
+        <h3 className="font-display text-xl font-bold text-foreground">
           {program.title}
         </h3>
-        <p className="mt-2 text-sm text-muted-foreground line-clamp-2">
+        <p className="mt-3 text-base text-muted-foreground line-clamp-2 leading-relaxed">
           {program.shortDescription}
         </p>
-        <div className="mt-4 flex items-center gap-4 text-xs text-muted-foreground">
-          <span className="flex items-center gap-1">
-            <Calendar className="h-3.5 w-3.5" />
+        <div className="mt-5 flex items-center gap-5 text-sm text-muted-foreground font-medium">
+          <span className="flex items-center gap-1.5">
+            <Calendar className="h-4 w-4 text-primary" />
             {program.durationWeeks} weeks
           </span>
-          <span className="flex items-center gap-1">
-            <Clock className="h-3.5 w-3.5" />
+          <span className="flex items-center gap-1.5">
+            <Clock className="h-4 w-4 text-accent" />
             {program.weeklyHours} hrs/week
           </span>
         </div>
       </CardContent>
-      <CardFooter className="p-6 pt-0">
-        <Button asChild variant="outline" className="w-full group">
+      <CardFooter className="p-7 pt-0">
+        <Button asChild variant="outline" className="w-full group font-bold">
           <Link to={`/programs/${program.slug}`}>
             View Program
             <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
