@@ -6,6 +6,7 @@ export type DomainCategory =
   | "Structural / BIM & Infrastructure" 
   | "Architectural Engineering"
   | "Mechanical Engineering" 
+  | "Chemical Engineering"
   | "Electrical Engineering"
   | "Construction Planning & Project Controls"
   | "GIS & Infrastructure Intelligence"

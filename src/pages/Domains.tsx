@@ -9,7 +9,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { ArrowRight, Building2, Building, Home, Cog, Zap, Calendar, Globe, Layers } from "lucide-react";
+import { ArrowRight, Building2, Building, Home, Cog, FlaskConical, Zap, Calendar, Globe, Layers } from "lucide-react";
 import { domains } from "@/data/domains";
 import { getProgramsByDomain } from "@/data/programs";
 import { domainSoftware } from "@/data/domainSoftware";
@@ -21,6 +21,7 @@ const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   Building,
   Home,
   Cog,
+  FlaskConical,
   Zap,
   Calendar,
   Globe,

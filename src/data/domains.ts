@@ -37,6 +37,17 @@ export const domains: Domain[] = [
     topPrograms: ["solidworks", "fusion-360", "ansys-mechanical", "catia"]
   },
   {
+    id: "chemical",
+    name: "Chemical Engineering",
+    shortName: "Chemical",
+    description: "Process simulation, plant design, and energy/materials balance",
+    introText: "Chemical engineering software enables process simulation, plant modeling, and optimization for oil & gas, chemicals, pharmaceuticals, energy, and manufacturing industries. Our programs cover applied workflows in industry-standard simulation and design tools.",
+    progressionPath: "DWSIM → Aspen HYSYS / Aspen Plus → CHEMCAD / PRO/II → gPROMS → COMSOL / MATLAB",
+    icon: "FlaskConical",
+    color: "accent-orange",
+    topPrograms: ["aspen-hysys", "aspen-plus", "chemcad", "dwsim"]
+  },
+  {
     id: "electrical",
     name: "Electrical Engineering",
     shortName: "Electrical & Power",
