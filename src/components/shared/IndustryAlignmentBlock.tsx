@@ -1,3 +1,5 @@
+import { cn } from "@/lib/utils";
+
 interface IndustryAlignmentBlockProps {
   variant?: "default" | "compact";
 }
@@ -27,22 +29,33 @@ export function IndustryAlignmentBlock({ variant = "default" }: IndustryAlignmen
     );
   }
 
+  // Color cycle for ecosystem badges
+  const accentColors = [
+    "border-primary/40 hover:border-primary hover:shadow-lg hover:shadow-primary/20",
+    "border-accent/40 hover:border-accent hover:shadow-lg hover:shadow-accent/20",
+    "border-accent-green/40 hover:border-accent-green hover:shadow-lg hover:shadow-accent-green/20",
+    "border-accent-orange/40 hover:border-accent-orange hover:shadow-lg hover:shadow-accent-orange/20",
+  ];
+
   return (
-    <section className="section-padding gradient-section">
+    <section className="section-padding gradient-hero">
       <div className="container-content">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="font-display text-3xl font-bold text-foreground">
-            Industry-Aligned STEM Curriculum
+            Industry-Aligned <span className="text-primary text-glow">STEM</span> Curriculum
           </h2>
           <p className="mt-4 text-lg text-muted-foreground">
             Aliko Academy – STEM designs its programs based on globally recognized 
             engineering platforms and vendor ecosystems.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
-            {ecosystems.map((ecosystem) => (
+            {ecosystems.map((ecosystem, index) => (
               <span
                 key={ecosystem}
-                className="inline-flex items-center px-4 py-2 rounded-full bg-card border border-divider text-sm font-medium text-foreground"
+                className={cn(
+                  "inline-flex items-center px-4 py-2 rounded-full bg-card border text-sm font-medium text-foreground transition-all duration-300 cursor-default",
+                  accentColors[index % accentColors.length]
+                )}
               >
                 {ecosystem}
               </span>

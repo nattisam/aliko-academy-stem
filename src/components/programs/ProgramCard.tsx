@@ -13,19 +13,19 @@ interface ProgramCardProps {
 
 export function ProgramCard({ program, variant = "default" }: ProgramCardProps) {
   const levelClasses = {
-    Beginner: "bg-green-900/50 text-green-300 border-green-700/50",
-    Intermediate: "bg-amber-900/50 text-amber-300 border-amber-700/50",
-    Professional: "bg-purple-900/50 text-purple-300 border-purple-700/50",
+    Beginner: "bg-accent-green/15 text-accent-green border-accent-green/30",
+    Intermediate: "bg-accent-orange/15 text-accent-orange border-accent-orange/30",
+    Professional: "bg-primary/15 text-primary border-primary/30",
   };
 
   const deliveryClasses = {
-    Online: "bg-blue-900/50 text-blue-300 border-blue-700/50",
-    Hybrid: "bg-teal-900/50 text-teal-300 border-teal-700/50",
+    Online: "bg-accent/15 text-accent border-accent/30",
+    Hybrid: "bg-accent-green/15 text-accent-green border-accent-green/30",
   };
 
   if (variant === "compact") {
     return (
-      <Card className="card-hover border-divider bg-card">
+      <Card className="card-hover border-divider bg-card shimmer group">
         <CardContent className="p-4">
           <div className="flex items-start justify-between gap-2">
             <div className="flex-1 min-w-0">
@@ -59,7 +59,7 @@ export function ProgramCard({ program, variant = "default" }: ProgramCardProps) 
   }
 
   return (
-    <Card className="card-hover border-divider bg-card overflow-hidden">
+    <Card className="card-hover border-divider bg-card overflow-hidden shimmer group">
       <CardContent className="p-6">
         <div className="flex flex-wrap items-center gap-2 mb-3">
           <Badge variant="outline" className={cn("text-xs", levelClasses[program.level])}>
