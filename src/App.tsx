@@ -14,6 +14,7 @@ import Policies from "./pages/Policies";
 import Curriculum from "./pages/Curriculum";
 import Certifications from "./pages/Certifications";
 import StudentLogin from "./pages/StudentLogin";
+import Apply from "./pages/Apply";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -36,6 +37,7 @@ const App = () => (
           <Route path="/curriculum" element={<Curriculum />} />
           <Route path="/certifications" element={<Certifications />} />
           <Route path="/student-login" element={<StudentLogin />} />
+          <Route path="/apply" element={<Apply />} />
           {/* Redirect old domains route to programs */}
           <Route path="/domains" element={<Programs />} />
           <Route path="*" element={<NotFound />} />
