@@ -6,36 +6,42 @@ interface SoftwareGridProps {
   accentColor: string;
 }
 
-const colorStyles: Record<string, { bg: string; border: string; text: string; hoverBg: string }> = {
+// Enhanced contrast - brighter text colors against muted backgrounds
+const colorStyles: Record<string, { bg: string; border: string; text: string; hoverBg: string; iconBg: string }> = {
   "primary": {
-    bg: "bg-primary/10",
-    border: "border-primary/30",
-    text: "text-primary",
-    hoverBg: "hover:bg-primary/20"
+    bg: "bg-primary/8",
+    border: "border-primary/25",
+    text: "text-[hsl(207_90%_72%)]",
+    hoverBg: "hover:bg-primary/15",
+    iconBg: "bg-primary/20"
   },
   "accent": {
-    bg: "bg-accent/10",
-    border: "border-accent/30",
-    text: "text-accent",
-    hoverBg: "hover:bg-accent/20"
+    bg: "bg-accent/8",
+    border: "border-accent/25",
+    text: "text-[hsl(195_100%_75%)]",
+    hoverBg: "hover:bg-accent/15",
+    iconBg: "bg-accent/20"
   },
   "accent-green": {
-    bg: "bg-accent-green/10",
-    border: "border-accent-green/30",
-    text: "text-[hsl(80_70%_55%)]",
-    hoverBg: "hover:bg-accent-green/20"
+    bg: "bg-accent-green/8",
+    border: "border-accent-green/25",
+    text: "text-[hsl(80_70%_70%)]",
+    hoverBg: "hover:bg-accent-green/15",
+    iconBg: "bg-accent-green/20"
   },
   "accent-orange": {
-    bg: "bg-accent-orange/10",
-    border: "border-accent-orange/30",
-    text: "text-[hsl(40_95%_65%)]",
-    hoverBg: "hover:bg-accent-orange/20"
+    bg: "bg-accent-orange/8",
+    border: "border-accent-orange/25",
+    text: "text-[hsl(40_95%_72%)]",
+    hoverBg: "hover:bg-accent-orange/15",
+    iconBg: "bg-accent-orange/20"
   },
   "electrical": {
-    bg: "bg-[hsl(280_68%_55%)]/10",
-    border: "border-[hsl(280_68%_55%)]/30",
-    text: "text-[hsl(280_68%_65%)]",
-    hoverBg: "hover:bg-[hsl(280_68%_55%)]/20"
+    bg: "bg-[hsl(280_68%_55%)]/8",
+    border: "border-[hsl(280_68%_55%)]/25",
+    text: "text-[hsl(280_68%_78%)]",
+    hoverBg: "hover:bg-[hsl(280_68%_55%)]/15",
+    iconBg: "bg-[hsl(280_68%_55%)]/20"
   }
 };
 
@@ -66,8 +72,9 @@ export const SoftwareGrid = ({ software, accentColor }: SoftwareGridProps) => {
           {/* Software Icon/Logo Placeholder */}
           <div
             className={cn(
-              "w-10 h-10 rounded-lg flex items-center justify-center text-xs font-bold mb-2 transition-colors",
-              "bg-background/50 border",
+              "w-10 h-10 rounded-lg flex items-center justify-center text-xs font-bold mb-2 transition-all",
+              styles.iconBg,
+              "border",
               styles.border,
               styles.text
             )}
@@ -76,14 +83,14 @@ export const SoftwareGrid = ({ software, accentColor }: SoftwareGridProps) => {
           </div>
           
           {/* Software Name */}
-          <span className="text-xs font-medium text-foreground text-center leading-tight">
+          <span className="text-xs font-medium text-foreground/90 text-center leading-tight group-hover:text-foreground transition-colors">
             {sw.name}
           </span>
           
           {/* Vendor on hover */}
           {sw.vendor && (
             <span className={cn(
-              "text-[10px] mt-1 opacity-0 group-hover:opacity-100 transition-opacity",
+              "text-[10px] mt-1 font-medium opacity-60 group-hover:opacity-100 transition-opacity",
               styles.text
             )}>
               {sw.vendor}

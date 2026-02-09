@@ -115,31 +115,31 @@ export const getSoftwareIcon = (slugOrTitle: string): SoftwareIcon => {
   };
 };
 
-// Color style mappings
+// Color style mappings - enhanced contrast with brighter text
 export const iconColorStyles: Record<string, { bg: string; text: string; border: string }> = {
   "primary": {
-    bg: "bg-primary/20",
-    text: "text-primary",
+    bg: "bg-primary/15",
+    text: "text-[hsl(207_90%_70%)]",
     border: "border-primary/40"
   },
   "accent": {
-    bg: "bg-accent/20",
-    text: "text-accent",
+    bg: "bg-accent/15",
+    text: "text-[hsl(195_100%_75%)]",
     border: "border-accent/40"
   },
   "accent-green": {
-    bg: "bg-accent-green/20",
-    text: "text-[hsl(80_70%_55%)]",
+    bg: "bg-accent-green/15",
+    text: "text-[hsl(80_70%_70%)]",
     border: "border-accent-green/40"
   },
   "accent-orange": {
-    bg: "bg-accent-orange/20",
-    text: "text-[hsl(40_95%_65%)]",
+    bg: "bg-accent-orange/15",
+    text: "text-[hsl(40_95%_72%)]",
     border: "border-accent-orange/40"
   },
   "electrical": {
-    bg: "bg-[hsl(280_68%_55%)]/20",
-    text: "text-[hsl(280_68%_65%)]",
+    bg: "bg-[hsl(280_68%_55%)]/15",
+    text: "text-[hsl(280_68%_78%)]",
     border: "border-[hsl(280_68%_55%)]/40"
   }
 };

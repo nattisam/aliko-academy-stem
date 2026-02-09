@@ -41,48 +41,49 @@ const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   Globe,
 };
 
+// Enhanced contrast - brighter text colors for dark backgrounds
 const domainColorMap: Record<string, { bg: string; border: string; text: string; headerBg: string }> = {
   "Civil Engineering": {
     bg: "bg-accent-orange/10",
     border: "border-accent-orange/30",
-    text: "text-[hsl(40_95%_65%)]",
-    headerBg: "bg-gradient-to-r from-accent-orange/15 to-transparent"
+    text: "text-[hsl(40_95%_72%)]",
+    headerBg: "bg-gradient-to-r from-accent-orange/12 to-transparent"
   },
   "Structural / BIM & Infrastructure": {
     bg: "bg-primary/10",
     border: "border-primary/30",
-    text: "text-primary",
-    headerBg: "bg-gradient-to-r from-primary/15 to-transparent"
+    text: "text-[hsl(207_90%_72%)]",
+    headerBg: "bg-gradient-to-r from-primary/12 to-transparent"
   },
   "Architectural Engineering": {
     bg: "bg-accent/10",
     border: "border-accent/30",
-    text: "text-accent",
-    headerBg: "bg-gradient-to-r from-accent/15 to-transparent"
+    text: "text-[hsl(195_100%_75%)]",
+    headerBg: "bg-gradient-to-r from-accent/12 to-transparent"
   },
   "Mechanical Engineering": {
     bg: "bg-accent-green/10",
     border: "border-accent-green/30",
-    text: "text-[hsl(80_70%_55%)]",
-    headerBg: "bg-gradient-to-r from-accent-green/15 to-transparent"
+    text: "text-[hsl(80_70%_70%)]",
+    headerBg: "bg-gradient-to-r from-accent-green/12 to-transparent"
   },
   "Electrical Engineering": {
     bg: "bg-[hsl(280_68%_55%)]/10",
     border: "border-[hsl(280_68%_55%)]/30",
-    text: "text-[hsl(280_68%_65%)]",
-    headerBg: "bg-gradient-to-r from-[hsl(280_68%_55%)]/15 to-transparent"
+    text: "text-[hsl(280_68%_78%)]",
+    headerBg: "bg-gradient-to-r from-[hsl(280_68%_55%)]/12 to-transparent"
   },
   "Construction Planning & Project Controls": {
     bg: "bg-primary/10",
     border: "border-primary/30",
-    text: "text-primary",
-    headerBg: "bg-gradient-to-r from-primary/15 to-transparent"
+    text: "text-[hsl(207_90%_72%)]",
+    headerBg: "bg-gradient-to-r from-primary/12 to-transparent"
   },
   "Middle East / International Systems": {
     bg: "bg-accent-green/10",
     border: "border-accent-green/30",
-    text: "text-[hsl(80_70%_55%)]",
-    headerBg: "bg-gradient-to-r from-accent-green/15 to-transparent"
+    text: "text-[hsl(80_70%_70%)]",
+    headerBg: "bg-gradient-to-r from-accent-green/12 to-transparent"
   }
 };
 
