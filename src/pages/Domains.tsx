@@ -3,9 +3,18 @@ import { Layout } from "@/components/layout/Layout";
 import { ProgramCard } from "@/components/programs/ProgramCard";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { ArrowRight, Building2, Building, Home, Cog, Zap, Calendar, Globe } from "lucide-react";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import { ArrowRight, Building2, Building, Home, Cog, Zap, Calendar, Globe, Layers } from "lucide-react";
 import { domains } from "@/data/domains";
 import { getProgramsByDomain } from "@/data/programs";
+import { domainSoftware } from "@/data/domainSoftware";
+import { SoftwareGrid } from "@/components/domains/SoftwareGrid";
+import { cn } from "@/lib/utils";
 
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   Building2,
@@ -17,84 +26,209 @@ const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   Globe,
 };
 
+const colorStyles: Record<string, { 
+  bg: string; 
+  border: string; 
+  text: string; 
+  glow: string;
+  headerBg: string;
+}> = {
+  "primary": {
+    bg: "bg-primary/5",
+    border: "border-primary/30",
+    text: "text-primary",
+    glow: "shadow-primary/10",
+    headerBg: "bg-gradient-to-r from-primary/20 to-primary/5"
+  },
+  "accent": {
+    bg: "bg-accent/5",
+    border: "border-accent/30",
+    text: "text-accent",
+    glow: "shadow-accent/10",
+    headerBg: "bg-gradient-to-r from-accent/20 to-accent/5"
+  },
+  "accent-green": {
+    bg: "bg-accent-green/5",
+    border: "border-accent-green/30",
+    text: "text-[hsl(80_70%_55%)]",
+    glow: "shadow-accent-green/10",
+    headerBg: "bg-gradient-to-r from-accent-green/20 to-accent-green/5"
+  },
+  "accent-orange": {
+    bg: "bg-accent-orange/5",
+    border: "border-accent-orange/30",
+    text: "text-[hsl(40_95%_65%)]",
+    glow: "shadow-accent-orange/10",
+    headerBg: "bg-gradient-to-r from-accent-orange/20 to-accent-orange/5"
+  },
+  "electrical": {
+    bg: "bg-[hsl(280_68%_55%)]/5",
+    border: "border-[hsl(280_68%_55%)]/30",
+    text: "text-[hsl(280_68%_65%)]",
+    glow: "shadow-[hsl(280_68%_55%)]/10",
+    headerBg: "bg-gradient-to-r from-[hsl(280_68%_55%)]/20 to-[hsl(280_68%_55%)]/5"
+  }
+};
+
 const Domains = () => {
   return (
     <Layout>
       {/* Hero */}
       <section className="gradient-hero py-16 lg:py-20">
         <div className="container-content">
-          <div className="max-w-2xl">
-            <h1 className="font-display text-4xl font-bold text-foreground">
-              Engineering Domains
+          <div className="max-w-3xl">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="h-12 w-12 rounded-xl bg-primary/20 flex items-center justify-center">
+                <Layers className="h-6 w-6 text-primary" />
+              </div>
+              <span className="text-sm font-medium text-primary uppercase tracking-wider">
+                Engineering Domains
+              </span>
+            </div>
+            <h1 className="font-display text-4xl lg:text-5xl font-bold text-foreground">
+              Domain-Specific <span className="text-glow text-primary">Engineering Software</span>
             </h1>
             <p className="mt-4 text-lg text-muted-foreground">
               Explore our comprehensive training programs organized by engineering discipline. 
-              Each domain offers a structured progression path from foundational to professional-level skills.
+              Click each domain to discover the software tools we cover.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Domain Sections */}
+      {/* Software Domains Accordion */}
       <section className="section-padding">
-        <div className="container-content space-y-16">
-          {domains.map((domain) => {
-            const Icon = iconMap[domain.icon] || Building2;
-            const domainPrograms = getProgramsByDomain(domain.name).slice(0, 4);
+        <div className="container-content">
+          <Accordion type="single" collapsible className="space-y-4">
+            {domainSoftware.map((domain) => {
+              const Icon = iconMap[domain.icon] || Building2;
+              const styles = colorStyles[domain.accentColor] || colorStyles["primary"];
 
-            return (
-              <div key={domain.id} id={domain.id} className="scroll-mt-24">
-                <Card className="border-divider overflow-hidden">
-                  <CardContent className="p-0">
-                    {/* Domain Header */}
-                    <div className="p-6 lg:p-8 bg-card border-b border-divider">
-                      <div className="flex items-start gap-4">
-                        <div className="h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
-                          <Icon className="h-6 w-6 text-primary" />
-                        </div>
-                        <div className="flex-1">
-                          <h2 className="font-display text-2xl font-bold text-foreground">
-                            {domain.name}
-                          </h2>
-                          <p className="mt-2 text-muted-foreground">
-                            {domain.introText}
-                          </p>
-                          <div className="mt-4 p-3 bg-secondary/50 rounded-lg inline-block">
-                            <p className="text-sm">
-                              <span className="font-medium text-foreground">Suggested progression:</span>{" "}
-                              <span className="text-muted-foreground">{domain.progressionPath}</span>
-                            </p>
-                          </div>
-                        </div>
+              return (
+                <AccordionItem
+                  key={domain.id}
+                  value={domain.id}
+                  className={cn(
+                    "border rounded-2xl overflow-hidden transition-all duration-300",
+                    styles.border,
+                    "data-[state=open]:shadow-xl",
+                    styles.glow
+                  )}
+                >
+                  <AccordionTrigger
+                    className={cn(
+                      "px-6 py-5 hover:no-underline transition-all",
+                      styles.headerBg,
+                      "data-[state=open]:border-b",
+                      styles.border
+                    )}
+                  >
+                    <div className="flex items-center gap-4 text-left">
+                      <div className={cn(
+                        "h-12 w-12 rounded-xl flex items-center justify-center flex-shrink-0",
+                        styles.bg,
+                        "border",
+                        styles.border
+                      )}>
+                        <Icon className={cn("h-6 w-6", styles.text)} />
+                      </div>
+                      <div>
+                        <h3 className="font-display text-xl font-bold text-foreground">
+                          {domain.title}
+                        </h3>
+                        <p className="text-sm text-muted-foreground mt-0.5">
+                          {domain.subtitle}
+                        </p>
+                      </div>
+                      <div className={cn(
+                        "ml-auto hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium",
+                        styles.bg,
+                        styles.text
+                      )}>
+                        <span>{domain.software.length} Tools</span>
+                      </div>
+                    </div>
+                  </AccordionTrigger>
+                  <AccordionContent className="px-6 py-6 bg-card/50">
+                    <SoftwareGrid 
+                      software={domain.software} 
+                      accentColor={domain.accentColor} 
+                    />
+                  </AccordionContent>
+                </AccordionItem>
+              );
+            })}
+          </Accordion>
+        </div>
+      </section>
+
+      {/* Domain Programs Section */}
+      <section className="py-12 bg-secondary/30 border-t border-divider">
+        <div className="container-content">
+          <div className="text-center mb-10">
+            <h2 className="font-display text-3xl font-bold text-foreground">
+              Explore by <span className="text-accent">Engineering Domain</span>
+            </h2>
+            <p className="mt-2 text-muted-foreground max-w-2xl mx-auto">
+              Browse our training programs organized by discipline with suggested progression paths.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {domains.slice(0, 6).map((domain) => {
+              const Icon = iconMap[domain.icon] || Building2;
+              const domainPrograms = getProgramsByDomain(domain.name).slice(0, 2);
+
+              return (
+                <Card 
+                  key={domain.id} 
+                  className="border-divider bg-card/80 hover:shadow-lg hover:shadow-primary/10 transition-all duration-300 group"
+                >
+                  <CardContent className="p-5">
+                    <div className="flex items-start gap-3 mb-4">
+                      <div className="h-10 w-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
+                        <Icon className="h-5 w-5 text-primary" />
+                      </div>
+                      <div>
+                        <h3 className="font-display text-lg font-semibold text-foreground group-hover:text-primary transition-colors">
+                          {domain.shortName}
+                        </h3>
+                        <p className="text-xs text-muted-foreground">
+                          {domain.description}
+                        </p>
                       </div>
                     </div>
 
-                    {/* Programs Grid */}
-                    <div className="p-6 lg:p-8 bg-background">
-                      <h3 className="font-display text-lg font-semibold text-foreground mb-4">
-                        Featured Programs
-                      </h3>
-                      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div className="text-xs text-muted-foreground mb-4 p-2 bg-secondary/50 rounded-lg">
+                      <span className="font-medium text-foreground">Progression: </span>
+                      {domain.progressionPath}
+                    </div>
+
+                    {domainPrograms.length > 0 && (
+                      <div className="space-y-2 mb-4">
                         {domainPrograms.map((program) => (
-                          <ProgramCard key={program.id} program={program} variant="compact" />
+                          <Link 
+                            key={program.id}
+                            to={`/programs/${program.slug}`}
+                            className="block text-sm text-primary hover:underline"
+                          >
+                            → {program.title}
+                          </Link>
                         ))}
                       </div>
-                      {getProgramsByDomain(domain.name).length > 4 && (
-                        <div className="mt-6 text-center">
-                          <Button asChild variant="outline">
-                            <Link to={`/programs?domain=${encodeURIComponent(domain.name)}`}>
-                              View All {domain.shortName} Programs
-                              <ArrowRight className="ml-2 h-4 w-4" />
-                            </Link>
-                          </Button>
-                        </div>
-                      )}
-                    </div>
+                    )}
+
+                    <Button asChild variant="outline" size="sm" className="w-full">
+                      <Link to={`/programs?domain=${encodeURIComponent(domain.name)}`}>
+                        View All Programs
+                        <ArrowRight className="ml-2 h-4 w-4" />
+                      </Link>
+                    </Button>
                   </CardContent>
                 </Card>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
         </div>
       </section>
 
