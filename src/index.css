@@ -4,7 +4,7 @@
 
 /* 
   ALIKO ACADEMY - STEM Design System
-  Professional, institutional, engineering-grade aesthetic
+  Dark futuristic theme with glowing blue/cyan accents
   All colors in HSL format
 */
 
@@ -12,7 +12,69 @@
 
 @layer base {
   :root {
-    /* Core Brand Colors */
+    /* Dark futuristic theme - default */
+    --background: 220 40% 6%;
+    --foreground: 210 40% 98%;
+
+    --card: 220 35% 9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 220 35% 9%;
+    --popover-foreground: 210 40% 98%;
+
+    /* Primary - Electric Blue */
+    --primary: 207 90% 54%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary - Dark Navy */
+    --secondary: 220 35% 14%;
+    --secondary-foreground: 210 40% 90%;
+
+    /* Accent - Glowing Cyan */
+    --accent: 180 100% 45%;
+    --accent-foreground: 220 40% 6%;
+
+    --muted: 220 30% 15%;
+    --muted-foreground: 215 20% 60%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 30% 18%;
+    --input: 220 30% 18%;
+    --ring: 207 90% 54%;
+
+    --radius: 0.5rem;
+
+    /* Extended palette */
+    --surface: 220 35% 9%;
+    --surface-elevated: 220 30% 12%;
+    --divider: 220 30% 18%;
+
+    /* Glow effects */
+    --glow-primary: 207 90% 54%;
+    --glow-accent: 180 100% 50%;
+
+    /* Domain colors - adjusted for dark theme */
+    --civil: 25 95% 55%;
+    --structural: 207 90% 54%;
+    --mechanical: 142 71% 50%;
+    --electrical: 280 68% 55%;
+    --architectural: 340 82% 55%;
+    --project: 48 96% 55%;
+
+    /* Sidebar */
+    --sidebar-background: 220 35% 9%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 207 90% 54%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 35% 14%;
+    --sidebar-accent-foreground: 210 40% 90%;
+    --sidebar-border: 220 30% 18%;
+    --sidebar-ring: 207 90% 54%;
+  }
+
+  .light {
     --background: 216 33% 98%;
     --foreground: 0 0% 12%;
 
@@ -22,16 +84,13 @@
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 12%;
 
-    /* Primary - Aliko Blue */
-    --primary: 214 79% 51%;
+    --primary: 207 90% 50%;
     --primary-foreground: 0 0% 100%;
 
-    /* Secondary - Light Blue tint */
-    --secondary: 214 60% 95%;
-    --secondary-foreground: 214 79% 35%;
+    --secondary: 207 60% 95%;
+    --secondary-foreground: 207 90% 35%;
 
-    /* Accent - Orange (highlights only) */
-    --accent: 33 93% 54%;
+    --accent: 180 100% 40%;
     --accent-foreground: 0 0% 100%;
 
     --muted: 216 18% 91%;
@@ -42,75 +101,20 @@
 
     --border: 216 18% 91%;
     --input: 216 18% 91%;
-    --ring: 214 79% 51%;
+    --ring: 207 90% 50%;
 
-    --radius: 0.5rem;
-
-    /* Extended palette */
     --surface: 0 0% 100%;
     --surface-elevated: 0 0% 100%;
     --divider: 216 18% 91%;
 
-    /* Domain colors */
-    --civil: 25 95% 53%;
-    --structural: 214 79% 51%;
-    --mechanical: 142 71% 45%;
-    --electrical: 280 68% 50%;
-    --architectural: 340 82% 52%;
-    --project: 48 96% 53%;
-
-    /* Sidebar */
     --sidebar-background: 0 0% 100%;
     --sidebar-foreground: 0 0% 12%;
-    --sidebar-primary: 214 79% 51%;
+    --sidebar-primary: 207 90% 50%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 214 60% 95%;
-    --sidebar-accent-foreground: 214 79% 35%;
+    --sidebar-accent: 207 60% 95%;
+    --sidebar-accent-foreground: 207 90% 35%;
     --sidebar-border: 216 18% 91%;
-    --sidebar-ring: 214 79% 51%;
-  }
-
-  .dark {
-    --background: 220 20% 10%;
-    --foreground: 0 0% 98%;
-
-    --card: 220 20% 13%;
-    --card-foreground: 0 0% 98%;
-
-    --popover: 220 20% 13%;
-    --popover-foreground: 0 0% 98%;
-
-    --primary: 214 79% 55%;
-    --primary-foreground: 0 0% 100%;
-
-    --secondary: 214 30% 20%;
-    --secondary-foreground: 214 60% 80%;
-
-    --accent: 33 93% 54%;
-    --accent-foreground: 0 0% 100%;
-
-    --muted: 220 15% 20%;
-    --muted-foreground: 220 10% 60%;
-
-    --destructive: 0 62% 45%;
-    --destructive-foreground: 0 0% 100%;
-
-    --border: 220 15% 20%;
-    --input: 220 15% 20%;
-    --ring: 214 79% 55%;
-
-    --surface: 220 20% 13%;
-    --surface-elevated: 220 20% 16%;
-    --divider: 220 15% 20%;
-
-    --sidebar-background: 220 20% 10%;
-    --sidebar-foreground: 0 0% 98%;
-    --sidebar-primary: 214 79% 55%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 214 30% 20%;
-    --sidebar-accent-foreground: 214 60% 80%;
-    --sidebar-border: 220 15% 20%;
-    --sidebar-ring: 214 79% 55%;
+    --sidebar-ring: 207 90% 50%;
   }
 }
 
@@ -139,23 +143,23 @@
   }
   
   .badge-beginner {
-    @apply bg-green-100 text-green-800;
+    @apply bg-green-900/50 text-green-300 border border-green-700/50;
   }
   
   .badge-intermediate {
-    @apply bg-amber-100 text-amber-800;
+    @apply bg-amber-900/50 text-amber-300 border border-amber-700/50;
   }
   
   .badge-professional {
-    @apply bg-purple-100 text-purple-800;
+    @apply bg-purple-900/50 text-purple-300 border border-purple-700/50;
   }
   
   .badge-online {
-    @apply bg-blue-100 text-blue-800;
+    @apply bg-blue-900/50 text-blue-300 border border-blue-700/50;
   }
   
   .badge-hybrid {
-    @apply bg-teal-100 text-teal-800;
+    @apply bg-teal-900/50 text-teal-300 border border-teal-700/50;
   }
 
   /* Section patterns */
@@ -167,18 +171,30 @@
     @apply container mx-auto px-4 sm:px-6 lg:px-8;
   }
 
-  /* Card hover effects */
+  /* Card hover effects with glow */
   .card-hover {
-    @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
+    @apply transition-all duration-300 hover:shadow-lg hover:shadow-primary/10 hover:-translate-y-1;
   }
 
   /* Gradient backgrounds */
   .gradient-hero {
-    background: linear-gradient(135deg, hsl(214 79% 51% / 0.05) 0%, hsl(33 93% 54% / 0.03) 100%);
+    background: radial-gradient(ellipse at top left, hsl(207 90% 54% / 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at bottom right, hsl(180 100% 45% / 0.10) 0%, transparent 50%),
+                hsl(var(--background));
   }
 
   .gradient-section {
-    background: linear-gradient(180deg, hsl(var(--background)) 0%, hsl(216 33% 96%) 100%);
+    background: linear-gradient(180deg, hsl(var(--background)) 0%, hsl(220 35% 8%) 100%);
+  }
+
+  /* Glow text effect */
+  .text-glow {
+    text-shadow: 0 0 20px hsl(207 90% 54% / 0.5);
+  }
+
+  /* Glowing border */
+  .border-glow {
+    box-shadow: 0 0 15px hsl(207 90% 54% / 0.3), inset 0 0 15px hsl(207 90% 54% / 0.1);
   }
 }
 
