@@ -5,7 +5,7 @@ import { Layout } from "@/components/layout/Layout";
 import { AudienceStrip } from "@/components/shared/AudienceStrip";
 import { IndustryAlignmentBlock } from "@/components/shared/IndustryAlignmentBlock";
 import { ProgramCard } from "@/components/programs/ProgramCard";
-import { DomainCard } from "@/components/domains/DomainCard";
+import { EnhancedDomainCard } from "@/components/domains/EnhancedDomainCard";
 import { getFeaturedPrograms } from "@/data/programs";
 import { domains } from "@/data/domains";
 
@@ -17,7 +17,6 @@ const enterpriseBenefits = [
 
 const Index = () => {
   const featuredPrograms = getFeaturedPrograms().slice(0, 6);
-  const displayDomains = domains.slice(0, 6);
 
   return (
     <Layout>
@@ -85,7 +84,7 @@ const Index = () => {
       </section>
 
       {/* Engineering Domains */}
-      <section className="section-padding bg-card">
+      <section className="section-padding gradient-section">
         <div className="container-content">
           <div className="text-center max-w-2xl mx-auto mb-12">
             <h2 className="font-display text-3xl font-bold text-foreground">
@@ -95,9 +94,9 @@ const Index = () => {
               Explore programs organized by engineering discipline and industry systems
             </p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {displayDomains.map((domain) => (
-              <DomainCard key={domain.id} domain={domain} variant="hero" />
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+            {domains.map((domain) => (
+              <EnhancedDomainCard key={domain.id} domain={domain} />
             ))}
           </div>
           <div className="mt-10 text-center">
