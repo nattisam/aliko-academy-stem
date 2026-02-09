@@ -40,6 +40,10 @@ export const softwareIconMap: Record<string, SoftwareIcon> = {
   "safe": { initials: "SAF", color: "primary", vendor: "CSI" },
   "csi-bridge": { initials: "CSB", color: "primary", vendor: "CSI" },
   
+  // Prota Products
+  "protastructure": { initials: "PRS", color: "primary", vendor: "Prota" },
+  "protadetails": { initials: "PRD", color: "primary", vendor: "Prota" },
+  
   // MIDAS Products
   "midas-civil": { initials: "MC", color: "accent", vendor: "MIDAS" },
   "midas-gen": { initials: "MG", color: "accent", vendor: "MIDAS" },

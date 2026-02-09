@@ -461,5 +461,51 @@ export const civilStructuralPrograms: Program[] = [
     ],
     alignmentStatement: "Aligned with Autodesk Revit Structure workflows.",
     featured: true
+  },
+  {
+    id: "protastructure",
+    slug: "protastructure",
+    title: "ProtaStructure",
+    shortDescription: "Integrated structural analysis, design, and detailing for buildings.",
+    fullDescription: "ProtaStructure provides complete building structural design from analysis to detailing. Master concrete and steel design with automated code checks and BIM integration.",
+    domain: "Civil Engineering",
+    subcategory: "Structural Design",
+    level: "Intermediate",
+    deliveryMode: "Online",
+    durationWeeks: 10,
+    weeklyHours: 8,
+    prerequisites: ["Structural engineering fundamentals"],
+    skillsGained: ["Building modeling", "Structural analysis", "Concrete/steel design", "Code compliance", "BIM export"],
+    industryApplications: ["Building structures", "Residential design", "Commercial buildings", "Multi-story structures"],
+    curriculum: [
+      { title: "Module 1: Modeling", topics: ["Grid systems", "Structural elements", "Load definition"] },
+      { title: "Module 2: Analysis & Design", topics: ["Frame analysis", "Slab design", "Column/beam design"] },
+      { title: "Module 3: Output & Integration", topics: ["Drawings", "Reports", "Revit/IFC export"] }
+    ],
+    alignmentStatement: "Aligned with Prota Software structural workflows.",
+    featured: false
+  },
+  {
+    id: "protadetails",
+    slug: "protadetails",
+    title: "ProtaDetails",
+    shortDescription: "Automated reinforcement detailing and drawing production.",
+    fullDescription: "ProtaDetails automates reinforcement detailing for concrete structures. Master rebar scheduling, detail drawings, and bar bending schedules with BIM integration.",
+    domain: "Civil Engineering",
+    subcategory: "Structural Detailing",
+    level: "Intermediate",
+    deliveryMode: "Online",
+    durationWeeks: 6,
+    weeklyHours: 6,
+    prerequisites: ["Concrete design basics", "ProtaStructure recommended"],
+    skillsGained: ["Reinforcement detailing", "Bar bending schedules", "Detail drawings", "Quantity reports"],
+    industryApplications: ["Concrete detailing", "Rebar scheduling", "Construction documentation"],
+    curriculum: [
+      { title: "Module 1: Detailing Basics", topics: ["Element selection", "Detailing rules", "Bar shapes"] },
+      { title: "Module 2: Drawings", topics: ["Detail views", "Sections", "Annotations"] },
+      { title: "Module 3: Schedules & Output", topics: ["Bar schedules", "Quantities", "Export"] }
+    ],
+    alignmentStatement: "Aligned with Prota Software detailing workflows.",
+    featured: false
   }
 ];

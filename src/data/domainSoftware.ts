@@ -42,7 +42,9 @@ export const domainSoftware: DomainSoftwareCategory[] = [
       { name: "LUSAS", vendor: "LUSAS" },
       { name: "CSI Bridge", vendor: "CSI" },
       { name: "InfraWorks", vendor: "Autodesk" },
-      { name: "Revit Structure", vendor: "Autodesk" }
+      { name: "Revit Structure", vendor: "Autodesk" },
+      { name: "ProtaStructure", vendor: "Prota" },
+      { name: "ProtaDetails", vendor: "Prota" }
     ]
   },
   {
