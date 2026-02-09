@@ -57,6 +57,11 @@ export function Header() {
 
         {/* Desktop CTA */}
         <div className="hidden lg:flex lg:items-center lg:gap-3">
+          <Button asChild variant="outline" size="sm" className="font-bold border-primary/40 text-primary hover:bg-primary/15 px-4">
+            <Link to="/apply">
+              Apply
+            </Link>
+          </Button>
           <Button asChild size="sm" className="font-bold bg-primary hover:bg-primary/90 text-white shadow-lg shadow-primary/30 px-5">
             <Link to="/student-login">
               Student Login
@@ -98,7 +103,12 @@ export function Header() {
                 {item.name}
               </Link>
             ))}
-            <div className="pt-4 px-4">
+            <div className="pt-4 px-4 space-y-2">
+              <Button asChild variant="outline" className="w-full font-bold border-primary/40 text-primary">
+                <Link to="/apply" onClick={() => setMobileMenuOpen(false)}>
+                  Apply
+                </Link>
+              </Button>
               <Button asChild className="w-full font-bold bg-primary text-white">
                 <Link to="/student-login" onClick={() => setMobileMenuOpen(false)}>
                   Student Login

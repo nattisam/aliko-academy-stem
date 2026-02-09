@@ -241,15 +241,15 @@ const ProgramDetail = () => {
                 {/* Enrollment Card */}
                 <Card className="border-primary/30 bg-gradient-to-b from-primary/10 to-transparent">
                   <CardContent className="p-6">
-                    <h3 className="font-display text-lg font-semibold text-[hsl(207_90%_80%)] mb-4">
+                  <h3 className="font-display text-lg font-semibold text-[hsl(207_90%_80%)] mb-4">
                       Ready to Enroll?
                     </h3>
                     <div className="space-y-4">
                       <Button asChild className="w-full" size="lg" variant="hero">
-                        <a href="https://lms.alikogroup.com" target="_blank" rel="noopener noreferrer">
-                          Enroll Now
+                        <Link to="/apply">
+                          Apply Now
                           <ArrowRight className="ml-2 h-4 w-4" />
-                        </a>
+                        </Link>
                       </Button>
                       <Button asChild className="w-full" variant="outline">
                         <Link to="/enterprise">
