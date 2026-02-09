@@ -28,11 +28,11 @@ import {
   DomainCategory
 } from "@/data/programs";
 import { domains, getDomainByName } from "@/data/domains";
-import { ArrowRight, Filter, Building2, Building, Cog, Zap, Calendar, Globe, Home, Layers, Plane } from "lucide-react";
+import { ArrowRight, Filter, Building2, Building, Cog, FlaskConical, Zap, Calendar, Globe, Home, Layers, Plane } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
-  Building2, Building, Home, Cog, Zap, Calendar, Globe, Plane,
+  Building2, Building, Home, Cog, FlaskConical, Zap, Calendar, Globe, Plane,
 };
 
 const domainColorMap: Record<string, { bg: string; border: string; text: string; headerBg: string; shadow: string }> = {
@@ -51,6 +51,10 @@ const domainColorMap: Record<string, { bg: string; border: string; text: string;
   "Mechanical Engineering": {
     bg: "bg-accent-green/12", border: "border-accent-green/35", text: "text-accent-green",
     headerBg: "bg-gradient-to-r from-accent-green/15 to-transparent", shadow: "shadow-accent-green/15"
+  },
+  "Chemical Engineering": {
+    bg: "bg-accent-orange/12", border: "border-accent-orange/35", text: "text-accent-orange",
+    headerBg: "bg-gradient-to-r from-accent-orange/15 to-transparent", shadow: "shadow-accent-orange/15"
   },
   "Electrical Engineering": {
     bg: "bg-[hsl(280_68%_60%)]/12", border: "border-[hsl(280_68%_60%)]/35", text: "text-[hsl(280_68%_75%)]",
