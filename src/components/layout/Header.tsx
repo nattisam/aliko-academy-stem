@@ -57,7 +57,7 @@ export function Header() {
 
         {/* Desktop CTA */}
         <div className="hidden lg:flex lg:items-center lg:gap-3">
-          <Button asChild size="sm" className="font-extrabold bg-gradient-to-r from-accent-orange to-accent-green text-background hover:from-accent-green hover:to-accent-orange shadow-lg shadow-accent-orange/40 hover:shadow-accent-green/40 hover:scale-105 transition-all duration-300 px-6 tracking-wide uppercase text-xs">
+          <Button asChild size="sm" className="font-extrabold bg-gradient-to-r from-accent-orange to-accent-green text-white hover:from-accent-green hover:to-accent-orange shadow-lg shadow-accent-orange/40 hover:shadow-accent-green/40 hover:scale-105 transition-all duration-300 px-6 tracking-wide uppercase text-xs">
             <Link to="/apply">
               Apply Now
             </Link>
@@ -104,7 +104,7 @@ export function Header() {
               </Link>
             ))}
             <div className="pt-4 px-4 space-y-2">
-              <Button asChild className="w-full font-extrabold bg-gradient-to-r from-accent-orange to-accent-green text-background hover:from-accent-green hover:to-accent-orange shadow-lg shadow-accent-orange/40 tracking-wide uppercase text-xs">
+              <Button asChild className="w-full font-extrabold bg-gradient-to-r from-accent-orange to-accent-green text-white hover:from-accent-green hover:to-accent-orange shadow-lg shadow-accent-orange/40 tracking-wide uppercase text-xs">
                 <Link to="/apply" onClick={() => setMobileMenuOpen(false)}>
                   Apply Now
                 </Link>
