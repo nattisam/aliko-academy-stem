@@ -32,15 +32,16 @@ const ProgramDetail = () => {
     return <Navigate to="/programs" replace />;
   }
 
+  // Enhanced contrast - brighter text colors
   const levelClasses = {
-    Beginner: "bg-green-900/50 text-green-300 border-green-700/50",
-    Intermediate: "bg-amber-900/50 text-amber-300 border-amber-700/50",
-    Professional: "bg-purple-900/50 text-purple-300 border-purple-700/50",
+    Beginner: "bg-accent-green/12 text-[hsl(80_70%_72%)] border-accent-green/35",
+    Intermediate: "bg-accent-orange/12 text-[hsl(40_95%_74%)] border-accent-orange/35",
+    Professional: "bg-primary/12 text-[hsl(207_90%_74%)] border-primary/35",
   };
 
   const deliveryClasses = {
-    Online: "bg-blue-900/50 text-blue-300 border-blue-700/50",
-    Hybrid: "bg-teal-900/50 text-teal-300 border-teal-700/50",
+    Online: "bg-accent/12 text-[hsl(195_100%_76%)] border-accent/35",
+    Hybrid: "bg-accent-green/12 text-[hsl(80_70%_72%)] border-accent-green/35",
   };
 
   return (
@@ -106,27 +107,27 @@ const ProgramDetail = () => {
                   Who This Program Is For
                 </h2>
                 <div className="grid sm:grid-cols-3 gap-4">
-                  <Card className="border-divider">
+                  <Card className="border-primary/25 bg-primary/8">
                     <CardContent className="p-4 flex items-start gap-3">
-                      <GraduationCap className="h-5 w-5 text-primary mt-0.5" />
+                      <GraduationCap className="h-5 w-5 text-[hsl(207_90%_72%)] mt-0.5" />
                       <div>
                         <h3 className="font-medium text-foreground">Students</h3>
                         <p className="text-sm text-muted-foreground">Building industry-ready skills</p>
                       </div>
                     </CardContent>
                   </Card>
-                  <Card className="border-divider">
+                  <Card className="border-accent/25 bg-accent/8">
                     <CardContent className="p-4 flex items-start gap-3">
-                      <Briefcase className="h-5 w-5 text-primary mt-0.5" />
+                      <Briefcase className="h-5 w-5 text-[hsl(195_100%_75%)] mt-0.5" />
                       <div>
                         <h3 className="font-medium text-foreground">Professionals</h3>
                         <p className="text-sm text-muted-foreground">Upskilling or transitioning</p>
                       </div>
                     </CardContent>
                   </Card>
-                  <Card className="border-divider">
+                  <Card className="border-accent-green/25 bg-accent-green/8">
                     <CardContent className="p-4 flex items-start gap-3">
-                      <Building2 className="h-5 w-5 text-primary mt-0.5" />
+                      <Building2 className="h-5 w-5 text-[hsl(80_70%_70%)] mt-0.5" />
                       <div>
                         <h3 className="font-medium text-foreground">Organizations</h3>
                         <p className="text-sm text-muted-foreground">Workforce development</p>
@@ -143,9 +144,9 @@ const ProgramDetail = () => {
                 </h2>
                 <ul className="space-y-3">
                   {program.skillsGained.map((skill, index) => (
-                    <li key={index} className="flex items-start gap-3">
-                      <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
-                      <span className="text-foreground">{skill}</span>
+                    <li key={index} className="flex items-start gap-3 p-3 rounded-lg bg-accent-green/8 border border-accent-green/20">
+                      <CheckCircle2 className="h-5 w-5 text-[hsl(80_70%_70%)] mt-0.5 flex-shrink-0" />
+                      <span className="text-foreground/90">{skill}</span>
                     </li>
                   ))}
                 </ul>
@@ -158,7 +159,7 @@ const ProgramDetail = () => {
                 </h2>
                 <div className="flex flex-wrap gap-2">
                   {program.industryApplications.map((app, index) => (
-                    <Badge key={index} variant="secondary" className="text-sm py-1.5 px-3">
+                    <Badge key={index} variant="outline" className="text-sm py-1.5 px-3 bg-primary/10 text-[hsl(207_90%_75%)] border-primary/30">
                       {app}
                     </Badge>
                   ))}
@@ -175,7 +176,7 @@ const ProgramDetail = () => {
                     <AccordionItem 
                       key={index} 
                       value={`module-${index}`}
-                      className="border border-divider rounded-lg px-4 bg-card"
+                      className="border border-accent/25 rounded-lg px-4 bg-accent/6"
                     >
                       <AccordionTrigger className="hover:no-underline py-4">
                         <span className="font-medium text-foreground text-left">
@@ -185,8 +186,8 @@ const ProgramDetail = () => {
                       <AccordionContent className="pb-4">
                         <ul className="space-y-2">
                           {module.topics.map((topic, topicIndex) => (
-                            <li key={topicIndex} className="flex items-center gap-2 text-muted-foreground">
-                              <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+                            <li key={topicIndex} className="flex items-center gap-2 text-foreground/80">
+                              <span className="h-1.5 w-1.5 rounded-full bg-[hsl(195_100%_60%)]" />
                               {topic}
                             </li>
                           ))}
@@ -198,11 +199,11 @@ const ProgramDetail = () => {
               </div>
 
               {/* Industry Alignment */}
-              <div className="bg-secondary/50 rounded-xl p-6 border border-divider">
-                <h2 className="font-display text-xl font-bold text-foreground mb-3">
+              <div className="bg-primary/10 rounded-xl p-6 border border-primary/25">
+                <h2 className="font-display text-xl font-bold text-[hsl(207_90%_75%)] mb-3">
                   Industry Alignment
                 </h2>
-                <p className="text-muted-foreground">
+                <p className="text-foreground/85">
                   {program.alignmentStatement}
                 </p>
                 {program.externalReferenceLink && (
@@ -210,7 +211,7 @@ const ProgramDetail = () => {
                     href={program.externalReferenceLink} 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="mt-3 inline-flex items-center gap-1 text-sm text-primary hover:underline"
+                    className="mt-3 inline-flex items-center gap-1 text-sm text-[hsl(195_100%_70%)] hover:underline"
                   >
                     Reference Resource
                     <ExternalLink className="h-3.5 w-3.5" />
@@ -219,12 +220,12 @@ const ProgramDetail = () => {
               </div>
 
               {/* Certification Disclaimer */}
-              <div className="bg-amber-900/20 border border-amber-700/50 rounded-xl p-6">
+              <div className="bg-accent-orange/10 border border-accent-orange/30 rounded-xl p-6">
                 <div className="flex items-start gap-3">
-                  <AlertCircle className="h-5 w-5 text-amber-400 mt-0.5 flex-shrink-0" />
+                  <AlertCircle className="h-5 w-5 text-[hsl(40_95%_70%)] mt-0.5 flex-shrink-0" />
                   <div>
-                    <h3 className="font-medium text-amber-300">Certification Disclaimer</h3>
-                    <p className="mt-1 text-sm text-amber-200/80">
+                    <h3 className="font-medium text-[hsl(40_95%_75%)]">Certification Disclaimer</h3>
+                    <p className="mt-1 text-sm text-foreground/80">
                       Certification exams and credentials are administered by third-party vendors. 
                       Aliko Academy – STEM provides training and preparation only and does not 
                       guarantee exam outcomes.
@@ -238,9 +239,9 @@ const ProgramDetail = () => {
             <div className="lg:col-span-1">
               <div className="sticky top-24 space-y-6">
                 {/* Enrollment Card */}
-                <Card className="border-divider">
+                <Card className="border-primary/30 bg-gradient-to-b from-primary/10 to-transparent">
                   <CardContent className="p-6">
-                    <h3 className="font-display text-lg font-semibold text-foreground mb-4">
+                    <h3 className="font-display text-lg font-semibold text-[hsl(207_90%_80%)] mb-4">
                       Ready to Enroll?
                     </h3>
                     <div className="space-y-4">
@@ -260,25 +261,25 @@ const ProgramDetail = () => {
                 </Card>
 
                 {/* Program Details */}
-                <Card className="border-divider">
+                <Card className="border-accent/25 bg-accent/6">
                   <CardContent className="p-6">
-                    <h3 className="font-display text-lg font-semibold text-foreground mb-4">
+                    <h3 className="font-display text-lg font-semibold text-[hsl(195_100%_78%)] mb-4">
                       Program Details
                     </h3>
                     <dl className="space-y-4">
-                      <div>
+                      <div className="flex justify-between items-center py-2 border-b border-accent/15">
                         <dt className="text-sm text-muted-foreground">Level</dt>
                         <dd className="font-medium text-foreground">{program.level}</dd>
                       </div>
-                      <div>
+                      <div className="flex justify-between items-center py-2 border-b border-accent/15">
                         <dt className="text-sm text-muted-foreground">Delivery Mode</dt>
                         <dd className="font-medium text-foreground">{program.deliveryMode}</dd>
                       </div>
-                      <div>
+                      <div className="flex justify-between items-center py-2 border-b border-accent/15">
                         <dt className="text-sm text-muted-foreground">Duration</dt>
                         <dd className="font-medium text-foreground">{program.durationWeeks} weeks</dd>
                       </div>
-                      <div>
+                      <div className="flex justify-between items-center py-2">
                         <dt className="text-sm text-muted-foreground">Weekly Commitment</dt>
                         <dd className="font-medium text-foreground">{program.weeklyHours} hours</dd>
                       </div>
@@ -288,15 +289,15 @@ const ProgramDetail = () => {
 
                 {/* Prerequisites */}
                 {program.prerequisites.length > 0 && (
-                  <Card className="border-divider">
+                  <Card className="border-accent-orange/25 bg-accent-orange/6">
                     <CardContent className="p-6">
-                      <h3 className="font-display text-lg font-semibold text-foreground mb-4">
+                      <h3 className="font-display text-lg font-semibold text-[hsl(40_95%_75%)] mb-4">
                         Prerequisites
                       </h3>
                       <ul className="space-y-2">
                         {program.prerequisites.map((prereq, index) => (
-                          <li key={index} className="flex items-start gap-2 text-sm text-muted-foreground">
-                            <span className="h-1.5 w-1.5 rounded-full bg-primary mt-2" />
+                          <li key={index} className="flex items-start gap-2 text-sm text-foreground/85">
+                            <span className="h-1.5 w-1.5 rounded-full bg-[hsl(40_95%_60%)] mt-2" />
                             {prereq}
                           </li>
                         ))}
