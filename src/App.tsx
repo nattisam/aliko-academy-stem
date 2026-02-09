@@ -13,6 +13,7 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Policies from "./pages/Policies";
 import Curriculum from "./pages/Curriculum";
+import Certifications from "./pages/Certifications";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -34,6 +35,7 @@ const App = () => (
           <Route path="/contact" element={<Contact />} />
           <Route path="/policies" element={<Policies />} />
           <Route path="/curriculum" element={<Curriculum />} />
+          <Route path="/certifications" element={<Certifications />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
