@@ -26,6 +26,7 @@ const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   Globe,
 };
 
+// Enhanced contrast - brighter text for dark backgrounds
 const colorStyles: Record<string, { 
   bg: string; 
   border: string; 
@@ -34,39 +35,39 @@ const colorStyles: Record<string, {
   headerBg: string;
 }> = {
   "primary": {
-    bg: "bg-primary/5",
+    bg: "bg-primary/10",
     border: "border-primary/30",
-    text: "text-primary",
-    glow: "shadow-primary/10",
-    headerBg: "bg-gradient-to-r from-primary/20 to-primary/5"
+    text: "text-[hsl(207_90%_72%)]",
+    glow: "shadow-primary/15",
+    headerBg: "bg-gradient-to-r from-primary/15 to-transparent"
   },
   "accent": {
-    bg: "bg-accent/5",
+    bg: "bg-accent/10",
     border: "border-accent/30",
-    text: "text-accent",
-    glow: "shadow-accent/10",
-    headerBg: "bg-gradient-to-r from-accent/20 to-accent/5"
+    text: "text-[hsl(195_100%_75%)]",
+    glow: "shadow-accent/15",
+    headerBg: "bg-gradient-to-r from-accent/15 to-transparent"
   },
   "accent-green": {
-    bg: "bg-accent-green/5",
+    bg: "bg-accent-green/10",
     border: "border-accent-green/30",
-    text: "text-[hsl(80_70%_55%)]",
-    glow: "shadow-accent-green/10",
-    headerBg: "bg-gradient-to-r from-accent-green/20 to-accent-green/5"
+    text: "text-[hsl(80_70%_70%)]",
+    glow: "shadow-accent-green/15",
+    headerBg: "bg-gradient-to-r from-accent-green/15 to-transparent"
   },
   "accent-orange": {
-    bg: "bg-accent-orange/5",
+    bg: "bg-accent-orange/10",
     border: "border-accent-orange/30",
-    text: "text-[hsl(40_95%_65%)]",
-    glow: "shadow-accent-orange/10",
-    headerBg: "bg-gradient-to-r from-accent-orange/20 to-accent-orange/5"
+    text: "text-[hsl(40_95%_72%)]",
+    glow: "shadow-accent-orange/15",
+    headerBg: "bg-gradient-to-r from-accent-orange/15 to-transparent"
   },
   "electrical": {
-    bg: "bg-[hsl(280_68%_55%)]/5",
+    bg: "bg-[hsl(280_68%_55%)]/10",
     border: "border-[hsl(280_68%_55%)]/30",
-    text: "text-[hsl(280_68%_65%)]",
-    glow: "shadow-[hsl(280_68%_55%)]/10",
-    headerBg: "bg-gradient-to-r from-[hsl(280_68%_55%)]/20 to-[hsl(280_68%_55%)]/5"
+    text: "text-[hsl(280_68%_78%)]",
+    glow: "shadow-[hsl(280_68%_55%)]/15",
+    headerBg: "bg-gradient-to-r from-[hsl(280_68%_55%)]/15 to-transparent"
   }
 };
 

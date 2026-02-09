@@ -13,15 +13,16 @@ interface ProgramCardProps {
 }
 
 export function ProgramCard({ program, variant = "default" }: ProgramCardProps) {
+  // Enhanced contrast - brighter text colors
   const levelClasses = {
-    Beginner: "bg-accent-green/15 text-[hsl(80_70%_55%)] border-accent-green/30",
-    Intermediate: "bg-accent-orange/15 text-[hsl(40_95%_65%)] border-accent-orange/30",
-    Professional: "bg-primary/15 text-primary border-primary/30",
+    Beginner: "bg-accent-green/12 text-[hsl(80_70%_70%)] border-accent-green/30",
+    Intermediate: "bg-accent-orange/12 text-[hsl(40_95%_72%)] border-accent-orange/30",
+    Professional: "bg-primary/12 text-[hsl(207_90%_72%)] border-primary/30",
   };
 
   const deliveryClasses = {
-    Online: "bg-accent/15 text-accent border-accent/30",
-    Hybrid: "bg-accent-green/15 text-[hsl(80_70%_55%)] border-accent-green/30",
+    Online: "bg-accent/12 text-[hsl(195_100%_75%)] border-accent/30",
+    Hybrid: "bg-accent-green/12 text-[hsl(80_70%_70%)] border-accent-green/30",
   };
 
   const softwareIcon = getSoftwareIcon(program.slug);
