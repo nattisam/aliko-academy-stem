@@ -52,6 +52,8 @@ export default {
           foreground: "hsl(var(--card-foreground))",
         },
         surface: "hsl(var(--surface))",
+        "surface-elevated": "hsl(var(--surface-elevated))",
+        navbar: "hsl(var(--navbar))",
         divider: "hsl(var(--divider))",
         // Multi-color accent palette
         "accent-green": "hsl(var(--accent-green))",

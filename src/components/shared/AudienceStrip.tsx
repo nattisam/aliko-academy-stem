@@ -31,7 +31,7 @@ const audiences = [
 
 export function AudienceStrip() {
   return (
-    <section className="section-padding bg-card">
+    <section className="section-padding bg-surface-elevated border-y border-divider">
       <div className="container-content">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {audiences.map((audience) => {

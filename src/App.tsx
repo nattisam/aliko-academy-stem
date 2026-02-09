@@ -6,7 +6,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import Programs from "./pages/Programs";
 import ProgramDetail from "./pages/ProgramDetail";
-import Domains from "./pages/Domains";
 import Enterprise from "./pages/Enterprise";
 import Partners from "./pages/Partners";
 import About from "./pages/About";
@@ -14,6 +13,7 @@ import Contact from "./pages/Contact";
 import Policies from "./pages/Policies";
 import Curriculum from "./pages/Curriculum";
 import Certifications from "./pages/Certifications";
+import StudentLogin from "./pages/StudentLogin";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -28,7 +28,6 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/programs" element={<Programs />} />
           <Route path="/programs/:slug" element={<ProgramDetail />} />
-          <Route path="/domains" element={<Domains />} />
           <Route path="/enterprise" element={<Enterprise />} />
           <Route path="/partners" element={<Partners />} />
           <Route path="/about" element={<About />} />
@@ -36,6 +35,9 @@ const App = () => (
           <Route path="/policies" element={<Policies />} />
           <Route path="/curriculum" element={<Curriculum />} />
           <Route path="/certifications" element={<Certifications />} />
+          <Route path="/student-login" element={<StudentLogin />} />
+          {/* Redirect old domains route to programs */}
+          <Route path="/domains" element={<Programs />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
