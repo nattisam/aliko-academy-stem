@@ -4,9 +4,9 @@ import { GraduationCap, Mail, MapPin, Phone } from "lucide-react";
 const footerLinks = {
   programs: [
     { name: "All Programs", href: "/programs" },
-    { name: "Engineering Domains", href: "/domains" },
     { name: "Enterprise Training", href: "/enterprise" },
     { name: "Industry Curriculum", href: "/curriculum" },
+    { name: "Licensure & Exams", href: "/certifications" },
   ],
   company: [
     { name: "About Us", href: "/about" },
@@ -83,14 +83,12 @@ export function Footer() {
                 </li>
               ))}
               <li>
-                <a
-                  href="https://lms.alikogroup.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <Link
+                  to="/student-login"
                   className="text-sm text-muted-foreground hover:text-foreground transition-colors"
                 >
                   Student Login
-                </a>
+                </Link>
               </li>
             </ul>
           </div>

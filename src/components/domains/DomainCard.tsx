@@ -26,7 +26,7 @@ export function DomainCard({ domain, variant = "default" }: DomainCardProps) {
 
   if (variant === "hero") {
     return (
-      <Link to={`/domains#${domain.id}`}>
+      <Link to="/programs">
         <Card className="card-hover border-divider bg-card h-full group">
           <CardContent className="p-6 flex flex-col items-center text-center">
             <div className={cn(
@@ -53,7 +53,7 @@ export function DomainCard({ domain, variant = "default" }: DomainCardProps) {
 
   if (variant === "compact") {
     return (
-      <Link to={`/domains#${domain.id}`}>
+      <Link to="/programs">
         <Card className="card-hover border-divider bg-card group">
           <CardContent className="p-4 flex items-center gap-4">
             <div className={cn(
@@ -78,7 +78,7 @@ export function DomainCard({ domain, variant = "default" }: DomainCardProps) {
   }
 
   return (
-    <Link to={`/domains#${domain.id}`}>
+    <Link to="/programs">
       <Card className="card-hover border-divider bg-card h-full group">
         <CardContent className="p-6">
           <div className="flex items-start justify-between">

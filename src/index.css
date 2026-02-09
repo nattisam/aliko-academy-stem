@@ -13,23 +13,23 @@
 
 @layer base {
   :root {
-    /* Dark futuristic theme - default */
-    --background: 220 40% 6%;
+    /* Dark premium theme - brightened for readability */
+    --background: 220 35% 9%;
     --foreground: 210 40% 98%;
 
-    --card: 220 35% 9%;
+    --card: 220 30% 13%;
     --card-foreground: 210 40% 98%;
 
-    --popover: 220 35% 9%;
+    --popover: 220 30% 13%;
     --popover-foreground: 210 40% 98%;
 
     /* Primary - Vibrant Blue */
     --primary: 207 90% 54%;
     --primary-foreground: 0 0% 100%;
 
-    /* Secondary - Dark Navy */
-    --secondary: 220 35% 14%;
-    --secondary-foreground: 210 40% 90%;
+    /* Secondary - Slightly lighter navy */
+    --secondary: 220 30% 17%;
+    --secondary-foreground: 210 40% 92%;
 
     /* Accent - Glowing Cyan */
     --accent: 195 100% 50%;
@@ -41,22 +41,25 @@
     --accent-cyan: 195 100% 50%;
     --accent-blue: 207 90% 54%;
 
-    --muted: 220 30% 15%;
-    --muted-foreground: 215 20% 60%;
+    --muted: 220 25% 20%;
+    --muted-foreground: 215 20% 65%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 220 30% 18%;
-    --input: 220 30% 18%;
+    --border: 220 25% 22%;
+    --input: 220 25% 22%;
     --ring: 207 90% 54%;
 
     --radius: 0.5rem;
 
     /* Extended palette */
-    --surface: 220 35% 9%;
-    --surface-elevated: 220 30% 12%;
-    --divider: 220 30% 18%;
+    --surface: 220 30% 13%;
+    --surface-elevated: 220 25% 16%;
+    --divider: 220 25% 22%;
+
+    /* Navbar */
+    --navbar: 220 30% 14%;
 
     /* Glow effects */
     --glow-primary: 207 90% 54%;
@@ -73,13 +76,13 @@
     --project: 40 95% 55%;
 
     /* Sidebar */
-    --sidebar-background: 220 35% 9%;
+    --sidebar-background: 220 30% 13%;
     --sidebar-foreground: 210 40% 98%;
     --sidebar-primary: 207 90% 54%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 220 35% 14%;
-    --sidebar-accent-foreground: 210 40% 90%;
-    --sidebar-border: 220 30% 18%;
+    --sidebar-accent: 220 30% 17%;
+    --sidebar-accent-foreground: 210 40% 92%;
+    --sidebar-border: 220 25% 22%;
     --sidebar-ring: 207 90% 54%;
   }
 
@@ -187,7 +190,7 @@
 
   /* Card hover effects with glow */
   .card-hover {
-    @apply transition-all duration-300 hover:shadow-lg hover:shadow-primary/20 hover:-translate-y-1;
+    @apply transition-all duration-300 hover:shadow-xl hover:shadow-primary/15 hover:-translate-y-1.5 hover:scale-[1.02];
   }
 
   /* Multi-color gradient hero background */
@@ -200,7 +203,7 @@
   }
 
   .gradient-section {
-    background: linear-gradient(180deg, hsl(var(--background)) 0%, hsl(220 35% 8%) 100%);
+    background: linear-gradient(180deg, hsl(var(--background)) 0%, hsl(220 25% 12%) 100%);
   }
 
   /* Multi-color accent gradient */
