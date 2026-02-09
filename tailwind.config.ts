@@ -53,6 +53,11 @@ export default {
         },
         surface: "hsl(var(--surface))",
         divider: "hsl(var(--divider))",
+        // Multi-color accent palette
+        "accent-green": "hsl(var(--accent-green))",
+        "accent-orange": "hsl(var(--accent-orange))",
+        "accent-cyan": "hsl(var(--accent-cyan))",
+        "accent-blue": "hsl(var(--accent-blue))",
         // Domain-specific colors
         civil: "hsl(var(--civil))",
         structural: "hsl(var(--structural))",

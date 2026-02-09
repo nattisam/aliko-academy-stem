@@ -25,7 +25,9 @@ const Index = () => {
         <div className="container-content py-20 lg:py-32">
           <div className="max-w-3xl">
             <h1 className="font-display text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-              Industry-Aligned Engineering & STEM Training
+              Industry-Aligned{" "}
+              <span className="text-primary text-glow">Engineering</span> &{" "}
+              <span className="text-accent">STEM</span> Training
             </h1>
             <p className="mt-6 text-lg text-muted-foreground sm:text-xl max-w-2xl">
               Master globally used engineering software and systems—BIM, CAD/CAE, 
@@ -47,9 +49,12 @@ const Index = () => {
             </div>
           </div>
         </div>
-        {/* Decorative elements */}
-        <div className="absolute top-0 right-0 -z-10 w-1/2 h-full opacity-30">
-          <div className="absolute inset-0 bg-gradient-to-l from-primary/10 to-transparent" />
+        {/* Decorative floating elements */}
+        <div className="absolute top-0 right-0 -z-10 w-1/2 h-full opacity-40">
+          <div className="absolute top-20 right-20 w-32 h-32 rounded-full bg-primary/20 blur-3xl animate-pulse" />
+          <div className="absolute top-40 right-40 w-24 h-24 rounded-full bg-accent/20 blur-2xl animate-pulse" style={{ animationDelay: '1s' }} />
+          <div className="absolute bottom-20 right-32 w-20 h-20 rounded-full bg-accent-green/20 blur-2xl animate-pulse" style={{ animationDelay: '2s' }} />
+          <div className="absolute bottom-40 right-60 w-16 h-16 rounded-full bg-accent-orange/20 blur-xl animate-pulse" style={{ animationDelay: '0.5s' }} />
         </div>
       </section>
 
@@ -88,7 +93,7 @@ const Index = () => {
         <div className="container-content">
           <div className="text-center max-w-2xl mx-auto mb-12">
             <h2 className="font-display text-3xl font-bold text-foreground">
-              Engineering Domains
+              <span className="text-accent-green">Engineering</span> Domains
             </h2>
             <p className="mt-4 text-muted-foreground">
               Explore programs organized by engineering discipline and industry systems
@@ -116,11 +121,11 @@ const Index = () => {
       {/* Enterprise Training Preview */}
       <section className="section-padding">
         <div className="container-content">
-          <div className="bg-card rounded-2xl border border-divider p-8 lg:p-12">
+          <div className="bg-card rounded-2xl border border-divider p-8 lg:p-12 border-gradient-animated">
             <div className="grid lg:grid-cols-2 gap-10 items-center">
               <div>
                 <h2 className="font-display text-3xl font-bold text-foreground">
-                  Enterprise & Institutional Training
+                  <span className="text-accent-orange">Enterprise</span> & Institutional Training
                 </h2>
                 <p className="mt-4 text-muted-foreground">
                   Customized engineering and STEM training solutions for organizations, 
@@ -128,12 +133,15 @@ const Index = () => {
                   curriculum customization, and faculty enablement aligned to industry workflows.
                 </p>
                 <ul className="mt-6 space-y-3">
-                  {enterpriseBenefits.map((benefit) => (
-                    <li key={benefit} className="flex items-start gap-3">
-                      <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
-                      <span className="text-foreground">{benefit}</span>
-                    </li>
-                  ))}
+                  {enterpriseBenefits.map((benefit, index) => {
+                    const iconColors = ["text-primary", "text-accent", "text-accent-green"];
+                    return (
+                      <li key={benefit} className="flex items-start gap-3">
+                        <CheckCircle2 className={`h-5 w-5 ${iconColors[index % iconColors.length]} mt-0.5 flex-shrink-0`} />
+                        <span className="text-foreground">{benefit}</span>
+                      </li>
+                    );
+                  })}
                 </ul>
                 <div className="mt-8">
                   <Button asChild size="lg" variant="hero">
@@ -145,9 +153,13 @@ const Index = () => {
                 </div>
               </div>
               <div className="hidden lg:block">
-                <div className="aspect-[4/3] rounded-xl bg-gradient-to-br from-primary/10 to-primary/5 border border-divider flex items-center justify-center">
-                  <div className="text-center p-8">
-                    <div className="text-6xl font-display font-bold text-primary/20">
+                <div className="aspect-[4/3] rounded-xl bg-gradient-to-br from-primary/15 via-accent/10 to-accent-green/10 border border-divider flex items-center justify-center relative overflow-hidden">
+                  {/* Multi-color glow orbs */}
+                  <div className="absolute top-10 left-10 w-20 h-20 rounded-full bg-primary/30 blur-2xl" />
+                  <div className="absolute bottom-10 right-10 w-16 h-16 rounded-full bg-accent-orange/30 blur-2xl" />
+                  <div className="absolute top-1/2 right-1/4 w-12 h-12 rounded-full bg-accent-green/30 blur-xl" />
+                  <div className="text-center p-8 relative z-10">
+                    <div className="text-6xl font-display font-bold text-primary">
                       500+
                     </div>
                     <p className="mt-2 text-muted-foreground">
