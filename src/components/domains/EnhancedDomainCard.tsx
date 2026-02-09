@@ -12,11 +12,13 @@ import structuralImg from "@/assets/domains/structural-bim.jpg";
 import projectImg from "@/assets/domains/project-controls.jpg";
 import gisImg from "@/assets/domains/gis-infrastructure.jpg";
 import aviationImg from "@/assets/domains/aviation-aerospace.jpg";
+import chemicalImg from "@/assets/domains/chemical-engineering.jpg";
 
 const domainImages: Record<string, string> = {
   "civil-structural": civilImg,
   electrical: electricalImg,
   mechanical: mechanicalImg,
+  chemical: chemicalImg,
   architectural: architecturalImg,
   "structural-bim": structuralImg,
   "project-controls": projectImg,
@@ -36,6 +38,10 @@ const domainAccents: Record<string, { label: string; labelBg: string; border: st
   mechanical: {
     label: "text-accent-green", labelBg: "bg-accent-green/20",
     border: "group-hover:border-accent-green/60", glow: "group-hover:shadow-accent-green/30",
+  },
+  chemical: {
+    label: "text-accent-orange", labelBg: "bg-accent-orange/20",
+    border: "group-hover:border-accent-orange/60", glow: "group-hover:shadow-accent-orange/30",
   },
   architectural: {
     label: "text-accent", labelBg: "bg-accent/20",
