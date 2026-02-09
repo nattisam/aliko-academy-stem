@@ -2,7 +2,7 @@
 
 export interface Software {
   name: string;
-  icon?: string; // Emoji or icon identifier
+  icon?: string;
   vendor?: string;
 }
 
