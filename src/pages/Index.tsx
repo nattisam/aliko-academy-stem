@@ -53,9 +53,9 @@ const Index = () => {
               <span className="text-primary text-glow">Engineering</span> &{" "}
               <span className="text-accent text-glow-accent">STEM</span> Training
             </h1>
-            <p className="mt-8 text-xl text-muted-foreground sm:text-2xl max-w-2xl leading-relaxed">
-              Master globally used engineering software and systems—BIM, CAD/CAE, 
-              power systems, and infrastructure tools—through structured, 
+            <p className="mt-8 text-xl text-[hsl(210_30%_82%)] sm:text-2xl max-w-2xl leading-relaxed">
+              Master globally used engineering software and systems, including BIM, CAD/CAE, 
+              power systems, and infrastructure tools, through structured, 
               instructor-supported training.
             </p>
             <div className="mt-12 flex flex-col sm:flex-row gap-4">
@@ -187,7 +187,7 @@ const Index = () => {
                 <h2 className="font-display text-4xl font-bold text-foreground">
                   <span className="text-accent-orange text-glow-orange">Enterprise</span> & Institutional Training
                 </h2>
-                <p className="mt-5 text-lg text-muted-foreground leading-relaxed">
+                <p className="mt-5 text-lg text-[hsl(210_30%_82%)] leading-relaxed">
                   Customized engineering and STEM training solutions for organizations, 
                   universities, and government agencies. We deliver cohort-based programs, 
                   curriculum customization, and faculty enablement aligned to industry workflows.

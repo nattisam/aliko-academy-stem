@@ -45,8 +45,8 @@ const Partners = () => {
             <h1 className="font-display text-5xl font-extrabold text-foreground">
               Our <span className="text-accent text-glow-accent">Partners</span>
             </h1>
-            <p className="mt-5 text-xl text-muted-foreground leading-relaxed">
-              Aliko Academy – STEM collaborates with academic institutions, enterprises, 
+            <p className="mt-5 text-xl text-[hsl(210_30%_82%)] leading-relaxed">
+              Aliko Academy STEM collaborates with academic institutions, enterprises, 
               and technology ecosystems to deliver industry-aligned engineering training.
             </p>
           </div>
@@ -100,9 +100,9 @@ const Partners = () => {
 
       <section className="py-10 bg-surface-elevated border-y border-divider">
         <div className="container-content">
-          <p className="text-sm text-muted-foreground text-center max-w-3xl mx-auto leading-relaxed">
+          <p className="text-sm text-[hsl(210_30%_78%)] text-center max-w-3xl mx-auto leading-relaxed">
             The technology ecosystems listed represent platforms and tools covered in our curriculum. 
-            Aliko Academy – STEM provides industry-aligned training based on official vendor documentation 
+            Aliko Academy STEM provides industry-aligned training based on official vendor documentation 
             and best practices.
           </p>
         </div>
@@ -115,8 +115,8 @@ const Partners = () => {
               <h2 className="font-display text-4xl font-bold text-foreground">
                 Become a <span className="text-accent-green text-glow-green">Partner</span>
               </h2>
-              <p className="mt-4 text-lg text-muted-foreground">
-                Interested in partnering with Aliko Academy – STEM?
+              <p className="mt-4 text-lg text-[hsl(210_30%_82%)]">
+                Interested in partnering with Aliko Academy STEM?
               </p>
             </div>
 

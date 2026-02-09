@@ -227,7 +227,7 @@ const ProgramDetail = () => {
                     <h3 className="font-medium text-[hsl(40_95%_75%)]">Certification Disclaimer</h3>
                     <p className="mt-1 text-sm text-foreground/80">
                       Certification exams and credentials are administered by third-party vendors. 
-                      Aliko Academy – STEM provides training and preparation only and does not 
+                      Aliko Academy STEM provides training and preparation only and does not 
                       guarantee exam outcomes.
                     </p>
                   </div>

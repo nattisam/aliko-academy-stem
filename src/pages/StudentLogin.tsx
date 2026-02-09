@@ -16,7 +16,7 @@ const StudentLogin = () => {
             <h1 className="font-display text-5xl lg:text-6xl font-extrabold text-foreground">
               Student <span className="text-primary text-glow">Login</span>
             </h1>
-            <p className="mt-5 text-xl text-muted-foreground leading-relaxed">
+            <p className="mt-5 text-xl text-[hsl(210_30%_82%)] leading-relaxed">
               Access your courses and learning portal through our Learning Management System.
             </p>
           </div>

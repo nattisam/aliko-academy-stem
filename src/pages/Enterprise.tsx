@@ -118,7 +118,7 @@ const Enterprise = () => {
             <h1 className="font-display text-5xl font-extrabold text-foreground sm:text-6xl leading-tight">
               Customized <span className="text-accent-orange text-glow-orange">Engineering</span> & STEM Training
             </h1>
-            <p className="mt-6 text-xl text-muted-foreground leading-relaxed">
+            <p className="mt-6 text-xl text-[hsl(210_30%_82%)] leading-relaxed">
               Cohort-based upskilling, curriculum customization, and faculty enablement 
               aligned to industry tools and infrastructure workflows.
             </p>
