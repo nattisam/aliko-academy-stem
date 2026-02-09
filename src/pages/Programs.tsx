@@ -28,7 +28,63 @@ import {
   DomainCategory
 } from "@/data/programs";
 import { domains, getDomainByName } from "@/data/domains";
-import { ArrowRight, Filter } from "lucide-react";
+import { ArrowRight, Filter, Building2, Building, Cog, Zap, Calendar, Globe, Home, Layers } from "lucide-react";
+import { cn } from "@/lib/utils";
+
+const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
+  Building2,
+  Building,
+  Home,
+  Cog,
+  Zap,
+  Calendar,
+  Globe,
+};
+
+const domainColorMap: Record<string, { bg: string; border: string; text: string; headerBg: string }> = {
+  "Civil Engineering": {
+    bg: "bg-accent-orange/10",
+    border: "border-accent-orange/30",
+    text: "text-[hsl(40_95%_65%)]",
+    headerBg: "bg-gradient-to-r from-accent-orange/15 to-transparent"
+  },
+  "Structural / BIM & Infrastructure": {
+    bg: "bg-primary/10",
+    border: "border-primary/30",
+    text: "text-primary",
+    headerBg: "bg-gradient-to-r from-primary/15 to-transparent"
+  },
+  "Architectural Engineering": {
+    bg: "bg-accent/10",
+    border: "border-accent/30",
+    text: "text-accent",
+    headerBg: "bg-gradient-to-r from-accent/15 to-transparent"
+  },
+  "Mechanical Engineering": {
+    bg: "bg-accent-green/10",
+    border: "border-accent-green/30",
+    text: "text-[hsl(80_70%_55%)]",
+    headerBg: "bg-gradient-to-r from-accent-green/15 to-transparent"
+  },
+  "Electrical Engineering": {
+    bg: "bg-[hsl(280_68%_55%)]/10",
+    border: "border-[hsl(280_68%_55%)]/30",
+    text: "text-[hsl(280_68%_65%)]",
+    headerBg: "bg-gradient-to-r from-[hsl(280_68%_55%)]/15 to-transparent"
+  },
+  "Construction Planning & Project Controls": {
+    bg: "bg-primary/10",
+    border: "border-primary/30",
+    text: "text-primary",
+    headerBg: "bg-gradient-to-r from-primary/15 to-transparent"
+  },
+  "Middle East / International Systems": {
+    bg: "bg-accent-green/10",
+    border: "border-accent-green/30",
+    text: "text-[hsl(80_70%_55%)]",
+    headerBg: "bg-gradient-to-r from-accent-green/15 to-transparent"
+  }
+};
 
 const Programs = () => {
   const [levelFilter, setLevelFilter] = useState<string>("all");
@@ -54,31 +110,66 @@ const Programs = () => {
     const domain = getDomainByName(domainName);
     const domainPrograms = getProgramsByDomain(domainName);
     const filteredPrograms = filterPrograms(domainPrograms);
+    const colorStyle = domainColorMap[domainName] || domainColorMap["Civil Engineering"];
+    const Icon = domain ? iconMap[domain.icon] || Building2 : Building2;
     
     if (filteredPrograms.length === 0) return null;
 
     return (
-      <AccordionItem key={domainName} value={domainName} className="border border-divider rounded-lg px-4 mb-3 bg-card">
-        <AccordionTrigger className="hover:no-underline py-4">
+      <AccordionItem 
+        key={domainName} 
+        value={domainName} 
+        className={cn(
+          "border rounded-2xl overflow-hidden mb-4 transition-all duration-300",
+          colorStyle.border,
+          "data-[state=open]:shadow-lg"
+        )}
+      >
+        <AccordionTrigger className={cn(
+          "hover:no-underline px-6 py-5",
+          colorStyle.headerBg,
+          "data-[state=open]:border-b",
+          colorStyle.border
+        )}>
           <div className="flex items-center gap-4 text-left">
-            <span className="font-display font-semibold text-lg text-foreground">
-              {domainName}
-            </span>
-            <Badge variant="secondary" className="font-normal">
-              {filteredPrograms.length} programs
-            </Badge>
+            <div className={cn(
+              "h-11 w-11 rounded-xl flex items-center justify-center flex-shrink-0 border",
+              colorStyle.bg,
+              colorStyle.border
+            )}>
+              <Icon className={cn("h-5 w-5", colorStyle.text)} />
+            </div>
+            <div>
+              <span className="font-display font-semibold text-lg text-foreground">
+                {domainName}
+              </span>
+              <div className="flex items-center gap-2 mt-0.5">
+                <Badge variant="outline" className={cn("text-xs font-normal", colorStyle.bg, colorStyle.text, colorStyle.border)}>
+                  {filteredPrograms.length} programs
+                </Badge>
+              </div>
+            </div>
           </div>
         </AccordionTrigger>
-        <AccordionContent className="pb-4">
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 mt-2">
+        <AccordionContent className="px-6 py-6 bg-card/50">
+          {/* Visual Grid - Software Icons */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3">
             {filteredPrograms.map((program) => (
-              <ProgramCard key={program.id} program={program} variant="compact" />
+              <ProgramCard key={program.id} program={program} variant="visual" />
             ))}
           </div>
+          
           {domain && (
-            <p className="mt-4 text-sm text-muted-foreground border-t border-divider pt-4">
-              <span className="font-medium">Typical path:</span> {domain.progressionPath}
-            </p>
+            <div className={cn(
+              "mt-6 p-3 rounded-lg border",
+              colorStyle.bg,
+              colorStyle.border
+            )}>
+              <p className="text-sm text-muted-foreground">
+                <span className={cn("font-medium", colorStyle.text)}>Suggested path:</span>{" "}
+                {domain.progressionPath}
+              </p>
+            </div>
           )}
         </AccordionContent>
       </AccordionItem>
@@ -90,20 +181,28 @@ const Programs = () => {
       {/* Hero */}
       <section className="gradient-hero py-16 lg:py-20">
         <div className="container-content">
-          <div className="max-w-2xl">
-            <h1 className="font-display text-4xl font-bold text-foreground">
-              Program Catalog
+          <div className="max-w-3xl">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="h-12 w-12 rounded-xl bg-primary/20 flex items-center justify-center">
+                <Layers className="h-6 w-6 text-primary" />
+              </div>
+              <span className="text-sm font-medium text-primary uppercase tracking-wider">
+                Program Catalog
+              </span>
+            </div>
+            <h1 className="font-display text-4xl lg:text-5xl font-bold text-foreground">
+              Engineering <span className="text-glow text-primary">Software Training</span>
             </h1>
             <p className="mt-4 text-lg text-muted-foreground">
-              Explore our comprehensive range of industry-aligned engineering and STEM 
-              training programs. Filter by level, delivery mode, or browse by domain.
+              Browse our comprehensive software training programs by domain. 
+              Click each domain to explore available courses.
             </p>
           </div>
         </div>
       </section>
 
       {/* Filters */}
-      <section className="border-b border-divider bg-card sticky top-16 lg:top-20 z-40">
+      <section className="border-b border-divider bg-card/80 backdrop-blur-sm sticky top-16 lg:top-20 z-40">
         <div className="container-content py-4">
           <div className="flex flex-wrap items-center gap-4">
             <div className="flex items-center gap-2 text-sm text-muted-foreground">
@@ -131,9 +230,12 @@ const Programs = () => {
                 <SelectItem value="Hybrid">Hybrid</SelectItem>
               </SelectContent>
             </Select>
-            <span className="text-sm text-muted-foreground ml-auto">
-              {totalFilteredCount} programs found
-            </span>
+            <div className={cn(
+              "ml-auto px-3 py-1.5 rounded-full text-sm font-medium",
+              "bg-primary/10 text-primary border border-primary/30"
+            )}>
+              {totalFilteredCount} programs
+            </div>
           </div>
         </div>
       </section>
@@ -143,20 +245,22 @@ const Programs = () => {
         <div className="container-content">
           {/* Engineering Domains */}
           <div className="mb-12">
-            <h2 className="font-display text-2xl font-bold text-foreground mb-6">
+            <h2 className="font-display text-2xl font-bold text-foreground mb-6 flex items-center gap-3">
+              <Building2 className="h-6 w-6 text-primary" />
               Engineering Domains
             </h2>
-            <Accordion type="multiple" className="space-y-0">
+            <Accordion type="single" collapsible className="space-y-0">
               {engineeringDomains.map(renderDomainAccordion)}
             </Accordion>
           </div>
 
           {/* Industry & Regional Systems */}
           <div>
-            <h2 className="font-display text-2xl font-bold text-foreground mb-6">
+            <h2 className="font-display text-2xl font-bold text-foreground mb-6 flex items-center gap-3">
+              <Globe className="h-6 w-6 text-accent-green" />
               Industry & Regional Systems
             </h2>
-            <Accordion type="multiple" className="space-y-0">
+            <Accordion type="single" collapsible className="space-y-0">
               {industryDomains.map(renderDomainAccordion)}
             </Accordion>
           </div>
