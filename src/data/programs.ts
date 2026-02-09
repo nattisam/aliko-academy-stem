@@ -7,6 +7,7 @@ export type DomainCategory =
   | "Architectural Engineering"
   | "Mechanical Engineering" 
   | "Chemical Engineering"
+  | "Chemical Engineering"
   | "Electrical Engineering"
   | "Construction Planning & Project Controls"
   | "GIS & Infrastructure Intelligence"
@@ -46,11 +47,13 @@ import { architecturalPrograms } from "./programs/architectural";
 import { projectControlsPrograms } from "./programs/project-controls";
 import { gisInternationalPrograms } from "./programs/gis-international";
 import { aviationPrograms } from "./programs/aviation";
+import { chemicalPrograms } from "./programs/chemical";
 
 // Combine all programs
 export const programs: Program[] = [
   ...civilStructuralPrograms,
   ...mechanicalPrograms,
+  ...chemicalPrograms,
   ...electricalPrograms,
   ...architecturalPrograms,
   ...projectControlsPrograms,
@@ -79,6 +82,7 @@ export const engineeringDomains: DomainCategory[] = [
   "Structural / BIM & Infrastructure",
   "Architectural Engineering",
   "Mechanical Engineering",
+  "Chemical Engineering",
   "Electrical Engineering"
 ];
 
