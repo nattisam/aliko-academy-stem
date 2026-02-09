@@ -105,6 +105,20 @@ export const softwareIconMap: Record<string, SoftwareIcon> = {
   "global-mapper": { initials: "GM", color: "accent-green", vendor: "Blue Marble" },
   "civil-3d-gis": { initials: "GIS", color: "accent-green", vendor: "Autodesk" },
   
+  // Aviation & Aerospace
+  "catia-aerospace": { initials: "CAT", color: "accent", vendor: "Dassault" },
+  "nx-aerospace": { initials: "NX", color: "accent", vendor: "Siemens" },
+  "solidworks-aerospace": { initials: "SW", color: "accent", vendor: "Dassault" },
+  "ansys-aerospace": { initials: "ANS", color: "accent", vendor: "ANSYS" },
+  "matlab-aerospace-toolbox": { initials: "MAT", color: "accent", vendor: "MathWorks" },
+  "simulink-aerospace": { initials: "SIM", color: "accent", vendor: "MathWorks" },
+  "openvsp": { initials: "VSP", color: "accent", vendor: "NASA" },
+  "xflr5": { initials: "XFL", color: "accent", vendor: "Open Source" },
+  "msc-nastran-aerospace": { initials: "NAS", color: "accent", vendor: "MSC" },
+  "amos-maintenance": { initials: "AMS", color: "accent", vendor: "Swiss AS" },
+  "camp-systems": { initials: "CMP", color: "accent", vendor: "CAMP" },
+  "ramco-aviation": { initials: "RMC", color: "accent", vendor: "Ramco" },
+
   // Geotechnical
   "geostudio": { initials: "GEO", color: "accent-green", vendor: "Seequent" },
   "lusas": { initials: "LUS", color: "primary", vendor: "LUSAS" },

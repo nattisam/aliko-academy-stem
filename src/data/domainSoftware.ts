@@ -152,5 +152,26 @@ export const domainSoftware: DomainSoftwareCategory[] = [
       { name: "Civil 3D GIS Workflows", vendor: "Autodesk" },
       { name: "Bentley OpenCities", vendor: "Bentley" }
     ]
+  },
+  {
+    id: "aviation",
+    title: "Aviation & Aerospace Engineering",
+    subtitle: "Aircraft systems, simulation, and maintenance engineering",
+    icon: "Plane",
+    accentColor: "accent",
+    software: [
+      { name: "CATIA (Aerospace)", vendor: "Dassault" },
+      { name: "Siemens NX (Aerospace)", vendor: "Siemens" },
+      { name: "SolidWorks (Aerospace)", vendor: "Dassault" },
+      { name: "ANSYS Aerospace Modules", vendor: "ANSYS" },
+      { name: "MATLAB Aerospace Toolbox", vendor: "MathWorks" },
+      { name: "Simulink Aerospace Blockset", vendor: "MathWorks" },
+      { name: "OpenVSP", vendor: "NASA" },
+      { name: "XFLR5", vendor: "Open Source" },
+      { name: "MSC Nastran (Aerospace)", vendor: "MSC" },
+      { name: "AMOS", vendor: "Swiss AS" },
+      { name: "CAMP Systems", vendor: "CAMP" },
+      { name: "Ramco Aviation", vendor: "Ramco" }
+    ]
   }
 ];

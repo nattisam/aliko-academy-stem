@@ -8,7 +8,8 @@ export type DomainCategory =
   | "Mechanical Engineering" 
   | "Electrical Engineering"
   | "Construction Planning & Project Controls"
-  | "Middle East / International Systems";
+  | "GIS & Infrastructure Intelligence"
+  | "Aviation & Aerospace Engineering";
 
 export interface CurriculumModule {
   title: string;
@@ -43,6 +44,7 @@ import { electricalPrograms } from "./programs/electrical";
 import { architecturalPrograms } from "./programs/architectural";
 import { projectControlsPrograms } from "./programs/project-controls";
 import { gisInternationalPrograms } from "./programs/gis-international";
+import { aviationPrograms } from "./programs/aviation";
 
 // Combine all programs
 export const programs: Program[] = [
@@ -51,7 +53,8 @@ export const programs: Program[] = [
   ...electricalPrograms,
   ...architecturalPrograms,
   ...projectControlsPrograms,
-  ...gisInternationalPrograms
+  ...gisInternationalPrograms,
+  ...aviationPrograms
 ];
 
 export const getProgramsByDomain = (domain: DomainCategory): Program[] => {
@@ -80,7 +83,8 @@ export const engineeringDomains: DomainCategory[] = [
 
 export const industryDomains: DomainCategory[] = [
   "Construction Planning & Project Controls",
-  "Middle East / International Systems"
+  "GIS & Infrastructure Intelligence",
+  "Aviation & Aerospace Engineering"
 ];
 
 export const allDomains = [...engineeringDomains, ...industryDomains];
