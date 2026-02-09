@@ -36,8 +36,8 @@ export function IndustryAlignmentBlock({ variant = "default" }: IndustryAlignmen
           <h2 className="font-display text-4xl font-bold text-foreground">
             Industry-Aligned <span className="text-primary text-glow">STEM</span> Curriculum
           </h2>
-          <p className="mt-5 text-lg text-muted-foreground leading-relaxed">
-            Aliko Academy – STEM designs its programs based on globally recognized 
+          <p className="mt-5 text-lg text-[hsl(210_30%_82%)] leading-relaxed">
+            Aliko Academy STEM designs its programs based on globally recognized 
             engineering platforms and vendor ecosystems.
           </p>
           <div className="mt-10 flex flex-wrap justify-center gap-4">
@@ -53,9 +53,9 @@ export function IndustryAlignmentBlock({ variant = "default" }: IndustryAlignmen
               </span>
             ))}
           </div>
-          <p className="mt-10 text-sm text-muted-foreground">
+          <p className="mt-10 text-sm text-[hsl(210_30%_78%)]">
             Certification exams and credentials are administered by third-party vendors. 
-            Aliko Academy – STEM provides training and preparation only.
+            Aliko Academy STEM provides training and preparation only.
           </p>
         </div>
       </div>

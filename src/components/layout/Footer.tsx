@@ -36,7 +36,7 @@ export function Footer() {
                 <span className="text-xs font-bold text-primary tracking-widest">STEM</span>
               </div>
             </Link>
-            <p className="mt-5 text-base text-muted-foreground max-w-xs leading-relaxed">
+            <p className="mt-5 text-base text-[hsl(210_30%_78%)] max-w-xs leading-relaxed">
               Industry-aligned engineering and STEM training for students, professionals, and organizations.
             </p>
             <div className="mt-7 space-y-3">
@@ -95,7 +95,7 @@ export function Footer() {
         <div className="mt-14 pt-8 border-t border-divider">
           <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
             <p className="text-sm text-muted-foreground font-medium">
-              © {new Date().getFullYear()} Aliko Academy – STEM. All rights reserved.
+              © {new Date().getFullYear()} Aliko Academy STEM. All rights reserved.
             </p>
             <p className="text-xs text-muted-foreground">
               Certification exams are administered by third-party vendors.

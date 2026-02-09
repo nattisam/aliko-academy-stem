@@ -297,7 +297,7 @@ const Certifications = () => {
         <div className="container-content">
           <p className="text-xs text-muted-foreground text-center flex items-center justify-center gap-2">
             <AlertTriangle className="h-3 w-3" />
-            Aliko Academy – STEM provides exam preparation support only. Licenses and certifications are issued by third-party authorities.
+            Aliko Academy STEM provides exam preparation support only. Licenses and certifications are issued by third-party authorities.
           </p>
         </div>
       </div>
