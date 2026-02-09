@@ -39,52 +39,67 @@ const iconMap: Record<string, React.ReactNode> = {
   Globe: <Globe className="h-5 w-5" />,
 };
 
-const CertificationCard = ({ cert }: { cert: Certification }) => (
-  <Card className="group border-divider bg-secondary/30 hover:bg-secondary/50 hover:border-primary/30 transition-all duration-300">
-    <CardContent className="p-4">
-      <div className="flex items-center justify-between mb-3">
-        <Badge className="bg-primary/20 text-primary border-primary/30 text-sm font-bold">
-          {cert.shortName}
-        </Badge>
-        <Badge variant="outline" className="text-xs bg-accent/10 text-accent border-accent/30">
-          Coming Soon
-        </Badge>
-      </div>
-      <h4 className="font-semibold text-foreground text-sm mb-2 group-hover:text-primary transition-colors">
-        {cert.name}
-      </h4>
-      <div className="flex items-center gap-2 text-xs text-muted-foreground">
-        <Award className="h-3 w-3 text-primary" />
-        <span>{cert.outcome}</span>
-      </div>
-    </CardContent>
-  </Card>
-);
-const CategorySection = ({ category, colorClass }: { category: CertificationCategory; colorClass: string }) => (
-  <AccordionItem 
-    value={category.id}
-    className="border border-divider rounded-xl px-6 bg-card mb-3 overflow-hidden"
-  >
-    <AccordionTrigger className="hover:no-underline py-5">
-      <div className="flex items-center gap-3">
-        <div className={`p-2 rounded-lg bg-${colorClass}/20 text-${colorClass}`}>
-          {iconMap[category.icon] || <Award className="h-5 w-5" />}
+// Color mapping for different domains
+const colorMap: Record<string, { bg: string; text: string; border: string; glow: string }> = {
+  primary: { bg: 'bg-primary/20', text: 'text-primary', border: 'border-primary/40', glow: 'shadow-primary/20' },
+  accent: { bg: 'bg-accent/20', text: 'text-accent', border: 'border-accent/40', glow: 'shadow-accent/20' },
+  'accent-green': { bg: 'bg-accent-green/20', text: 'text-accent-green', border: 'border-accent-green/40', glow: 'shadow-accent-green/20' },
+  'accent-orange': { bg: 'bg-accent-orange/20', text: 'text-accent-orange', border: 'border-accent-orange/40', glow: 'shadow-accent-orange/20' },
+};
+
+const CertificationCard = ({ cert, accentColor = 'primary' }: { cert: Certification; accentColor?: string }) => {
+  const colors = colorMap[accentColor] || colorMap.primary;
+  return (
+    <Card className={`group border-divider ${colors.bg} hover:${colors.border} hover:shadow-lg ${colors.glow} transition-all duration-300`}>
+      <CardContent className="p-4">
+        <div className="flex items-center justify-between mb-3">
+          <Badge className={`${colors.bg} ${colors.text} ${colors.border} text-sm font-bold`}>
+            {cert.shortName}
+          </Badge>
+          <Badge variant="outline" className="text-xs bg-secondary/50 text-muted-foreground border-divider">
+            Coming Soon
+          </Badge>
         </div>
-        <div className="text-left">
-          <span className="font-semibold text-foreground text-lg">{category.title}</span>
-          <p className="text-sm text-muted-foreground font-normal mt-0.5">{category.description}</p>
+        <h4 className={`font-semibold text-foreground text-sm mb-2 group-hover:${colors.text} transition-colors`}>
+          {cert.name}
+        </h4>
+        <div className="flex items-center gap-2 text-xs text-muted-foreground">
+          <Award className={`h-3 w-3 ${colors.text}`} />
+          <span>{cert.outcome}</span>
         </div>
-      </div>
-    </AccordionTrigger>
-    <AccordionContent className="pb-6">
-      <div className="grid gap-4 md:grid-cols-2">
-        {category.certifications.map((cert) => (
-          <CertificationCard key={cert.id} cert={cert} />
-        ))}
-      </div>
-    </AccordionContent>
-  </AccordionItem>
-);
+      </CardContent>
+    </Card>
+  );
+};
+
+const CategorySection = ({ category, colorClass }: { category: CertificationCategory; colorClass: string }) => {
+  const colors = colorMap[colorClass] || colorMap.primary;
+  return (
+    <AccordionItem 
+      value={category.id}
+      className={`border ${colors.border} rounded-xl px-6 ${colors.bg} mb-3 overflow-hidden`}
+    >
+      <AccordionTrigger className="hover:no-underline py-5">
+        <div className="flex items-center gap-3">
+          <div className={`p-2.5 rounded-lg ${colors.bg} ${colors.text}`}>
+            {iconMap[category.icon] || <Award className="h-5 w-5" />}
+          </div>
+          <div className="text-left">
+            <span className={`font-semibold ${colors.text} text-lg`}>{category.title}</span>
+            <p className="text-sm text-muted-foreground font-normal mt-0.5">{category.description}</p>
+          </div>
+        </div>
+      </AccordionTrigger>
+      <AccordionContent className="pb-6">
+        <div className="grid gap-4 md:grid-cols-2">
+          {category.certifications.map((cert) => (
+            <CertificationCard key={cert.id} cert={cert} accentColor={colorClass} />
+          ))}
+        </div>
+      </AccordionContent>
+    </AccordionItem>
+  );
+};
 
 const Certifications = () => {
   return (
@@ -108,22 +123,22 @@ const Certifications = () => {
               Explore professional certification pathways. Preparation courses coming soon.
             </p>
             
-            {/* Quick Stats - More Visual */}
+            {/* Quick Stats - More Visual with vibrant colors */}
             <div className="mt-6 grid grid-cols-3 gap-4 max-w-lg">
-              <div className="text-center p-3 rounded-lg bg-primary/10 border border-primary/20">
+              <div className="text-center p-3 rounded-lg bg-primary/20 border border-primary/40 shadow-lg shadow-primary/10">
                 <Shield className="h-6 w-6 text-primary mx-auto mb-1" />
-                <span className="text-2xl font-bold text-foreground">3</span>
-                <p className="text-xs text-muted-foreground">Core Exams</p>
+                <span className="text-2xl font-bold text-primary">3</span>
+                <p className="text-xs text-primary/80">Core Exams</p>
               </div>
-              <div className="text-center p-3 rounded-lg bg-accent/10 border border-accent/20">
+              <div className="text-center p-3 rounded-lg bg-accent/20 border border-accent/40 shadow-lg shadow-accent/10">
                 <Award className="h-6 w-6 text-accent mx-auto mb-1" />
-                <span className="text-2xl font-bold text-foreground">25+</span>
-                <p className="text-xs text-muted-foreground">Certifications</p>
+                <span className="text-2xl font-bold text-accent">25+</span>
+                <p className="text-xs text-accent/80">Certifications</p>
               </div>
-              <div className="text-center p-3 rounded-lg bg-accent-green/10 border border-accent-green/20">
+              <div className="text-center p-3 rounded-lg bg-accent-green/20 border border-accent-green/40 shadow-lg shadow-accent-green/10">
                 <Plane className="h-6 w-6 text-accent-green mx-auto mb-1" />
-                <span className="text-2xl font-bold text-foreground">6</span>
-                <p className="text-xs text-muted-foreground">Domains</p>
+                <span className="text-2xl font-bold text-accent-green">6</span>
+                <p className="text-xs text-accent-green/80">Domains</p>
               </div>
             </div>
           </div>
@@ -134,51 +149,55 @@ const Certifications = () => {
       <section className="py-10 border-b border-divider">
         <div className="container-content">
           <div className="flex items-center gap-3 mb-6">
-            <div className="p-2.5 rounded-xl bg-primary/20">
+            <div className="p-2.5 rounded-xl bg-primary/30 shadow-lg shadow-primary/20">
               <Shield className="h-5 w-5 text-primary" />
             </div>
-            <h2 className="font-display text-xl lg:text-2xl font-bold text-foreground">
+            <h2 className="font-display text-xl lg:text-2xl font-bold text-primary">
               Core Engineering Licensure
             </h2>
-            <Badge variant="outline" className="text-xs bg-accent/10 text-accent border-accent/30 ml-auto">
+            <Badge variant="outline" className="text-xs bg-accent-orange/20 text-accent-orange border-accent-orange/40 ml-auto">
               Prep Coming Soon
             </Badge>
           </div>
           
           <div className="grid gap-4 md:grid-cols-3">
-            {coreLicensureExams.certifications.map((cert) => (
-              <Card key={cert.id} className="group border-divider bg-gradient-to-br from-card to-secondary/30 hover:shadow-lg hover:shadow-primary/10 hover:border-primary/30 transition-all">
-                <CardContent className="p-5">
-                  <div className="flex items-center gap-3 mb-3">
-                    <div className="p-2.5 rounded-lg bg-primary/20">
-                      <Shield className="h-5 w-5 text-primary" />
+            {coreLicensureExams.certifications.map((cert, index) => {
+              const colors = ['primary', 'accent', 'accent-green'][index] || 'primary';
+              const colorStyles = colorMap[colors];
+              return (
+                <Card key={cert.id} className={`group border ${colorStyles.border} ${colorStyles.bg} hover:shadow-xl ${colorStyles.glow} transition-all`}>
+                  <CardContent className="p-5">
+                    <div className="flex items-center gap-3 mb-3">
+                      <div className={`p-2.5 rounded-lg ${colorStyles.bg} shadow-md ${colorStyles.glow}`}>
+                        <Shield className={`h-5 w-5 ${colorStyles.text}`} />
+                      </div>
+                      <Badge className={`${colorStyles.bg} ${colorStyles.text} ${colorStyles.border} text-lg px-3 py-1 font-bold`}>
+                        {cert.shortName}
+                      </Badge>
                     </div>
-                    <Badge className="bg-primary text-primary-foreground text-lg px-3 py-1">
-                      {cert.shortName}
-                    </Badge>
-                  </div>
-                  <h3 className="font-display text-lg font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
-                    {cert.name}
-                  </h3>
-                  <div className="flex items-center gap-2 text-sm text-muted-foreground mb-3">
-                    <GraduationCap className="h-4 w-4 text-primary" />
-                    <span>{cert.outcome}</span>
-                  </div>
-                  <div className="flex flex-wrap gap-1.5">
-                    {cert.domains?.slice(0, 3).map((domain, i) => (
-                      <Badge key={i} variant="secondary" className="text-xs">
-                        {domain}
-                      </Badge>
-                    ))}
-                    {cert.domains && cert.domains.length > 3 && (
-                      <Badge variant="outline" className="text-xs">
-                        +{cert.domains.length - 3}
-                      </Badge>
-                    )}
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
+                    <h3 className={`font-display text-lg font-semibold ${colorStyles.text} mb-2`}>
+                      {cert.name}
+                    </h3>
+                    <div className="flex items-center gap-2 text-sm text-muted-foreground mb-3">
+                      <GraduationCap className={`h-4 w-4 ${colorStyles.text}`} />
+                      <span>{cert.outcome}</span>
+                    </div>
+                    <div className="flex flex-wrap gap-1.5">
+                      {cert.domains?.slice(0, 3).map((domain, i) => (
+                        <Badge key={i} variant="secondary" className={`text-xs ${colorStyles.bg} ${colorStyles.text}`}>
+                          {domain}
+                        </Badge>
+                      ))}
+                      {cert.domains && cert.domains.length > 3 && (
+                        <Badge variant="outline" className="text-xs">
+                          +{cert.domains.length - 3}
+                        </Badge>
+                      )}
+                    </div>
+                  </CardContent>
+                </Card>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -187,13 +206,13 @@ const Certifications = () => {
       <section className="py-10 border-b border-divider">
         <div className="container-content">
           <div className="flex items-center gap-3 mb-6">
-            <div className="p-2.5 rounded-xl bg-accent/20">
+            <div className="p-2.5 rounded-xl bg-accent/30 shadow-lg shadow-accent/20">
               <Award className="h-5 w-5 text-accent" />
             </div>
-            <h2 className="font-display text-xl lg:text-2xl font-bold text-foreground">
+            <h2 className="font-display text-xl lg:text-2xl font-bold text-accent">
               Domain-Specific Certifications
             </h2>
-            <Badge variant="outline" className="text-xs bg-accent/10 text-accent border-accent/30 ml-auto">
+            <Badge variant="outline" className="text-xs bg-accent-orange/20 text-accent-orange border-accent-orange/40 ml-auto">
               Prep Coming Soon
             </Badge>
           </div>
@@ -211,16 +230,16 @@ const Certifications = () => {
       </section>
 
       {/* Aviation Domain */}
-      <section className="py-10 border-b border-divider bg-gradient-to-b from-background to-secondary/20">
+      <section className="py-10 border-b border-divider bg-gradient-to-b from-background to-accent-green/5">
         <div className="container-content">
           <div className="flex items-center gap-3 mb-6">
-            <div className="p-2.5 rounded-xl bg-accent-green/20">
+            <div className="p-2.5 rounded-xl bg-accent-green/30 shadow-lg shadow-accent-green/20">
               <Plane className="h-5 w-5 text-accent-green" />
             </div>
-            <h2 className="font-display text-xl lg:text-2xl font-bold text-foreground">
+            <h2 className="font-display text-xl lg:text-2xl font-bold text-accent-green">
               Aviation Domain
             </h2>
-            <Badge variant="outline" className="text-xs bg-accent/10 text-accent border-accent/30 ml-auto">
+            <Badge variant="outline" className="text-xs bg-accent-orange/20 text-accent-orange border-accent-orange/40 ml-auto">
               Prep Coming Soon
             </Badge>
           </div>
@@ -230,40 +249,40 @@ const Certifications = () => {
               <CategorySection 
                 key={category.id} 
                 category={category} 
-                colorClass="accent"
+                colorClass="accent-green"
               />
             ))}
           </Accordion>
         </div>
       </section>
 
-      {/* Terminology Cards - Visual */}
+      {/* Terminology Cards - Visual with vibrant colors */}
       <section className="py-10">
         <div className="container-content">
           <div className="grid md:grid-cols-3 gap-4">
-            <Card className="border-divider hover:border-primary/30 transition-colors">
+            <Card className="border-primary/40 bg-primary/10 hover:bg-primary/20 hover:shadow-lg hover:shadow-primary/20 transition-all">
               <CardContent className="p-4 text-center">
                 <Shield className="h-8 w-8 text-primary mx-auto mb-2" />
-                <h3 className="font-semibold text-foreground text-sm">Licensure</h3>
-                <p className="text-xs text-muted-foreground mt-1">
+                <h3 className="font-semibold text-primary text-sm">Licensure</h3>
+                <p className="text-xs text-primary/70 mt-1">
                   Legal authority (FE, PE, SE)
                 </p>
               </CardContent>
             </Card>
-            <Card className="border-divider hover:border-accent/30 transition-colors">
+            <Card className="border-accent/40 bg-accent/10 hover:bg-accent/20 hover:shadow-lg hover:shadow-accent/20 transition-all">
               <CardContent className="p-4 text-center">
                 <Award className="h-8 w-8 text-accent mx-auto mb-2" />
-                <h3 className="font-semibold text-foreground text-sm">Certification</h3>
-                <p className="text-xs text-muted-foreground mt-1">
+                <h3 className="font-semibold text-accent text-sm">Certification</h3>
+                <p className="text-xs text-accent/70 mt-1">
                   Professional credentials (PMP)
                 </p>
               </CardContent>
             </Card>
-            <Card className="border-divider hover:border-accent-green/30 transition-colors">
+            <Card className="border-accent-green/40 bg-accent-green/10 hover:bg-accent-green/20 hover:shadow-lg hover:shadow-accent-green/20 transition-all">
               <CardContent className="p-4 text-center">
                 <Cog className="h-8 w-8 text-accent-green mx-auto mb-2" />
-                <h3 className="font-semibold text-foreground text-sm">Tool Training</h3>
-                <p className="text-xs text-muted-foreground mt-1">
+                <h3 className="font-semibold text-accent-green text-sm">Tool Training</h3>
+                <p className="text-xs text-accent-green/70 mt-1">
                   Software proficiency
                 </p>
               </CardContent>
