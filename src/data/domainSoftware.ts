@@ -74,6 +74,25 @@ export const domainSoftware: DomainSoftwareCategory[] = [
     ]
   },
   {
+    id: "chemical",
+    title: "Chemical Engineering",
+    subtitle: "Process simulation, plant design, and energy/materials balance",
+    icon: "FlaskConical",
+    accentColor: "accent-orange",
+    software: [
+      { name: "Aspen Plus", vendor: "AspenTech" },
+      { name: "Aspen HYSYS", vendor: "AspenTech" },
+      { name: "Aspen PIMS", vendor: "AspenTech" },
+      { name: "CHEMCAD", vendor: "Chemstations" },
+      { name: "PRO/II", vendor: "Schneider Electric" },
+      { name: "gPROMS", vendor: "Siemens" },
+      { name: "DWSIM", vendor: "Open Source" },
+      { name: "COMSOL Multiphysics", vendor: "COMSOL" },
+      { name: "MATLAB", vendor: "MathWorks" },
+      { name: "Simulink", vendor: "MathWorks" }
+    ]
+  },
+  {
     id: "electrical",
     title: "Electrical & Power Engineering",
     subtitle: "Power systems, protection, automation, and simulation",
