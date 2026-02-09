@@ -71,7 +71,7 @@ export const domains: Domain[] = [
   },
   {
     id: "gis-international",
-    name: "Middle East / International Systems",
+    name: "GIS & Infrastructure Intelligence",
     shortName: "GIS & Infrastructure",
     description: "GIS, computational, and regional engineering tools — Cross-domain applications",
     introText: "GIS and infrastructure data systems address specialized needs in geographic analysis, spatial data management, and computational engineering applicable across civil, environmental, planning, and utility sectors.",
@@ -79,6 +79,17 @@ export const domains: Domain[] = [
     icon: "Globe",
     color: "accent-green",
     topPrograms: ["arcgis-pro", "qgis", "global-mapper", "bentley-opencities"]
+  },
+  {
+    id: "aviation",
+    name: "Aviation & Aerospace Engineering",
+    shortName: "Aviation & Aerospace",
+    description: "Aircraft systems, simulation, and maintenance engineering",
+    introText: "Aviation and aerospace engineering software supports aircraft design, flight simulation, structural certification, and maintenance management. Our programs cover CAD/CAE tools for aerospace applications, flight analysis, and MRO systems.",
+    progressionPath: "OpenVSP / XFLR5 → SolidWorks Aerospace → CATIA / NX Aerospace → ANSYS / Nastran Aerospace → AMOS / CAMP / Ramco",
+    icon: "Plane",
+    color: "accent",
+    topPrograms: ["catia-aerospace", "ansys-aerospace", "openvsp", "amos-maintenance"]
   }
 ];
 

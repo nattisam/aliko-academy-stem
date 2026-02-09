@@ -28,7 +28,7 @@ import {
   DomainCategory
 } from "@/data/programs";
 import { domains, getDomainByName } from "@/data/domains";
-import { ArrowRight, Filter, Building2, Building, Cog, Zap, Calendar, Globe, Home, Layers } from "lucide-react";
+import { ArrowRight, Filter, Building2, Building, Cog, Zap, Calendar, Globe, Home, Layers, Plane } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
@@ -39,6 +39,7 @@ const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   Zap,
   Calendar,
   Globe,
+  Plane,
 };
 
 // Enhanced contrast - brighter text colors for dark backgrounds
@@ -79,11 +80,17 @@ const domainColorMap: Record<string, { bg: string; border: string; text: string;
     text: "text-[hsl(207_90%_72%)]",
     headerBg: "bg-gradient-to-r from-primary/12 to-transparent"
   },
-  "Middle East / International Systems": {
+  "GIS & Infrastructure Intelligence": {
     bg: "bg-accent-green/10",
     border: "border-accent-green/30",
     text: "text-[hsl(80_70%_70%)]",
     headerBg: "bg-gradient-to-r from-accent-green/12 to-transparent"
+  },
+  "Aviation & Aerospace Engineering": {
+    bg: "bg-accent/10",
+    border: "border-accent/30",
+    text: "text-[hsl(195_100%_75%)]",
+    headerBg: "bg-gradient-to-r from-accent/12 to-transparent"
   }
 };
 
