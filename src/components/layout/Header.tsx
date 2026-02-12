@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, GraduationCap } from "lucide-react";
+import { Menu, X } from "lucide-react";
+import logoImg from "@/assets/aliko-stem-logo.png";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -27,14 +28,8 @@ export function Header() {
     <header className="sticky top-0 z-50 w-full bg-navbar border-b border-border/50 shadow-xl shadow-black/30 backdrop-blur-xl">
       <nav className="container-content flex h-18 items-center justify-between lg:h-20">
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-3">
-          <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-accent shadow-lg shadow-primary/30">
-            <GraduationCap className="h-6 w-6 text-white" />
-          </div>
-          <div className="flex flex-col">
-            <span className="font-display text-xl font-extrabold text-white tracking-tight">Aliko Academy</span>
-            <span className="text-xs font-bold text-primary tracking-widest">STEM</span>
-          </div>
+        <Link to="/" className="flex items-center">
+          <img src={logoImg} alt="Aliko Academy STEM" className="h-12 lg:h-14 w-auto" />
         </Link>
 
         {/* Desktop Navigation */}
