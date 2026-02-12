@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import { GraduationCap, Mail, MapPin } from "lucide-react";
+import { Mail, MapPin } from "lucide-react";
+import logoImg from "@/assets/aliko-stem-logo.png";
 
 const footerLinks = {
   programs: [
@@ -27,14 +28,8 @@ export function Footer() {
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-4">
           {/* Brand */}
           <div className="lg:col-span-1">
-            <Link to="/" className="flex items-center gap-3">
-              <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-accent shadow-lg shadow-primary/30">
-                <GraduationCap className="h-6 w-6 text-white" />
-              </div>
-              <div className="flex flex-col">
-                <span className="font-display text-xl font-extrabold text-foreground">Aliko Academy</span>
-                <span className="text-xs font-bold text-primary tracking-widest">STEM</span>
-              </div>
+            <Link to="/">
+              <img src={logoImg} alt="Aliko Academy STEM" className="h-14 w-auto" />
             </Link>
             <p className="mt-5 text-base text-[hsl(210_30%_78%)] max-w-xs leading-relaxed">
               Industry-aligned engineering and STEM training for students, professionals, and organizations.
