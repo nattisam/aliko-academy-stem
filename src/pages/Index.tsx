@@ -9,6 +9,7 @@ import { ProgramCard } from "@/components/programs/ProgramCard";
 import { EnhancedDomainCard } from "@/components/domains/EnhancedDomainCard";
 import { getFeaturedPrograms, programs } from "@/data/programs";
 import { domains } from "@/data/domains";
+import heroBg from "@/assets/hero-bg.jpg";
 
 const enterpriseBenefits = [
   "Custom cohort training for your workforce",
@@ -45,15 +46,18 @@ const Index = () => {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="relative overflow-hidden gradient-hero">
-        <div className="container-content py-24 lg:py-36">
+      <section className="relative overflow-hidden">
+        {/* Hero Background Image */}
+        <img src={heroBg} alt="" className="absolute inset-0 w-full h-full object-cover" />
+        <div className="absolute inset-0 bg-gradient-to-r from-background/90 via-background/70 to-background/40" />
+        <div className="container-content py-24 lg:py-36 relative z-10">
           <div className="max-w-3xl">
             <h1 className="font-display text-5xl font-extrabold tracking-tight text-foreground sm:text-6xl lg:text-7xl leading-tight">
               Industry-Aligned{" "}
-              <span className="text-primary text-glow">Engineering</span> &{" "}
+              <span className="text-accent-green text-glow-green">Engineering</span> &{" "}
               <span className="text-accent text-glow-accent">STEM</span> Training
             </h1>
-            <p className="mt-8 text-xl text-[hsl(210_30%_82%)] sm:text-2xl max-w-2xl leading-relaxed">
+            <p className="mt-8 text-xl text-[hsl(210_30%_85%)] sm:text-2xl max-w-2xl leading-relaxed">
               Master globally used engineering software and systems, including BIM, CAD/CAE, 
               power systems, and infrastructure tools, through structured, 
               instructor-supported training.
@@ -73,13 +77,6 @@ const Index = () => {
             </div>
           </div>
         </div>
-        {/* Decorative floating elements */}
-        <div className="absolute top-0 right-0 -z-10 w-1/2 h-full opacity-50">
-          <div className="absolute top-20 right-20 w-40 h-40 rounded-full bg-primary/25 blur-3xl animate-pulse" />
-          <div className="absolute top-40 right-40 w-32 h-32 rounded-full bg-accent/20 blur-2xl animate-pulse" style={{ animationDelay: '1s' }} />
-          <div className="absolute bottom-20 right-32 w-28 h-28 rounded-full bg-accent-green/20 blur-2xl animate-pulse" style={{ animationDelay: '2s' }} />
-          <div className="absolute bottom-40 right-60 w-20 h-20 rounded-full bg-accent-orange/25 blur-xl animate-pulse" style={{ animationDelay: '0.5s' }} />
-        </div>
       </section>
 
       {/* Audience Strip */}
@@ -91,7 +88,7 @@ const Index = () => {
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8">
             <div>
               <h2 className="font-display text-4xl font-bold text-foreground">
-                Featured <span className="text-primary">Programs</span>
+                Featured <span className="text-accent-green text-glow-green">Programs</span>
               </h2>
               <p className="mt-3 text-lg text-muted-foreground">
                 Popular training programs across engineering disciplines
@@ -185,7 +182,7 @@ const Index = () => {
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <div>
                 <h2 className="font-display text-4xl font-bold text-foreground">
-                  <span className="text-accent-orange text-glow-orange">Enterprise</span> & Institutional Training
+                  <span className="text-accent-orange text-glow-orange">Enterprise</span> & <span className="text-accent-green">Institutional</span> Training
                 </h2>
                 <p className="mt-5 text-lg text-[hsl(210_30%_82%)] leading-relaxed">
                   Customized engineering and STEM training solutions for organizations, 
