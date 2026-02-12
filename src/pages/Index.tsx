@@ -82,13 +82,13 @@ const Index = () => {
       {/* Audience Strip */}
       <AudienceStrip />
 
-      {/* Featured Programs */}
-      <section className="section-padding gradient-hero">
+      {/* Featured Programs - FULL BLUE background */}
+      <section className="section-padding bg-blue-section">
         <div className="container-content">
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8">
             <div>
-              <h2 className="font-display text-4xl font-bold text-foreground">
-                Featured <span className="text-accent-green text-glow-green">Programs</span>
+              <h2 className="font-display text-4xl font-bold text-white">
+                Featured <span className="text-accent-cyan">Programs</span>
               </h2>
               <p className="mt-3 text-lg text-muted-foreground">
                 Popular training programs across engineering disciplines
@@ -145,12 +145,12 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Engineering Domains */}
-      <section className="section-padding gradient-section">
+      {/* Engineering Domains - Teal section */}
+      <section className="section-padding bg-teal-section">
         <div className="container-content">
           <div className="text-center max-w-2xl mx-auto mb-14">
-            <h2 className="font-display text-4xl font-bold text-foreground">
-              <span className="text-accent-green text-glow-green">Engineering</span> Domains
+            <h2 className="font-display text-4xl font-bold text-white">
+              <span className="text-accent-orange">Engineering</span> Domains
             </h2>
             <p className="mt-4 text-lg text-muted-foreground">
               Explore programs organized by engineering discipline and industry systems
@@ -176,7 +176,7 @@ const Index = () => {
       <IndustryAlignmentBlock />
 
       {/* Enterprise Training Preview */}
-      <section className="section-padding gradient-hero">
+      <section className="section-padding bg-blue-section">
         <div className="container-content">
           <div className="bg-card rounded-2xl border border-divider p-10 lg:p-14 border-gradient-animated shadow-2xl">
             <div className="grid lg:grid-cols-2 gap-12 items-center">

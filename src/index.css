@@ -199,6 +199,16 @@
     background: linear-gradient(135deg, hsl(32 95% 55%) 0%, hsl(207 90% 54%) 100%);
   }
 
+  /* Full blue section background */
+  .bg-blue-section {
+    background: linear-gradient(135deg, hsl(207 90% 32%) 0%, hsl(207 85% 24%) 100%);
+  }
+
+  /* Teal/green section background */
+  .bg-teal-section {
+    background: linear-gradient(135deg, hsl(195 60% 22%) 0%, hsl(170 50% 18%) 100%);
+  }
+
   /* Glow text effects */
   .text-glow {
     text-shadow: 0 0 20px hsl(207 90% 54% / 0.5);

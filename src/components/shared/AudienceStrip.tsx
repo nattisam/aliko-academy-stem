@@ -46,7 +46,7 @@ const audiences = [
 
 export function AudienceStrip() {
   return (
-    <section className="section-padding bg-surface-elevated border-y border-divider">
+    <section className="section-padding bg-gradient-to-r from-[hsl(207_85%_28%)] via-[hsl(195_60%_22%)] to-[hsl(170_50%_20%)] border-y border-primary/20">
       <div className="container-content">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {audiences.map((audience) => {
