@@ -2,7 +2,8 @@ import { Link } from "react-router-dom";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { GraduationCap, ExternalLink, HelpCircle, BookOpen, Shield, Headphones } from "lucide-react";
+import { ExternalLink, HelpCircle, BookOpen, Shield, Headphones } from "lucide-react";
+import logoImg from "@/assets/aliko-stem-logo.png";
 
 const StudentLogin = () => {
   return (
@@ -10,9 +11,7 @@ const StudentLogin = () => {
       <section className="gradient-hero py-24 lg:py-32">
         <div className="container-content">
           <div className="max-w-2xl mx-auto text-center">
-            <div className="h-20 w-20 rounded-2xl bg-gradient-to-br from-primary to-accent border border-primary/30 flex items-center justify-center mx-auto mb-8 shadow-2xl shadow-primary/30">
-              <GraduationCap className="h-10 w-10 text-white" />
-            </div>
+            <img src={logoImg} alt="Aliko Academy STEM" className="h-24 lg:h-32 w-auto mx-auto mb-8" />
             <h1 className="font-display text-5xl lg:text-6xl font-extrabold text-foreground">
               Student <span className="text-primary text-glow">Login</span>
             </h1>
