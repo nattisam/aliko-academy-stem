@@ -86,7 +86,7 @@ const Index = () => {
       <AudienceStrip />
 
       {/* Featured Programs */}
-      <section className="section-padding">
+      <section className="section-padding gradient-hero">
         <div className="container-content">
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8">
             <div>
@@ -179,7 +179,7 @@ const Index = () => {
       <IndustryAlignmentBlock />
 
       {/* Enterprise Training Preview */}
-      <section className="section-padding gradient-section-alt">
+      <section className="section-padding gradient-hero">
         <div className="container-content">
           <div className="bg-card rounded-2xl border border-divider p-10 lg:p-14 border-gradient-animated shadow-2xl">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
