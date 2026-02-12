@@ -58,8 +58,8 @@
     --surface-elevated: 220 18% 24%;
     --divider: 220 18% 30%;
 
-    /* Navbar - BRIGHTER than page bg */
-    --navbar: 220 20% 22%;
+    /* Navbar - lighter blue */
+    --navbar: 210 45% 28%;
 
     /* Glow effects */
     --glow-primary: 207 90% 54%;
