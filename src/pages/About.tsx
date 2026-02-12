@@ -50,7 +50,7 @@ const About = () => {
         </div>
       </section>
 
-      <section className="py-16 bg-surface-elevated border-t border-divider">
+      <section className="py-16 bg-card border-t border-divider">
         <div className="container-content text-center">
           <h2 className="font-display text-3xl font-bold text-foreground mb-6">
             Ready to get started?

@@ -23,7 +23,7 @@ const footerLinks = {
 
 export function Footer() {
   return (
-    <footer className="border-t border-divider bg-surface-elevated">
+    <footer className="border-t border-divider bg-card">
       <div className="container-content py-14 lg:py-20">
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-4">
           {/* Brand */}
@@ -48,7 +48,7 @@ export function Footer() {
 
           {/* Programs */}
           <div>
-            <h3 className="font-display font-bold text-lg text-foreground">Programs</h3>
+            <h3 className="font-display font-bold text-lg text-primary">Programs</h3>
             <ul className="mt-5 space-y-3">
               {footerLinks.programs.map((link) => (
                 <li key={link.name}>
@@ -60,7 +60,7 @@ export function Footer() {
 
           {/* Company */}
           <div>
-            <h3 className="font-display font-bold text-lg text-foreground">Company</h3>
+            <h3 className="font-display font-bold text-lg text-accent-green">Company</h3>
             <ul className="mt-5 space-y-3">
               {footerLinks.company.map((link) => (
                 <li key={link.name}>
@@ -75,7 +75,7 @@ export function Footer() {
 
           {/* Legal */}
           <div>
-            <h3 className="font-display font-bold text-lg text-foreground">Legal</h3>
+            <h3 className="font-display font-bold text-lg text-accent-orange">Legal</h3>
             <ul className="mt-5 space-y-3">
               {footerLinks.legal.map((link) => (
                 <li key={link.name}>
