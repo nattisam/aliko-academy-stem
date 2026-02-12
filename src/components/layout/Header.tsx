@@ -39,20 +39,13 @@ export function Header() {
               key={item.name}
               to={item.href}
               className={cn(
-                "relative px-4 py-2.5 text-[15px] font-bold transition-all duration-300 rounded-lg group",
+                "px-4 py-2.5 text-[15px] font-bold transition-all duration-300 rounded-lg",
                 isActive(item.href)
-                  ? "text-white bg-white/15 shadow-lg shadow-primary/20"
-                  : "text-white/80 hover:text-white hover:bg-white/8"
+                  ? "text-accent-green bg-white/10"
+                  : "text-white/70 hover:text-white"
               )}
             >
               {item.name}
-              {/* Active bottom indicator */}
-              <span className={cn(
-                "absolute bottom-0 left-1/2 -translate-x-1/2 h-[3px] rounded-full transition-all duration-300",
-                isActive(item.href)
-                  ? "w-3/4 bg-gradient-to-r from-accent-green via-accent to-primary shadow-[0_0_8px_hsl(195_100%_50%/0.6)]"
-                  : "w-0 group-hover:w-1/2 bg-accent-green/60"
-              )} />
             </Link>
           ))}
         </div>
@@ -96,10 +89,10 @@ export function Header() {
                 to={item.href}
                 onClick={() => setMobileMenuOpen(false)}
                 className={cn(
-                  "block px-5 py-3.5 text-base font-bold rounded-xl transition-all duration-200 border-l-4",
+                  "block px-5 py-3.5 text-base font-bold rounded-xl transition-all duration-200",
                   isActive(item.href)
-                    ? "text-white bg-white/12 border-l-accent-green shadow-md"
-                    : "text-white/85 hover:text-white hover:bg-white/8 border-l-transparent hover:border-l-accent/40"
+                    ? "text-accent-green bg-white/10"
+                    : "text-white/70 hover:text-white"
                 )}
               >
                 {item.name}
