@@ -69,7 +69,7 @@ const Index = () => {
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
               </Button>
-              <Button asChild size="xl" className="font-extrabold bg-accent-green text-[hsl(160_80%_95%)] hover:bg-accent-green/85 shadow-lg shadow-accent-green/40 hover:scale-105 transition-all duration-300 px-8 text-base">
+              <Button asChild size="xl" className="font-extrabold bg-navbar text-white hover:bg-navbar/85 shadow-lg shadow-primary/30 hover:scale-105 transition-all duration-300 px-8 text-base border border-primary/30">
                 <Link to="/enterprise">
                   Request Enterprise Training
                 </Link>
