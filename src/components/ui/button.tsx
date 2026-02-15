@@ -16,7 +16,7 @@ const buttonVariants = cva(
         ghost: "hover:bg-accent/10 hover:text-accent",
         link: "text-primary underline-offset-4 hover:underline",
         // Hero variant with multi-color glow
-        hero: "bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg shadow-primary/30 hover:shadow-xl hover:shadow-primary/40 pulse-glow",
+        hero: "bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg shadow-primary/30 hover:shadow-xl hover:shadow-primary/40 hover:-translate-y-0.5 transition-all",
         // Hero outline for secondary hero CTAs
         heroOutline: "border-2 border-primary text-primary bg-transparent hover:bg-primary/10 hover:border-accent hover:text-accent hover:shadow-lg hover:shadow-accent/20",
         // Accent variants

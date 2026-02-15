@@ -59,7 +59,7 @@ const colorStyles: Record<string, {
   "accent-orange": {
     bg: "bg-accent-orange/10",
     border: "border-accent-orange/30",
-    text: "text-[hsl(40_95%_72%)]",
+    text: "text-[hsl(155_55%_68%)]",
     glow: "shadow-accent-orange/15",
     headerBg: "bg-gradient-to-r from-accent-orange/15 to-transparent"
   },

@@ -44,7 +44,7 @@ const colorMap: Record<string, { bg: string; text: string; border: string; glow:
   primary: { bg: 'bg-primary/15', text: 'text-[hsl(207_90%_70%)]', border: 'border-primary/40', glow: 'shadow-primary/20' },
   accent: { bg: 'bg-accent/15', text: 'text-[hsl(195_100%_70%)]', border: 'border-accent/40', glow: 'shadow-accent/20' },
   'accent-green': { bg: 'bg-accent-green/15', text: 'text-[hsl(80_70%_65%)]', border: 'border-accent-green/40', glow: 'shadow-accent-green/20' },
-  'accent-orange': { bg: 'bg-accent-orange/15', text: 'text-[hsl(40_95%_70%)]', border: 'border-accent-orange/40', glow: 'shadow-accent-orange/20' },
+  'accent-orange': { bg: 'bg-accent-orange/15', text: 'text-[hsl(155_55%_65%)]', border: 'border-accent-orange/40', glow: 'shadow-accent-orange/20' },
   'electrical': { bg: 'bg-[hsl(280_68%_55%)]/15', text: 'text-[hsl(280_68%_75%)]', border: 'border-[hsl(280_68%_55%)]/40', glow: 'shadow-[hsl(280_68%_55%)]/20' },
 };
 
@@ -185,7 +185,7 @@ const Certifications = () => {
                     </div>
                     <div className="flex flex-wrap gap-1.5">
                       {cert.domains?.slice(0, 3).map((domain, i) => (
-                        <Badge key={i} variant="secondary" className={`text-xs ${colorStyles.bg} ${colorStyles.text}`}>
+                        <Badge key={i} variant="secondary" className={`text-xs ${colorStyles.bg} ${colorStyles.text} max-w-[140px] truncate`} title={domain}>
                           {domain}
                         </Badge>
                       ))}

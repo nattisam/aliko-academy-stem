@@ -71,7 +71,7 @@ export function ProgramCard({ program, variant = "default" }: ProgramCardProps) 
 
   if (variant === "compact") {
     return (
-      <Card className="card-hover border-divider bg-card shimmer group">
+      <Card className="card-hover border-divider bg-card group h-full flex flex-col">
         <CardContent className="p-5">
           <div className="flex items-start gap-4">
             <div className={cn(
@@ -113,8 +113,8 @@ export function ProgramCard({ program, variant = "default" }: ProgramCardProps) 
   }
 
   return (
-    <Card className="card-hover border-divider bg-card overflow-hidden shimmer group">
-      <CardContent className="p-7">
+    <Card className="card-hover border-divider bg-card overflow-hidden group h-full flex flex-col">
+      <CardContent className="p-7 flex-1">
         <div className="flex items-start gap-4 mb-5">
           {/* Software Icon */}
           <div className={cn(
