@@ -4,8 +4,8 @@
 
 /* 
   ALIKO ACADEMY - STEM Design System
-  Dark futuristic theme with vibrant multi-color accents
-  Primary Palette: Blue, Cyan, Green, Orange
+  Dark futuristic theme with blue + green accents
+  Primary Palette: Blue, Cyan, Green
   All colors in HSL format
 */
 
@@ -35,9 +35,9 @@
     --accent: 195 100% 50%;
     --accent-foreground: 220 40% 6%;
 
-    /* Multi-color accent palette */
+    /* Multi-color accent palette — green family only */
     --accent-green: 142 70% 50%;
-    --accent-orange: 32 95% 55%;
+    --accent-orange: 155 55% 45%;
     --accent-cyan: 195 100% 50%;
     --accent-blue: 207 90% 54%;
 
@@ -65,15 +65,15 @@
     --glow-primary: 207 90% 54%;
     --glow-accent: 195 100% 50%;
     --glow-green: 142 70% 50%;
-    --glow-orange: 32 95% 55%;
+    --glow-orange: 155 55% 45%;
 
-    /* Domain colors - mapped to multi-color palette */
-    --civil: 32 95% 55%;
+    /* Domain colors - mapped to blue-green palette */
+    --civil: 155 55% 45%;
     --structural: 207 90% 54%;
     --mechanical: 142 70% 50%;
     --electrical: 280 68% 60%;
     --architectural: 195 100% 50%;
-    --project: 32 95% 55%;
+    --project: 207 90% 54%;
 
     /* Sidebar */
     --sidebar-background: 220 20% 20%;
@@ -106,7 +106,7 @@
     --accent-foreground: 0 0% 100%;
 
     --accent-green: 142 70% 45%;
-    --accent-orange: 32 95% 50%;
+    --accent-orange: 155 55% 40%;
     --accent-cyan: 195 100% 45%;
     --accent-blue: 207 90% 50%;
 
@@ -168,17 +168,17 @@
     @apply container mx-auto px-4 sm:px-6 lg:px-8;
   }
 
-  /* Card hover effects with glow */
+  /* Card hover effects — subtle lift + shadow only */
   .card-hover {
-    @apply transition-all duration-300 hover:shadow-2xl hover:shadow-primary/20 hover:-translate-y-2 hover:scale-[1.03];
+    @apply transition-all duration-300 hover:shadow-xl hover:shadow-primary/10 hover:-translate-y-1;
   }
 
-  /* Multi-color gradient hero background */
+  /* Blue-green gradient hero background */
   .gradient-hero {
     background: radial-gradient(ellipse at top left, hsl(207 90% 54% / 0.22) 0%, transparent 45%),
                 radial-gradient(ellipse at top right, hsl(142 70% 50% / 0.15) 0%, transparent 45%),
                 radial-gradient(ellipse at bottom left, hsl(195 100% 50% / 0.15) 0%, transparent 45%),
-                radial-gradient(ellipse at bottom right, hsl(32 95% 55% / 0.18) 0%, transparent 45%),
+                radial-gradient(ellipse at bottom right, hsl(142 70% 50% / 0.10) 0%, transparent 45%),
                 hsl(var(--background));
   }
 
@@ -190,13 +190,13 @@
     background: linear-gradient(180deg, hsl(220 18% 19%) 0%, hsl(var(--background)) 100%);
   }
 
-  /* Multi-color accent gradient */
+  /* Blue-green accent gradient */
   .gradient-accent {
     background: linear-gradient(135deg, hsl(207 90% 54%) 0%, hsl(195 100% 50%) 50%, hsl(142 70% 50%) 100%);
   }
 
   .gradient-warm {
-    background: linear-gradient(135deg, hsl(32 95% 55%) 0%, hsl(207 90% 54%) 100%);
+    background: linear-gradient(135deg, hsl(142 70% 50%) 0%, hsl(207 90% 54%) 100%);
   }
 
   /* Full blue section background */
@@ -207,34 +207,6 @@
   /* Teal/green section background */
   .bg-teal-section {
     background: linear-gradient(135deg, hsl(195 60% 22%) 0%, hsl(170 50% 18%) 100%);
-  }
-
-  /* Glow text effects */
-  .text-glow {
-    text-shadow: 0 0 20px hsl(207 90% 54% / 0.5);
-  }
-
-  .text-glow-accent {
-    text-shadow: 0 0 20px hsl(195 100% 50% / 0.6);
-  }
-
-  .text-glow-green {
-    text-shadow: 0 0 20px hsl(142 70% 50% / 0.6);
-  }
-
-  .text-glow-orange {
-    text-shadow: 0 0 20px hsl(32 95% 55% / 0.6);
-  }
-
-  /* Glowing borders */
-  .border-glow {
-    box-shadow: 0 0 15px hsl(207 90% 54% / 0.3), inset 0 0 15px hsl(207 90% 54% / 0.1);
-  }
-
-  .border-glow-multi {
-    box-shadow: 0 0 20px hsl(207 90% 54% / 0.2),
-                0 0 40px hsl(195 100% 50% / 0.1),
-                0 0 60px hsl(142 70% 50% / 0.05);
   }
 
   /* Animated gradient border */
@@ -252,9 +224,8 @@
     padding: 2px;
     background: linear-gradient(135deg, 
       hsl(207 90% 54%) 0%, 
-      hsl(195 100% 50%) 25%, 
-      hsl(142 70% 50%) 50%, 
-      hsl(32 95% 55%) 75%,
+      hsl(195 100% 50%) 33%, 
+      hsl(142 70% 50%) 66%, 
       hsl(207 90% 54%) 100%);
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
@@ -267,46 +238,6 @@
 
   .border-gradient-animated:hover::before {
     opacity: 1;
-  }
-
-  /* Pulse animation for CTAs */
-  .pulse-glow {
-    animation: pulseGlow 2s ease-in-out infinite;
-  }
-
-  @keyframes pulseGlow {
-    0%, 100% {
-      box-shadow: 0 0 5px hsl(207 90% 54% / 0.4), 0 0 20px hsl(207 90% 54% / 0.2);
-    }
-    50% {
-      box-shadow: 0 0 10px hsl(207 90% 54% / 0.6), 0 0 30px hsl(207 90% 54% / 0.3), 0 0 50px hsl(195 100% 50% / 0.2);
-    }
-  }
-
-  /* Shimmer effect */
-  .shimmer {
-    position: relative;
-    overflow: hidden;
-  }
-
-  .shimmer::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-      90deg,
-      transparent 0%,
-      hsl(195 100% 50% / 0.08) 50%,
-      transparent 100%
-    );
-    transform: translateX(-100%);
-    animation: shimmer 3s infinite;
-  }
-
-  @keyframes shimmer {
-    100% {
-      transform: translateX(100%);
-    }
   }
 }
 

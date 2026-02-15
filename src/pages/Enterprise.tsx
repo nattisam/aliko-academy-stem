@@ -164,11 +164,11 @@ const Enterprise = () => {
           <p className="text-lg text-muted-foreground text-center max-w-2xl mx-auto mb-14">
             Flexible training solutions designed to meet your organization's unique requirements
           </p>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="flex flex-wrap justify-center gap-8">
             {trainingModels.map((model) => {
               const Icon = model.icon;
               return (
-                <Card key={model.title} className="border-divider card-hover bg-card">
+                <Card key={model.title} className="border-divider card-hover bg-card w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.334rem)]">
                   <CardContent className="p-7 flex items-start gap-5">
                     <div className={`h-12 w-12 rounded-xl ${model.iconBg} flex items-center justify-center flex-shrink-0`}>
                       <Icon className={`h-6 w-6 ${model.iconColor}`} />

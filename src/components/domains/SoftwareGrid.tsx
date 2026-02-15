@@ -32,7 +32,7 @@ const colorStyles: Record<string, { bg: string; border: string; text: string; ho
   "accent-orange": {
     bg: "bg-accent-orange/8",
     border: "border-accent-orange/25",
-    text: "text-[hsl(40_95%_72%)]",
+    text: "text-[hsl(155_55%_68%)]",
     hoverBg: "hover:bg-accent-orange/15",
     iconBg: "bg-accent-orange/20"
   },

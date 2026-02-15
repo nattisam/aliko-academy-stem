@@ -35,7 +35,7 @@ const ProgramDetail = () => {
   // Enhanced contrast - brighter text colors
   const levelClasses = {
     Beginner: "bg-accent-green/12 text-[hsl(80_70%_72%)] border-accent-green/35",
-    Intermediate: "bg-accent-orange/12 text-[hsl(40_95%_74%)] border-accent-orange/35",
+    Intermediate: "bg-accent-orange/12 text-[hsl(155_55%_70%)] border-accent-orange/35",
     Professional: "bg-primary/12 text-[hsl(207_90%_74%)] border-primary/35",
   };
 
@@ -222,9 +222,9 @@ const ProgramDetail = () => {
               {/* Certification Disclaimer */}
               <div className="bg-accent-orange/10 border border-accent-orange/30 rounded-xl p-6">
                 <div className="flex items-start gap-3">
-                  <AlertCircle className="h-5 w-5 text-[hsl(40_95%_70%)] mt-0.5 flex-shrink-0" />
+                  <AlertCircle className="h-5 w-5 text-[hsl(155_55%_65%)] mt-0.5 flex-shrink-0" />
                   <div>
-                    <h3 className="font-medium text-[hsl(40_95%_75%)]">Certification Disclaimer</h3>
+                    <h3 className="font-medium text-[hsl(155_55%_68%)]">Certification Disclaimer</h3>
                     <p className="mt-1 text-sm text-foreground/80">
                       Certification exams and credentials are administered by third-party vendors. 
                       Aliko Academy STEM provides training and preparation only and does not 
@@ -291,13 +291,13 @@ const ProgramDetail = () => {
                 {program.prerequisites.length > 0 && (
                   <Card className="border-accent-orange/25 bg-accent-orange/6">
                     <CardContent className="p-6">
-                      <h3 className="font-display text-lg font-semibold text-[hsl(40_95%_75%)] mb-4">
+                      <h3 className="font-display text-lg font-semibold text-[hsl(155_55%_68%)] mb-4">
                         Prerequisites
                       </h3>
                       <ul className="space-y-2">
                         {program.prerequisites.map((prereq, index) => (
                           <li key={index} className="flex items-start gap-2 text-sm text-foreground/85">
-                            <span className="h-1.5 w-1.5 rounded-full bg-[hsl(40_95%_60%)] mt-2" />
+                            <span className="h-1.5 w-1.5 rounded-full bg-accent-orange mt-2" />
                             {prereq}
                           </li>
                         ))}

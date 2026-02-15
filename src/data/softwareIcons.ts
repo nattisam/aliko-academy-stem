@@ -185,7 +185,7 @@ export const iconColorStyles: Record<string, { bg: string; text: string; border:
   },
   "accent-orange": {
     bg: "bg-accent-orange/15",
-    text: "text-[hsl(40_95%_72%)]",
+    text: "text-[hsl(155_55%_68%)]",
     border: "border-accent-orange/40"
   },
   "electrical": {
