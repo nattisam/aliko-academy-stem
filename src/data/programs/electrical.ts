@@ -22,7 +22,8 @@ export const electricalPrograms: Program[] = [
       { title: "Module 3: Protection", topics: ["Protective devices", "Coordination", "Reports"] }
     ],
     alignmentStatement: "Aligned with ETAP professional workflows.",
-    featured: true
+    featured: true,
+    careerOutcomes: ["Power Systems Engineer", "Electrical Designer", "Protection Engineer"]
   },
   {
     id: "digsilent-powerfactory",

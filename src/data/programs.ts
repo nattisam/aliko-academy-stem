@@ -37,6 +37,7 @@ export interface Program {
   alignmentStatement: string;
   externalReferenceLink?: string;
   featured: boolean;
+  careerOutcomes?: string[];
 }
 
 // Import domain-specific programs

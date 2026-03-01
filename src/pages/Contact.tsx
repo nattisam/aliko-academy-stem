@@ -26,7 +26,7 @@ const Contact = () => {
       <section className="gradient-hero py-20 lg:py-28">
         <div className="container-content">
           <h1 className="font-display text-5xl font-extrabold text-foreground">
-            Contact <span className="text-primary text-glow">Us</span>
+            Contact <span className="text-primary">Us</span>
           </h1>
           <p className="mt-5 text-xl text-[hsl(210_30%_82%)] max-w-2xl leading-relaxed">
             Have questions about our programs? Get in touch with our team.

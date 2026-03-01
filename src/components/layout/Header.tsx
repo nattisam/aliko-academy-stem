@@ -52,7 +52,7 @@ export function Header() {
 
         {/* Desktop CTA */}
         <div className="hidden lg:flex lg:items-center lg:gap-3">
-          <Button asChild size="sm" className="font-extrabold bg-accent-orange text-white hover:bg-accent-orange/85 shadow-lg shadow-accent-orange/40 hover:scale-105 transition-all duration-300 px-6 tracking-wide uppercase text-xs">
+          <Button asChild size="sm" className="font-extrabold bg-accent-green text-background hover:bg-accent-green/85 shadow-lg shadow-accent-green/30 hover:-translate-y-0.5 transition-all duration-200 px-6 tracking-wide uppercase text-xs">
             <Link to="/apply">
               Apply Now
             </Link>
@@ -99,7 +99,7 @@ export function Header() {
               </Link>
             ))}
             <div className="pt-4 px-4 space-y-2">
-              <Button asChild className="w-full font-extrabold bg-accent-orange text-white hover:bg-accent-orange/85 shadow-lg shadow-accent-orange/40 tracking-wide uppercase text-xs">
+              <Button asChild className="w-full font-extrabold bg-accent-green text-background hover:bg-accent-green/85 shadow-lg shadow-accent-green/30 tracking-wide uppercase text-xs">
                 <Link to="/apply" onClick={() => setMobileMenuOpen(false)}>
                   Apply Now
                 </Link>

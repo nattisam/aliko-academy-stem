@@ -88,7 +88,7 @@ const Domains = () => {
               </span>
             </div>
             <h1 className="font-display text-4xl lg:text-5xl font-bold text-foreground">
-              Domain-Specific <span className="text-glow text-primary">Engineering Software</span>
+              Domain-Specific <span className="text-primary">Engineering Software</span>
             </h1>
             <p className="mt-4 text-lg text-muted-foreground">
               Explore our comprehensive training programs organized by engineering discipline. 

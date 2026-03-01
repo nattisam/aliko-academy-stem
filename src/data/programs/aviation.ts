@@ -22,7 +22,8 @@ export const aviationPrograms: Program[] = [
       { title: "Module 3: Structural Analysis", topics: ["FEA integration", "Fatigue analysis", "Certification workflows"] }
     ],
     alignmentStatement: "Aligned with Dassault Systèmes aerospace workflows.",
-    featured: true
+    featured: true,
+    careerOutcomes: ["Aerospace Design Engineer", "Aircraft Structures Analyst", "Aviation CAD Specialist"]
   },
   {
     id: "nx-aerospace",
@@ -91,7 +92,8 @@ export const aviationPrograms: Program[] = [
       { title: "Module 3: Thermal & CFD", topics: ["Thermal protection", "External aerodynamics", "Propulsion"] }
     ],
     alignmentStatement: "Aligned with ANSYS aerospace simulation best practices.",
-    featured: true
+    featured: true,
+    careerOutcomes: ["Aerospace Simulation Engineer", "CFD Analyst", "Propulsion Specialist"]
   },
   {
     id: "matlab-aerospace-toolbox",

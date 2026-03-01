@@ -37,8 +37,8 @@ const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
 
 const domainColorMap: Record<string, { bg: string; border: string; text: string; headerBg: string; shadow: string }> = {
   "Civil Engineering": {
-    bg: "bg-accent-orange/12", border: "border-accent-orange/35", text: "text-accent-orange",
-    headerBg: "bg-gradient-to-r from-accent-orange/15 to-transparent", shadow: "shadow-accent-orange/15"
+    bg: "bg-accent-green/12", border: "border-accent-green/35", text: "text-accent-green",
+    headerBg: "bg-gradient-to-r from-accent-green/15 to-transparent", shadow: "shadow-accent-green/15"
   },
   "Structural / BIM & Infrastructure": {
     bg: "bg-primary/12", border: "border-primary/35", text: "text-primary",
@@ -53,8 +53,8 @@ const domainColorMap: Record<string, { bg: string; border: string; text: string;
     headerBg: "bg-gradient-to-r from-accent-green/15 to-transparent", shadow: "shadow-accent-green/15"
   },
   "Chemical Engineering": {
-    bg: "bg-accent-orange/12", border: "border-accent-orange/35", text: "text-accent-orange",
-    headerBg: "bg-gradient-to-r from-accent-orange/15 to-transparent", shadow: "shadow-accent-orange/15"
+    bg: "bg-accent/12", border: "border-accent/35", text: "text-accent",
+    headerBg: "bg-gradient-to-r from-accent/15 to-transparent", shadow: "shadow-accent/15"
   },
   "Electrical Engineering": {
     bg: "bg-[hsl(280_68%_60%)]/12", border: "border-[hsl(280_68%_60%)]/35", text: "text-[hsl(280_68%_75%)]",
@@ -178,7 +178,7 @@ const Programs = () => {
               </span>
             </div>
             <h1 className="font-display text-5xl lg:text-6xl font-extrabold text-foreground leading-tight">
-              Engineering <span className="text-glow text-primary">Software Training</span>
+              Engineering <span className="text-primary">Software Training</span>
             </h1>
             <p className="mt-5 text-xl text-muted-foreground leading-relaxed">
               Browse our comprehensive software training programs by domain. 

@@ -105,7 +105,7 @@ const Apply = () => {
                 <CheckCircle2 className="h-10 w-10 text-accent-green" />
               </div>
               <h1 className="font-display text-4xl lg:text-5xl font-extrabold text-foreground">
-                Thank You for <span className="text-accent-green text-glow-green">Applying</span>
+                Thank You for <span className="text-accent-green">Applying</span>
               </h1>
               <p className="mt-6 text-xl text-[hsl(210_30%_82%)] leading-relaxed">
                 Our academic team will review your application and contact you shortly with next steps.
@@ -135,7 +135,7 @@ const Apply = () => {
               <FileText className="h-8 w-8 text-white" />
             </div>
             <h1 className="font-display text-5xl lg:text-6xl font-extrabold text-foreground leading-tight">
-              Apply to <span className="text-primary text-glow">Aliko Academy</span> STEM
+              Apply to <span className="text-primary">Aliko Academy</span> STEM
             </h1>
             <p className="mt-5 text-xl text-[hsl(210_30%_82%)] leading-relaxed max-w-2xl mx-auto">
               Apply for industry-aligned engineering and STEM training programs designed for students, professionals, and institutions.

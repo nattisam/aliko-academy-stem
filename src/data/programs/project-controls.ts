@@ -22,7 +22,8 @@ export const projectControlsPrograms: Program[] = [
       { title: "Module 3: Management", topics: ["Resources", "Progress", "Reports"] }
     ],
     alignmentStatement: "Aligned with Oracle Primavera P6 professional certification.",
-    featured: true
+    featured: true,
+    careerOutcomes: ["Project Planner", "Scheduling Engineer", "Project Controls Specialist"]
   },
   {
     id: "primavera-cloud",
