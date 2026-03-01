@@ -1,5 +1,5 @@
 import { useState, useMemo } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useSearchParams } from "react-router-dom";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -23,12 +23,15 @@ import {
   User,
   BookOpen,
   Briefcase,
-  Globe,
   FileText,
+  Upload,
+  Loader2,
 } from "lucide-react";
 import { toast } from "sonner";
 import { domains } from "@/data/domains";
 import { programs, getProgramsByDomain, type DomainCategory } from "@/data/programs";
+import { supabase } from "@/integrations/supabase/client";
+import { useAuth } from "@/hooks/useAuth";
 import { cn } from "@/lib/utils";
 
 type ApplicantType = "individual" | "organization" | null;
@@ -39,15 +42,20 @@ const deliveryOptions = ["Online", "Hybrid"];
 const timeframeOptions = ["Immediately available", "Within 1 to 3 months", "Later"];
 
 const Apply = () => {
+  const { user, loading: authLoading } = useAuth();
+  const [searchParams] = useSearchParams();
+  const preselectedProgram = searchParams.get("program") || "";
+
   const [applicantType, setApplicantType] = useState<ApplicantType>(null);
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [agreedToDisclaimer, setAgreedToDisclaimer] = useState(false);
+  const [resumeFile, setResumeFile] = useState<File | null>(null);
 
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
-    email: "",
+    email: user?.email || "",
     phone: "",
     country: "",
     city: "",
@@ -55,7 +63,7 @@ const Apply = () => {
     fieldOfStudy: "",
     yearsExperience: "",
     engineeringDomain: "",
-    programOfInterest: "",
+    programOfInterest: preselectedProgram,
     preferredLevel: "",
     preferredDelivery: "",
     preferredTimeframe: "",
@@ -82,17 +90,95 @@ const Apply = () => {
     });
   };
 
+  // Redirect to login if not authenticated
+  if (!authLoading && !user) {
+    return <Navigate to={`/login?redirect=${encodeURIComponent("/apply")}`} replace />;
+  }
+
+  if (authLoading) {
+    return (
+      <Layout>
+        <div className="flex items-center justify-center min-h-[60vh]">
+          <Loader2 className="h-8 w-8 animate-spin text-primary" />
+        </div>
+      </Layout>
+    );
+  }
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!agreedToDisclaimer) {
       toast.error("Please agree to the disclaimer to proceed.");
       return;
     }
+    if (!user) return;
+
     setIsSubmitting(true);
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    setSubmitted(true);
-    setIsSubmitting(false);
-    toast.success("Application submitted successfully!");
+    try {
+      // Find program in local data to get its DB id
+      const selectedProgram = programs.find(
+        (p) => p.title === formData.programOfInterest
+      );
+
+      // Look up program_id from Supabase by slug
+      let programId: string | null = null;
+      if (selectedProgram) {
+        const { data: dbProgram } = await supabase
+          .from("programs")
+          .select("id")
+          .eq("slug", selectedProgram.slug)
+          .single();
+        programId = dbProgram?.id || null;
+      }
+
+      if (!programId) {
+        toast.error("Please select a valid program.");
+        setIsSubmitting(false);
+        return;
+      }
+
+      // Upload resume if provided
+      let resumeUrl: string | null = null;
+      if (resumeFile) {
+        const fileExt = resumeFile.name.split(".").pop();
+        const filePath = `${user.id}/${Date.now()}.${fileExt}`;
+        const { error: uploadError } = await supabase.storage
+          .from("application-resumes")
+          .upload(filePath, resumeFile);
+        if (uploadError) throw uploadError;
+        resumeUrl = filePath;
+      }
+
+      const { error } = await supabase.from("applications").insert({
+        program_id: programId,
+        user_id: user.id,
+        full_name: `${formData.firstName.trim()} ${formData.lastName.trim()}`,
+        email: formData.email.trim(),
+        phone: formData.phone || null,
+        location: [formData.city, formData.country].filter(Boolean).join(", ") || null,
+        education_level: formData.currentStatus || null,
+        experience_level: formData.yearsExperience ? `${formData.yearsExperience} years` : null,
+        availability: formData.preferredDelivery || null,
+        preferred_start_date: null,
+        notes: [
+          `Field: ${formData.fieldOfStudy}`,
+          `Level: ${formData.preferredLevel}`,
+          `Timeframe: ${formData.preferredTimeframe}`,
+          formData.motivation ? `Motivation: ${formData.motivation}` : "",
+        ].filter(Boolean).join("\n"),
+        resume_url: resumeUrl,
+      });
+
+      if (error) throw error;
+      setSubmitted(true);
+      toast.success("Application submitted successfully!");
+    } catch (err: any) {
+      toast.error("Failed to submit application", {
+        description: err.message || "Please try again.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   if (submitted) {
@@ -107,15 +193,15 @@ const Apply = () => {
               <h1 className="font-display text-4xl lg:text-5xl font-extrabold text-foreground">
                 Thank You for <span className="text-accent-green">Applying</span>
               </h1>
-              <p className="mt-6 text-xl text-[hsl(210_30%_82%)] leading-relaxed">
+              <p className="mt-6 text-xl text-muted-foreground leading-relaxed">
                 Our academic team will review your application and contact you shortly with next steps.
               </p>
               <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
                 <Button asChild variant="hero" size="lg">
-                  <Link to="/programs">Browse Programs</Link>
+                  <Link to="/my-applications">View My Applications</Link>
                 </Button>
                 <Button asChild variant="outline" size="lg">
-                  <Link to="/">Back to Home</Link>
+                  <Link to="/programs">Browse Programs</Link>
                 </Button>
               </div>
             </div>
@@ -137,12 +223,12 @@ const Apply = () => {
             <h1 className="font-display text-5xl lg:text-6xl font-extrabold text-foreground leading-tight">
               Apply to <span className="text-primary">Aliko Academy</span> STEM
             </h1>
-            <p className="mt-5 text-xl text-[hsl(210_30%_82%)] leading-relaxed max-w-2xl mx-auto">
-              Apply for industry-aligned engineering and STEM training programs designed for students, professionals, and institutions.
+            <p className="mt-5 text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto">
+              Apply for industry-aligned engineering and STEM training programs.
             </p>
             <p className="mt-4 text-base text-accent-green font-semibold flex items-center justify-center gap-2">
               <Shield className="h-4 w-4" />
-              Applications are reviewed by our academic team. No payment is required at this stage.
+              No payment required at this stage.
             </p>
           </div>
         </div>
@@ -155,12 +241,11 @@ const Apply = () => {
             <h2 className="font-display text-3xl font-bold text-foreground text-center mb-4">
               Select Your <span className="text-primary">Application Type</span>
             </h2>
-            <p className="text-center text-[hsl(210_30%_78%)] mb-10">
+            <p className="text-center text-muted-foreground mb-10">
               Choose the option that best describes you.
             </p>
 
             <div className="grid sm:grid-cols-2 gap-6 mb-12">
-              {/* Individual Card */}
               <button
                 onClick={() => setApplicantType("individual")}
                 className={cn(
@@ -173,43 +258,32 @@ const Apply = () => {
                 <div className="h-14 w-14 rounded-xl bg-primary/15 border border-primary/30 flex items-center justify-center mb-5">
                   <User className="h-7 w-7 text-primary" />
                 </div>
-                <h3 className="font-display text-xl font-bold text-foreground mb-2">
-                  Individual Applicant
-                </h3>
-                <p className="text-[hsl(210_30%_78%)] leading-relaxed">
-                  Student or professional applying for a training program.
-                </p>
+                <h3 className="font-display text-xl font-bold text-foreground mb-2">Individual Applicant</h3>
+                <p className="text-muted-foreground leading-relaxed">Student or professional applying for a training program.</p>
                 {applicantType === "individual" && (
                   <div className="mt-4 flex items-center gap-2 text-sm font-bold text-primary">
-                    <CheckCircle2 className="h-4 w-4" />
-                    Selected
+                    <CheckCircle2 className="h-4 w-4" /> Selected
                   </div>
                 )}
               </button>
 
-              {/* Organization Card */}
               <button
                 onClick={() => setApplicantType("organization")}
                 className={cn(
                   "text-left p-7 rounded-2xl border-2 transition-all duration-300 group",
                   applicantType === "organization"
-                    ? "border-accent-orange bg-accent-orange/10 shadow-2xl shadow-accent-orange/20"
-                    : "border-divider bg-card hover:border-accent-orange/40 hover:shadow-xl hover:shadow-accent-orange/10"
+                    ? "border-accent bg-accent/10 shadow-2xl shadow-accent/20"
+                    : "border-divider bg-card hover:border-accent/40 hover:shadow-xl hover:shadow-accent/10"
                 )}
               >
-                <div className="h-14 w-14 rounded-xl bg-accent-orange/15 border border-accent-orange/30 flex items-center justify-center mb-5">
-                  <Building2 className="h-7 w-7 text-accent-orange" />
+                <div className="h-14 w-14 rounded-xl bg-accent/15 border border-accent/30 flex items-center justify-center mb-5">
+                  <Building2 className="h-7 w-7 text-accent" />
                 </div>
-                <h3 className="font-display text-xl font-bold text-foreground mb-2">
-                  Organization / University / Enterprise
-                </h3>
-                <p className="text-[hsl(210_30%_78%)] leading-relaxed">
-                  Group, institutional, or enterprise training inquiry.
-                </p>
+                <h3 className="font-display text-xl font-bold text-foreground mb-2">Organization / Enterprise</h3>
+                <p className="text-muted-foreground leading-relaxed">Group, institutional, or enterprise training inquiry.</p>
                 {applicantType === "organization" && (
-                  <div className="mt-4 flex items-center gap-2 text-sm font-bold text-accent-orange">
-                    <CheckCircle2 className="h-4 w-4" />
-                    Selected
+                  <div className="mt-4 flex items-center gap-2 text-sm font-bold text-accent">
+                    <CheckCircle2 className="h-4 w-4" /> Selected
                   </div>
                 )}
               </button>
@@ -217,20 +291,15 @@ const Apply = () => {
 
             {/* Organization Redirect */}
             {applicantType === "organization" && (
-              <Card className="border-accent-orange/30 bg-accent-orange/8 shadow-xl">
+              <Card className="border-accent/30 bg-accent/8 shadow-xl">
                 <CardContent className="p-8 text-center">
-                  <Building2 className="h-12 w-12 text-accent-orange mx-auto mb-4" />
-                  <h3 className="font-display text-2xl font-bold text-foreground mb-3">
-                    Enterprise & Institutional Training
-                  </h3>
-                  <p className="text-[hsl(210_30%_82%)] mb-6 max-w-md mx-auto leading-relaxed">
-                    For group, institutional, or enterprise training, please submit a training request through our Enterprise Training page.
+                  <Building2 className="h-12 w-12 text-accent mx-auto mb-4" />
+                  <h3 className="font-display text-2xl font-bold text-foreground mb-3">Enterprise & Institutional Training</h3>
+                  <p className="text-muted-foreground mb-6 max-w-md mx-auto leading-relaxed">
+                    For group or enterprise training, please submit a request through our Enterprise page.
                   </p>
                   <Button asChild variant="hero" size="lg">
-                    <Link to="/enterprise">
-                      Go to Enterprise Training
-                      <ArrowRight className="ml-2 h-5 w-5" />
-                    </Link>
+                    <Link to="/enterprise">Go to Enterprise Training <ArrowRight className="ml-2 h-5 w-5" /></Link>
                   </Button>
                 </CardContent>
               </Card>
@@ -265,8 +334,8 @@ const Apply = () => {
                           <Input id="email" type="email" required value={formData.email} onChange={(e) => updateField("email", e.target.value)} placeholder="you@email.com" className="h-12" />
                         </div>
                         <div className="space-y-2">
-                          <Label htmlFor="phone" className="font-bold">Phone Number *</Label>
-                          <Input id="phone" type="tel" required value={formData.phone} onChange={(e) => updateField("phone", e.target.value)} placeholder="+1 234 567 8900" className="h-12" />
+                          <Label htmlFor="phone" className="font-bold">Phone Number</Label>
+                          <Input id="phone" type="tel" value={formData.phone} onChange={(e) => updateField("phone", e.target.value)} placeholder="+1 234 567 8900" className="h-12" />
                         </div>
                       </div>
                       <div className="grid sm:grid-cols-2 gap-5 mt-5">
@@ -300,13 +369,13 @@ const Apply = () => {
                           </Select>
                         </div>
                         <div className="space-y-2">
-                          <Label htmlFor="yearsExperience" className="font-bold">Years of Experience <span className="text-muted-foreground font-normal">(if applicable)</span></Label>
+                          <Label htmlFor="yearsExperience" className="font-bold">Years of Experience</Label>
                           <Input id="yearsExperience" type="number" min="0" value={formData.yearsExperience} onChange={(e) => updateField("yearsExperience", e.target.value)} placeholder="e.g., 3" className="h-12" />
                         </div>
                       </div>
                       <div className="mt-5 space-y-2">
                         <Label htmlFor="fieldOfStudy" className="font-bold">Field of Study / Work Background *</Label>
-                        <Input id="fieldOfStudy" required value={formData.fieldOfStudy} onChange={(e) => updateField("fieldOfStudy", e.target.value)} placeholder="e.g., Civil Engineering, Mechanical Design" className="h-12" />
+                        <Input id="fieldOfStudy" required value={formData.fieldOfStudy} onChange={(e) => updateField("fieldOfStudy", e.target.value)} placeholder="e.g., Civil Engineering" className="h-12" />
                       </div>
                     </div>
 
@@ -369,21 +438,55 @@ const Apply = () => {
                       </div>
                     </div>
 
-                    {/* D. Motivation */}
+                    {/* D. Resume Upload */}
                     <div>
                       <div className="flex items-center gap-3 mb-6">
-                        <div className="h-10 w-10 rounded-lg bg-accent-orange/15 border border-accent-orange/30 flex items-center justify-center">
-                          <GraduationCap className="h-5 w-5 text-accent-orange" />
+                        <div className="h-10 w-10 rounded-lg bg-primary/15 border border-primary/30 flex items-center justify-center">
+                          <Upload className="h-5 w-5 text-primary" />
                         </div>
-                        <h3 className="font-display text-xl font-bold text-accent-orange">Motivation</h3>
+                        <h3 className="font-display text-xl font-bold text-primary">Resume / CV</h3>
                       </div>
                       <div className="space-y-2">
-                        <Label htmlFor="motivation" className="font-bold">Why are you interested in this program? *</Label>
-                        <Textarea id="motivation" required rows={4} value={formData.motivation} onChange={(e) => updateField("motivation", e.target.value)} placeholder="Tell us about your goals and what you hope to achieve..." />
+                        <Label htmlFor="resume" className="font-bold">Upload Resume <span className="text-muted-foreground font-normal">(PDF, DOC, DOCX — max 10MB)</span></Label>
+                        <Input
+                          id="resume"
+                          type="file"
+                          accept=".pdf,.doc,.docx"
+                          onChange={(e) => {
+                            const file = e.target.files?.[0];
+                            if (file && file.size > 10 * 1024 * 1024) {
+                              toast.error("File too large. Max 10MB.");
+                              e.target.value = "";
+                              return;
+                            }
+                            setResumeFile(file || null);
+                          }}
+                          className="h-12"
+                        />
+                        {resumeFile && (
+                          <p className="text-sm text-accent-green font-medium flex items-center gap-2">
+                            <CheckCircle2 className="h-4 w-4" />
+                            {resumeFile.name}
+                          </p>
+                        )}
                       </div>
                     </div>
 
-                    {/* E. Disclaimer */}
+                    {/* E. Motivation */}
+                    <div>
+                      <div className="flex items-center gap-3 mb-6">
+                        <div className="h-10 w-10 rounded-lg bg-accent-green/15 border border-accent-green/30 flex items-center justify-center">
+                          <GraduationCap className="h-5 w-5 text-accent-green" />
+                        </div>
+                        <h3 className="font-display text-xl font-bold text-accent-green">Motivation</h3>
+                      </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="motivation" className="font-bold">Why are you interested in this program?</Label>
+                        <Textarea id="motivation" rows={4} value={formData.motivation} onChange={(e) => updateField("motivation", e.target.value)} placeholder="Tell us about your goals..." />
+                      </div>
+                    </div>
+
+                    {/* F. Disclaimer */}
                     <div className="p-6 rounded-xl bg-secondary/50 border border-divider">
                       <div className="flex items-start space-x-3">
                         <Checkbox
@@ -392,8 +495,8 @@ const Apply = () => {
                           onCheckedChange={(checked) => setAgreedToDisclaimer(checked === true)}
                           className="mt-1"
                         />
-                        <label htmlFor="disclaimer" className="text-sm text-[hsl(210_30%_82%)] leading-relaxed cursor-pointer">
-                          I understand that Aliko Academy STEM provides training and preparation only. Certifications, licenses, and exams are administered by third-party organizations, and admission or exam outcomes are not guaranteed.
+                        <label htmlFor="disclaimer" className="text-sm text-muted-foreground leading-relaxed cursor-pointer">
+                          I understand that Aliko Academy STEM provides training and preparation only. Certifications and exams are administered by third-party organizations, and outcomes are not guaranteed.
                         </label>
                       </div>
                     </div>
@@ -407,10 +510,19 @@ const Apply = () => {
                         className="w-full sm:w-auto"
                         disabled={isSubmitting || !agreedToDisclaimer}
                       >
-                        {isSubmitting ? "Submitting..." : "Submit Application"}
-                        <ArrowRight className="ml-2 h-5 w-5" />
+                        {isSubmitting ? (
+                          <>
+                            <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                            Submitting...
+                          </>
+                        ) : (
+                          <>
+                            Submit Application
+                            <ArrowRight className="ml-2 h-5 w-5" />
+                          </>
+                        )}
                       </Button>
-                      <p className="mt-4 text-sm text-[hsl(210_30%_78%)]">
+                      <p className="mt-4 text-sm text-muted-foreground">
                         Our team will review your application and contact you with next steps.
                       </p>
                     </div>

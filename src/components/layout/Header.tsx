@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { Menu, X, LogIn, User } from "lucide-react";
 import logoImg from "@/assets/aliko-stem-logo.png";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { useAuth } from "@/hooks/useAuth";
 
 const navigation = [
   { name: "Home", href: "/" },
@@ -18,6 +19,7 @@ const navigation = [
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
+  const { user, loading } = useAuth();
 
   const isActive = (path: string) => {
     if (path === "/") return location.pathname === "/";
@@ -57,11 +59,21 @@ export function Header() {
               Apply Now
             </Link>
           </Button>
-          <Button asChild size="sm" className="font-bold bg-primary hover:bg-primary/90 text-white shadow-lg shadow-primary/30 px-5">
-            <Link to="/student-login">
-              Student Login
-            </Link>
-          </Button>
+          {!loading && user ? (
+            <Button asChild size="sm" className="font-bold bg-primary hover:bg-primary/90 text-white shadow-lg shadow-primary/30 px-5">
+              <Link to="/my-applications">
+                <User className="h-4 w-4 mr-1.5" />
+                My Apps
+              </Link>
+            </Button>
+          ) : (
+            <Button asChild size="sm" className="font-bold bg-primary hover:bg-primary/90 text-white shadow-lg shadow-primary/30 px-5">
+              <Link to="/login">
+                <LogIn className="h-4 w-4 mr-1.5" />
+                Sign In
+              </Link>
+            </Button>
+          )}
         </div>
 
         {/* Mobile Menu Button */}
@@ -104,11 +116,19 @@ export function Header() {
                   Apply Now
                 </Link>
               </Button>
-              <Button asChild className="w-full font-bold bg-primary text-white">
-                <Link to="/student-login" onClick={() => setMobileMenuOpen(false)}>
-                  Student Login
-                </Link>
-              </Button>
+              {!loading && user ? (
+                <Button asChild className="w-full font-bold bg-primary text-white">
+                  <Link to="/my-applications" onClick={() => setMobileMenuOpen(false)}>
+                    My Applications
+                  </Link>
+                </Button>
+              ) : (
+                <Button asChild className="w-full font-bold bg-primary text-white">
+                  <Link to="/login" onClick={() => setMobileMenuOpen(false)}>
+                    Sign In
+                  </Link>
+                </Button>
+              )}
             </div>
           </div>
         </div>
