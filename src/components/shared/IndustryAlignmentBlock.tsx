@@ -1,3 +1,5 @@
+import { useRef } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import autodeskLogo from "@/assets/vendors/autodesk.jpg";
 import bentleyLogo from "@/assets/vendors/bentley.jpg";
 import esriLogo from "@/assets/vendors/esri.jpg";
@@ -13,18 +15,26 @@ interface IndustryAlignmentBlockProps {
 }
 
 const ecosystems = [
-  { name: "Autodesk", logo: autodeskLogo, description: "BIM, CAD & Infrastructure" },
-  { name: "Bentley Systems", logo: bentleyLogo, description: "Infrastructure Engineering" },
-  { name: "Esri", logo: esriLogo, description: "GIS & Spatial Analysis" },
-  { name: "MathWorks", logo: mathworksLogo, description: "MATLAB & Simulink" },
-  { name: "Siemens", logo: siemensLogo, description: "Industrial Automation" },
-  { name: "Oracle", logo: oracleLogo, description: "Primavera Project Controls" },
-  { name: "ANSYS", logo: ansysLogo, description: "Engineering Simulation" },
-  { name: "Trimble", logo: trimbleLogo, description: "Construction Technology" },
-  { name: "Dassault Systèmes", logo: dassaultLogo, description: "SOLIDWORKS & 3D Design" },
+  { name: "Autodesk", logo: autodeskLogo },
+  { name: "Bentley Systems", logo: bentleyLogo },
+  { name: "Esri", logo: esriLogo },
+  { name: "MathWorks", logo: mathworksLogo },
+  { name: "Siemens", logo: siemensLogo },
+  { name: "Oracle", logo: oracleLogo },
+  { name: "ANSYS", logo: ansysLogo },
+  { name: "Trimble", logo: trimbleLogo },
+  { name: "Dassault Systèmes", logo: dassaultLogo },
 ];
 
 export function IndustryAlignmentBlock({ variant = "default" }: IndustryAlignmentBlockProps) {
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  const scroll = (dir: "left" | "right") => {
+    if (!scrollRef.current) return;
+    const amount = 220;
+    scrollRef.current.scrollBy({ left: dir === "left" ? -amount : amount, behavior: "smooth" });
+  };
+
   if (variant === "compact") {
     return (
       <div className="bg-secondary/50 rounded-lg p-4 border border-divider">
@@ -49,34 +59,52 @@ export function IndustryAlignmentBlock({ variant = "default" }: IndustryAlignmen
             engineering platforms and vendor ecosystems.
           </p>
         </div>
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-5 max-w-5xl mx-auto">
-          {ecosystems.slice(0, 5).map((eco) => (
-            <div
-              key={eco.name}
-              className="bg-card border border-divider rounded-xl p-4 flex flex-col items-center text-center card-hover"
-            >
-              <div className="w-16 h-16 rounded-lg overflow-hidden mb-3">
-                <img src={eco.logo} alt={eco.name} className="w-full h-full object-cover" />
+
+        <div className="relative group">
+          {/* Left arrow */}
+          <button
+            onClick={() => scroll("left")}
+            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-background/80 backdrop-blur-sm rounded-full p-2 border border-divider opacity-0 group-hover:opacity-100 transition-opacity duration-200 hover:bg-background"
+            aria-label="Scroll left"
+          >
+            <ChevronLeft className="h-5 w-5 text-foreground" />
+          </button>
+
+          {/* Scrollable track */}
+          <div
+            ref={scrollRef}
+            className="flex gap-8 overflow-x-auto scrollbar-hide py-4 px-2"
+            style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+          >
+            {ecosystems.map((eco) => (
+              <div
+                key={eco.name}
+                className="flex-shrink-0 flex flex-col items-center gap-3 group/item cursor-default"
+              >
+                <div className="w-28 h-28 sm:w-32 sm:h-32 rounded-2xl overflow-hidden transition-transform duration-300 group-hover/item:scale-110">
+                  <img
+                    src={eco.logo}
+                    alt={eco.name}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <span className="text-sm font-semibold text-foreground whitespace-nowrap">
+                  {eco.name}
+                </span>
               </div>
-              <h3 className="text-sm font-bold text-foreground leading-tight">{eco.name}</h3>
-              <p className="text-xs text-muted-foreground mt-1">{eco.description}</p>
-            </div>
-          ))}
+            ))}
+          </div>
+
+          {/* Right arrow */}
+          <button
+            onClick={() => scroll("right")}
+            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-background/80 backdrop-blur-sm rounded-full p-2 border border-divider opacity-0 group-hover:opacity-100 transition-opacity duration-200 hover:bg-background"
+            aria-label="Scroll right"
+          >
+            <ChevronRight className="h-5 w-5 text-foreground" />
+          </button>
         </div>
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-5 max-w-4xl mx-auto mt-5">
-          {ecosystems.slice(5).map((eco) => (
-            <div
-              key={eco.name}
-              className="bg-card border border-divider rounded-xl p-4 flex flex-col items-center text-center card-hover"
-            >
-              <div className="w-16 h-16 rounded-lg overflow-hidden mb-3">
-                <img src={eco.logo} alt={eco.name} className="w-full h-full object-cover" />
-              </div>
-              <h3 className="text-sm font-bold text-foreground leading-tight">{eco.name}</h3>
-              <p className="text-xs text-muted-foreground mt-1">{eco.description}</p>
-            </div>
-          ))}
-        </div>
+
         <p className="mt-10 text-sm text-muted-foreground text-center max-w-3xl mx-auto">
           Certification exams and credentials are administered by third-party vendors. 
           Aliko Academy STEM provides training and preparation only.
