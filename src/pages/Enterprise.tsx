@@ -27,6 +27,7 @@ import {
   MonitorPlay
 } from "lucide-react";
 import { toast } from "sonner";
+import { supabase } from "@/integrations/supabase/client";
 
 const whoWeServe = [
   { icon: Factory, title: "Engineering & Construction Firms", description: "EPC contractors and engineering consultancies", iconBg: "bg-primary/15 border border-primary/30", iconColor: "text-primary" },
@@ -80,24 +81,37 @@ const Enterprise = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    toast.success("Thank you for your inquiry!", {
-      description: "Our enterprise training team will contact you within 2 business days.",
-    });
-    setFormData({
-      organizationName: "",
-      contactName: "",
-      email: "",
-      phone: "",
-      organizationType: "",
-      trainingAreas: [],
-      participantCount: "",
-      deliveryPreference: "",
-      location: "",
-      timeframe: "",
-      notes: "",
-    });
-    setIsSubmitting(false);
+    try {
+      const { error } = await supabase.from("inquiries").insert({
+        type: "enterprise" as const,
+        full_name: formData.contactName.trim(),
+        email: formData.email.trim(),
+        phone: formData.phone || null,
+        org_name: formData.organizationName.trim(),
+        message: [
+          `Organization Type: ${formData.organizationType}`,
+          `Training Areas: ${formData.trainingAreas.join(", ")}`,
+          `Participants: ${formData.participantCount}`,
+          `Delivery: ${formData.deliveryPreference}`,
+          `Location: ${formData.location}`,
+          `Timeframe: ${formData.timeframe}`,
+          formData.notes ? `Notes: ${formData.notes}` : "",
+        ].filter(Boolean).join("\n"),
+      });
+      if (error) throw error;
+      toast.success("Thank you for your inquiry!", {
+        description: "Our enterprise training team will contact you within 2 business days.",
+      });
+      setFormData({
+        organizationName: "", contactName: "", email: "", phone: "",
+        organizationType: "", trainingAreas: [], participantCount: "",
+        deliveryPreference: "", location: "", timeframe: "", notes: "",
+      });
+    } catch (err: any) {
+      toast.error("Failed to submit", { description: err.message || "Please try again." });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const toggleTrainingArea = (area: string) => {
