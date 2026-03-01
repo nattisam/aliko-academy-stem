@@ -1,13 +1,12 @@
-import { useState, useMemo } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { Layout } from "@/components/layout/Layout";
 import { AudienceStrip } from "@/components/shared/AudienceStrip";
 import { IndustryAlignmentBlock } from "@/components/shared/IndustryAlignmentBlock";
-import { ProgramCard } from "@/components/programs/ProgramCard";
+import { FeaturedProgramCard } from "@/components/programs/FeaturedProgramCard";
 import { EnhancedDomainCard } from "@/components/domains/EnhancedDomainCard";
-import { getFeaturedPrograms, programs } from "@/data/programs";
+import { getFeaturedPrograms } from "@/data/programs";
 import { domains } from "@/data/domains";
 import heroBg from "@/assets/hero-bg.jpg";
 
@@ -17,30 +16,8 @@ const enterpriseBenefits = [
   "Onsite, hybrid, or fully online delivery",
 ];
 
-const domainFilters = [
-  { id: "all", label: "All Programs", color: "primary" },
-  { id: "civil", label: "Civil", color: "accent-green" },
-  { id: "structural-bim", label: "Structural & BIM", color: "primary" },
-  { id: "mechanical", label: "Mechanical", color: "accent-green" },
-  { id: "electrical", label: "Electrical", color: "electrical" },
-  { id: "architectural", label: "Architectural", color: "accent" },
-  { id: "project-controls", label: "Project Controls", color: "primary" },
-];
-
 const Index = () => {
-  const [activeFilter, setActiveFilter] = useState("all");
-  const featuredPrograms = getFeaturedPrograms();
-  
-  const filteredPrograms = useMemo(() => {
-    if (activeFilter === "all") {
-      return featuredPrograms.slice(0, 6);
-    }
-    const domain = domains.find(d => d.id === activeFilter);
-    if (!domain) return featuredPrograms.slice(0, 6);
-    
-    const domainPrograms = programs.filter(p => p.domain === domain.name);
-    return domainPrograms.slice(0, 6);
-  }, [activeFilter, featuredPrograms]);
+  const featuredPrograms = getFeaturedPrograms().slice(0, 4);
 
   return (
     <Layout>
@@ -81,10 +58,10 @@ const Index = () => {
       {/* Featured Programs */}
       <section className="section-padding bg-blue-section">
         <div className="container-content">
-          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8">
+          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10">
             <div>
               <h2 className="font-display text-4xl font-bold text-white">
-                Featured <span className="text-accent-cyan">Programs</span>
+                Featured <span className="text-primary">Programs</span>
               </h2>
               <p className="mt-3 text-lg text-muted-foreground">
                 Popular training programs across engineering disciplines
@@ -92,50 +69,17 @@ const Index = () => {
             </div>
             <Button asChild variant="outline" size="lg">
               <Link to="/programs">
-                View All Programs
+                Explore All Programs
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
           </div>
           
-          {/* Domain Filter Tabs */}
-          <div className="flex flex-wrap gap-2 mb-10">
-            {domainFilters.map((filter) => (
-              <button
-                key={filter.id}
-                onClick={() => setActiveFilter(filter.id)}
-                className={`
-                  px-5 py-2.5 rounded-full text-sm font-bold transition-all duration-200
-                  ${activeFilter === filter.id 
-                    ? 'shadow-lg' 
-                    : 'bg-secondary text-muted-foreground hover:text-foreground hover:bg-muted border border-divider'
-                  }
-                `}
-                style={activeFilter === filter.id ? {
-                  backgroundColor: filter.color === 'primary' ? 'hsl(var(--primary))' :
-                                   filter.color === 'accent' ? 'hsl(var(--accent))' :
-                                   filter.color === 'accent-green' ? 'hsl(var(--accent-green))' :
-                                   filter.color === 'electrical' ? 'hsl(var(--electrical))' :
-                                   'hsl(var(--primary))',
-                  color: 'white',
-                } : undefined}
-              >
-                {filter.label}
-              </button>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {featuredPrograms.map((program) => (
+              <FeaturedProgramCard key={program.id} program={program} />
             ))}
           </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredPrograms.map((program) => (
-              <ProgramCard key={program.id} program={program} />
-            ))}
-          </div>
-          
-          {filteredPrograms.length === 0 && (
-            <div className="text-center py-16 text-muted-foreground">
-              <p className="text-lg">No programs found in this domain. Check back soon!</p>
-            </div>
-          )}
         </div>
       </section>
 
