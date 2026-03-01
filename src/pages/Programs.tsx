@@ -103,6 +103,10 @@ const Programs = () => {
     
     if (filteredPrograms.length === 0) return null;
 
+    const maxVisible = 4;
+    const visiblePrograms = filteredPrograms.slice(0, maxVisible);
+    const hasMore = filteredPrograms.length > maxVisible;
+
     return (
       <AccordionItem 
         key={domainName} 
@@ -140,11 +144,22 @@ const Programs = () => {
           </div>
         </AccordionTrigger>
         <AccordionContent className="px-7 py-7 bg-card/50">
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
-            {filteredPrograms.map((program) => (
-              <ProgramCard key={program.id} program={program} variant="visual" />
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-5">
+            {visiblePrograms.map((program) => (
+              <ProgramCard key={program.id} program={program} variant="thumbnail" />
             ))}
           </div>
+          
+          {hasMore && (
+            <div className="mt-6 text-center">
+              <Button asChild variant="outline" size="sm" className={cn("font-bold", colorStyle.text, colorStyle.border)}>
+                <Link to={`/programs?domain=${encodeURIComponent(domainName)}`}>
+                  Explore All {filteredPrograms.length} Programs
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
+              </Button>
+            </div>
+          )}
           
           {domain && (
             <div className={cn(

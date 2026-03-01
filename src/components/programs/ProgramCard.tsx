@@ -6,10 +6,11 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Calendar, Clock } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { getSoftwareIcon, iconColorStyles } from "@/data/softwareIcons";
+import { getProgramThumbnail } from "@/data/programThumbnails";
 
 interface ProgramCardProps {
   program: Program;
-  variant?: "default" | "compact" | "visual";
+  variant?: "default" | "compact" | "visual" | "thumbnail";
 }
 
 export function ProgramCard({ program, variant = "default" }: ProgramCardProps) {
@@ -26,6 +27,46 @@ export function ProgramCard({ program, variant = "default" }: ProgramCardProps) 
 
   const softwareIcon = getSoftwareIcon(program.slug);
   const colorStyle = iconColorStyles[softwareIcon.color] || iconColorStyles["primary"];
+  const thumbnail = getProgramThumbnail(program.slug);
+
+  // Thumbnail variant - image-focused card
+  if (variant === "thumbnail") {
+    return (
+      <Link to={`/programs/${program.slug}`} className="group">
+        <Card className="border border-divider overflow-hidden h-full transition-all duration-300 hover:shadow-xl hover:-translate-y-1 bg-card">
+          <div className="aspect-square overflow-hidden">
+            {thumbnail ? (
+              <img
+                src={thumbnail}
+                alt={program.title}
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+              />
+            ) : (
+              <div className={cn(
+                "w-full h-full flex items-center justify-center text-3xl font-extrabold",
+                colorStyle.bg, colorStyle.text
+              )}>
+                {softwareIcon.initials}
+              </div>
+            )}
+          </div>
+          <CardContent className="p-4">
+            <h3 className="font-display font-bold text-sm text-foreground group-hover:text-primary transition-colors line-clamp-2">
+              {program.title}
+            </h3>
+            <span className={cn("text-xs font-semibold", colorStyle.text)}>
+              {softwareIcon.vendor}
+            </span>
+            <div className="flex items-center gap-2 mt-2">
+              <Badge variant="outline" className={cn("text-[10px]", levelClasses[program.level])}>
+                {program.level}
+              </Badge>
+            </div>
+          </CardContent>
+        </Card>
+      </Link>
+    );
+  }
 
   // Visual variant - icon-focused with minimal text
   if (variant === "visual") {
@@ -133,7 +174,6 @@ export function ProgramCard({ program, variant = "default" }: ProgramCardProps) 
           {program.shortDescription}
         </p>
         
-        {/* Bullet highlights */}
         <ul className="mt-4 space-y-1.5">
           {highlights.map((skill, i) => (
             <li key={i} className="flex items-center gap-2 text-sm text-muted-foreground">
