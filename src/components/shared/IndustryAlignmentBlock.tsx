@@ -1,5 +1,4 @@
-import { useRef } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useRef, useEffect, useCallback } from "react";
 import autodeskLogo from "@/assets/vendors/autodesk.jpg";
 import bentleyLogo from "@/assets/vendors/bentley.jpg";
 import esriLogo from "@/assets/vendors/esri.jpg";
@@ -26,14 +25,35 @@ const ecosystems = [
   { name: "Dassault Systèmes", logo: dassaultLogo },
 ];
 
+// Double the items for seamless infinite loop
+const loopItems = [...ecosystems, ...ecosystems];
+
 export function IndustryAlignmentBlock({ variant = "default" }: IndustryAlignmentBlockProps) {
   const scrollRef = useRef<HTMLDivElement>(null);
+  const animRef = useRef<number>();
+  const pausedRef = useRef(false);
 
-  const scroll = (dir: "left" | "right") => {
-    if (!scrollRef.current) return;
-    const amount = 220;
-    scrollRef.current.scrollBy({ left: dir === "left" ? -amount : amount, behavior: "smooth" });
-  };
+  const step = useCallback(() => {
+    const el = scrollRef.current;
+    if (!el || pausedRef.current) {
+      animRef.current = requestAnimationFrame(step);
+      return;
+    }
+    el.scrollLeft += 0.5;
+    // Reset seamlessly when first set scrolls out
+    const halfWidth = el.scrollWidth / 2;
+    if (el.scrollLeft >= halfWidth) {
+      el.scrollLeft = 0;
+    }
+    animRef.current = requestAnimationFrame(step);
+  }, []);
+
+  useEffect(() => {
+    animRef.current = requestAnimationFrame(step);
+    return () => {
+      if (animRef.current) cancelAnimationFrame(animRef.current);
+    };
+  }, [step]);
 
   if (variant === "compact") {
     return (
@@ -60,25 +80,18 @@ export function IndustryAlignmentBlock({ variant = "default" }: IndustryAlignmen
           </p>
         </div>
 
-        <div className="relative group">
-          {/* Left arrow */}
-          <button
-            onClick={() => scroll("left")}
-            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-background/80 backdrop-blur-sm rounded-full p-2 border border-divider opacity-0 group-hover:opacity-100 transition-opacity duration-200 hover:bg-background"
-            aria-label="Scroll left"
-          >
-            <ChevronLeft className="h-5 w-5 text-foreground" />
-          </button>
-
-          {/* Scrollable track */}
+        <div
+          className="overflow-hidden"
+          onMouseEnter={() => (pausedRef.current = true)}
+          onMouseLeave={() => (pausedRef.current = false)}
+        >
           <div
             ref={scrollRef}
-            className="flex gap-8 overflow-x-auto scrollbar-hide py-4 px-2"
-            style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+            className="flex gap-10 overflow-x-hidden py-4"
           >
-            {ecosystems.map((eco) => (
+            {loopItems.map((eco, i) => (
               <div
-                key={eco.name}
+                key={`${eco.name}-${i}`}
                 className="flex-shrink-0 flex flex-col items-center gap-3 group/item cursor-default"
               >
                 <div className="w-28 h-28 sm:w-32 sm:h-32 rounded-2xl overflow-hidden transition-transform duration-300 group-hover/item:scale-110">
@@ -94,15 +107,6 @@ export function IndustryAlignmentBlock({ variant = "default" }: IndustryAlignmen
               </div>
             ))}
           </div>
-
-          {/* Right arrow */}
-          <button
-            onClick={() => scroll("right")}
-            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-background/80 backdrop-blur-sm rounded-full p-2 border border-divider opacity-0 group-hover:opacity-100 transition-opacity duration-200 hover:bg-background"
-            aria-label="Scroll right"
-          >
-            <ChevronRight className="h-5 w-5 text-foreground" />
-          </button>
         </div>
 
         <p className="mt-10 text-sm text-muted-foreground text-center max-w-3xl mx-auto">
