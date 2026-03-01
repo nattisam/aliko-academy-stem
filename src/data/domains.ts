@@ -22,7 +22,7 @@ export const domains: Domain[] = [
     introText: "Civil and structural engineering software powers the design of roads, bridges, buildings, water systems, and geotechnical projects. Our programs cover industry-standard tools for structural analysis, terrain modeling, drainage design, and construction documentation.",
     progressionPath: "AutoCAD → Civil 3D / MicroStation → ETABS / SAP2000 → Advanced Analysis (PLAXIS, MIDAS)",
     icon: "Building2",
-    color: "accent-orange",
+    color: "accent-green",
     topPrograms: ["autocad", "civil-3d", "etabs", "revit-structure"]
   },
   {
@@ -44,7 +44,7 @@ export const domains: Domain[] = [
     introText: "Chemical engineering software enables process simulation, plant modeling, and optimization for oil & gas, chemicals, pharmaceuticals, energy, and manufacturing industries. Our programs cover applied workflows in industry-standard simulation and design tools.",
     progressionPath: "DWSIM → Aspen HYSYS / Aspen Plus → CHEMCAD / PRO/II → gPROMS → COMSOL / MATLAB",
     icon: "FlaskConical",
-    color: "accent-orange",
+    color: "accent",
     topPrograms: ["aspen-hysys", "aspen-plus", "chemcad", "dwsim"]
   },
   {

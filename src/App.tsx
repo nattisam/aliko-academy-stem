@@ -22,6 +22,15 @@ import Apply from "./pages/Apply";
 import MyApplications from "./pages/MyApplications";
 import NotFound from "./pages/NotFound";
 
+// Admin pages
+import { AdminGuard } from "./components/admin/AdminGuard";
+import AdminOverview from "./pages/admin/Overview";
+import AdminPrograms from "./pages/admin/Programs";
+import AdminApplications from "./pages/admin/Applications";
+import AdminInquiries from "./pages/admin/Inquiries";
+import AdminUsers from "./pages/admin/Users";
+import AdminAudit from "./pages/admin/AuditLog";
+
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -48,7 +57,15 @@ const App = () => (
           <Route path="/reset-password" element={<ResetPassword />} />
           <Route path="/apply" element={<Apply />} />
           <Route path="/my-applications" element={<MyApplications />} />
-          {/* Redirect old domains route to programs */}
+
+          {/* Admin Routes */}
+          <Route path="/admin" element={<AdminGuard><AdminOverview /></AdminGuard>} />
+          <Route path="/admin/programs" element={<AdminGuard><AdminPrograms /></AdminGuard>} />
+          <Route path="/admin/applications" element={<AdminGuard><AdminApplications /></AdminGuard>} />
+          <Route path="/admin/inquiries" element={<AdminGuard><AdminInquiries /></AdminGuard>} />
+          <Route path="/admin/users" element={<AdminGuard><AdminUsers /></AdminGuard>} />
+          <Route path="/admin/audit" element={<AdminGuard><AdminAudit /></AdminGuard>} />
+
           <Route path="/domains" element={<Programs />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

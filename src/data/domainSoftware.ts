@@ -21,7 +21,7 @@ export const domainSoftware: DomainSoftwareCategory[] = [
     title: "Civil & Structural Engineering",
     subtitle: "Design, analysis, infrastructure, and geotechnical systems",
     icon: "Building2",
-    accentColor: "accent-orange",
+    accentColor: "accent-green",
     software: [
       { name: "AutoCAD", vendor: "Autodesk" },
       { name: "AutoCAD Civil 3D", vendor: "Autodesk" },
@@ -78,7 +78,7 @@ export const domainSoftware: DomainSoftwareCategory[] = [
     title: "Chemical Engineering",
     subtitle: "Process simulation, plant design, and energy/materials balance",
     icon: "FlaskConical",
-    accentColor: "accent-orange",
+    accentColor: "accent",
     software: [
       { name: "Aspen Plus", vendor: "AspenTech" },
       { name: "Aspen HYSYS", vendor: "AspenTech" },

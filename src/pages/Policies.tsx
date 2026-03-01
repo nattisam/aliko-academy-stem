@@ -29,8 +29,8 @@ const Policies = () => {
             <p className="text-base text-[hsl(210_30%_78%)] leading-relaxed">Aliko Academy STEM provides industry-aligned training based on globally recognized vendor ecosystems. We do not guarantee employment outcomes or salary levels.</p>
           </div>
 
-          <div id="certification" className="p-8 rounded-2xl bg-card border border-accent-orange/20">
-            <h2 className="font-display text-2xl font-bold text-accent-orange mb-4">Certification Disclaimer</h2>
+          <div id="certification" className="p-8 rounded-2xl bg-card border border-accent/20">
+            <h2 className="font-display text-2xl font-bold text-accent mb-4">Certification Disclaimer</h2>
             <p className="text-base text-[hsl(210_30%_78%)] leading-relaxed">Certification exams and credentials are administered by third-party vendors. Aliko Academy STEM provides training and preparation only and does not guarantee exam outcomes or issue vendor certifications.</p>
           </div>
 

@@ -22,7 +22,7 @@ const buttonVariants = cva(
         // Accent variants
         accent: "bg-accent text-accent-foreground hover:bg-accent/90 shadow-lg shadow-accent/25",
         success: "bg-accent-green text-background hover:bg-accent-green/90 shadow-lg shadow-accent-green/25",
-        warning: "bg-accent-orange text-background hover:bg-accent-orange/90 shadow-lg shadow-accent-orange/25",
+        warning: "bg-accent-green text-background hover:bg-accent-green/90 shadow-lg shadow-accent-green/25",
       },
       size: {
         default: "h-10 px-4 py-2",

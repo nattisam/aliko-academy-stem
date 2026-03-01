@@ -75,7 +75,7 @@ export function Footer() {
 
           {/* Legal */}
           <div>
-            <h3 className="font-display font-bold text-lg text-accent-orange">Legal</h3>
+            <h3 className="font-display font-bold text-lg text-accent">Legal</h3>
             <ul className="mt-5 space-y-3">
               {footerLinks.legal.map((link) => (
                 <li key={link.name}>
