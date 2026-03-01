@@ -14,7 +14,12 @@ import Policies from "./pages/Policies";
 import Curriculum from "./pages/Curriculum";
 import Certifications from "./pages/Certifications";
 import StudentLogin from "./pages/StudentLogin";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
+import ForgotPassword from "./pages/ForgotPassword";
+import ResetPassword from "./pages/ResetPassword";
 import Apply from "./pages/Apply";
+import MyApplications from "./pages/MyApplications";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -37,7 +42,12 @@ const App = () => (
           <Route path="/curriculum" element={<Curriculum />} />
           <Route path="/certifications" element={<Certifications />} />
           <Route path="/student-login" element={<StudentLogin />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/reset-password" element={<ResetPassword />} />
           <Route path="/apply" element={<Apply />} />
+          <Route path="/my-applications" element={<MyApplications />} />
           {/* Redirect old domains route to programs */}
           <Route path="/domains" element={<Programs />} />
           <Route path="*" element={<NotFound />} />

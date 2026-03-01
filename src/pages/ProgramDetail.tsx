@@ -263,7 +263,7 @@ const ProgramDetail = () => {
                     </h3>
                     <div className="space-y-4">
                       <Button asChild className="w-full" size="lg" variant="hero">
-                        <Link to="/apply">
+                        <Link to={`/apply?program=${encodeURIComponent(program.title)}`}>
                           Apply Now
                           <ArrowRight className="ml-2 h-4 w-4" />
                         </Link>
