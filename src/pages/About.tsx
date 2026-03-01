@@ -18,7 +18,7 @@ const About = () => {
         <div className="container-content">
           <div className="max-w-3xl">
             <h1 className="font-display text-5xl font-extrabold text-foreground">
-              About <span className="text-primary text-glow">Aliko Academy</span> STEM
+              About <span className="text-primary">Aliko Academy</span> STEM
             </h1>
             <p className="mt-6 text-xl text-[hsl(210_30%_82%)] leading-relaxed">
               Aliko Academy STEM is an industry systems training academy focused on engineering software 

@@ -13,7 +13,7 @@ const StudentLogin = () => {
           <div className="max-w-2xl mx-auto text-center">
             <img src={logoImg} alt="Aliko Academy STEM" className="h-24 lg:h-32 w-auto mx-auto mb-8" />
             <h1 className="font-display text-5xl lg:text-6xl font-extrabold text-foreground">
-              Student <span className="text-primary text-glow">Login</span>
+              Student <span className="text-primary">Login</span>
             </h1>
             <p className="mt-5 text-xl text-[hsl(210_30%_82%)] leading-relaxed">
               Access your courses and learning portal through our Learning Management System.
@@ -58,13 +58,13 @@ const StudentLogin = () => {
 
             <div className="mt-10 grid sm:grid-cols-2 gap-6">
               <Link to="/contact">
-                <Card className="border-divider bg-card hover:border-accent-orange/40 hover:shadow-xl hover:shadow-accent-orange/10 transition-all duration-300 h-full group card-hover">
+                <Card className="border-divider bg-card hover:border-accent-green/40 hover:shadow-xl hover:shadow-accent-green/10 transition-all duration-300 h-full group card-hover">
                   <CardContent className="p-7 flex items-start gap-4">
-                    <div className="h-12 w-12 rounded-xl bg-accent-orange/15 border border-accent-orange/30 flex items-center justify-center flex-shrink-0">
-                      <HelpCircle className="h-6 w-6 text-accent-orange" />
+                    <div className="h-12 w-12 rounded-xl bg-accent-green/15 border border-accent-green/30 flex items-center justify-center flex-shrink-0">
+                      <HelpCircle className="h-6 w-6 text-accent-green" />
                     </div>
                     <div>
-                      <h3 className="font-display font-bold text-lg text-foreground group-hover:text-accent-orange transition-colors">
+                      <h3 className="font-display font-bold text-lg text-foreground group-hover:text-accent-green transition-colors">
                         Need Help?
                       </h3>
                       <p className="text-base text-muted-foreground mt-1 leading-relaxed">

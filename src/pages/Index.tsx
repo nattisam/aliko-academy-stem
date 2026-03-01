@@ -17,15 +17,14 @@ const enterpriseBenefits = [
   "Onsite, hybrid, or fully online delivery",
 ];
 
-// Domain filter tabs with accent colors
 const domainFilters = [
   { id: "all", label: "All Programs", color: "primary" },
-  { id: "civil", label: "Civil", color: "accent-orange" },
+  { id: "civil", label: "Civil", color: "accent-green" },
   { id: "structural-bim", label: "Structural & BIM", color: "primary" },
   { id: "mechanical", label: "Mechanical", color: "accent-green" },
   { id: "electrical", label: "Electrical", color: "electrical" },
   { id: "architectural", label: "Architectural", color: "accent" },
-  { id: "project-controls", label: "Project Controls", color: "accent-orange" },
+  { id: "project-controls", label: "Project Controls", color: "primary" },
 ];
 
 const Index = () => {
@@ -47,20 +46,17 @@ const Index = () => {
     <Layout>
       {/* Hero Section */}
       <section className="relative overflow-hidden">
-        {/* Hero Background Image */}
         <img src={heroBg} alt="" className="absolute inset-0 w-full h-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-r from-background/90 via-background/70 to-background/40" />
         <div className="container-content py-24 lg:py-36 relative z-10">
           <div className="max-w-3xl">
             <h1 className="font-display text-5xl font-extrabold tracking-tight text-foreground sm:text-6xl lg:text-7xl leading-tight">
-              Industry-Aligned{" "}
-              <span className="text-accent-green text-glow-green">Engineering</span> &{" "}
-              <span className="text-accent text-glow-accent">STEM</span> Training
+              From Student to{" "}
+              <span className="text-accent-green">Engineer</span>
             </h1>
-            <p className="mt-8 text-xl text-[hsl(210_30%_85%)] sm:text-2xl max-w-2xl leading-relaxed">
-              Master globally used engineering software and systems, including BIM, CAD/CAE, 
-              power systems, and infrastructure tools, through structured, 
-              instructor-supported training.
+            <p className="mt-8 text-xl text-muted-foreground sm:text-2xl max-w-2xl leading-relaxed">
+              Master real-world STEM skills and build your professional future 
+              through structured, instructor-supported training.
             </p>
             <div className="mt-12 flex flex-col sm:flex-row gap-4">
               <Button asChild size="xl" variant="hero">
@@ -69,7 +65,7 @@ const Index = () => {
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
               </Button>
-              <Button asChild size="xl" className="font-extrabold bg-navbar text-white hover:bg-navbar/85 shadow-lg shadow-primary/30 hover:scale-105 transition-all duration-300 px-8 text-base border border-primary/30">
+              <Button asChild size="xl" variant="heroOutline">
                 <Link to="/enterprise">
                   Request Enterprise Training
                 </Link>
@@ -82,7 +78,7 @@ const Index = () => {
       {/* Audience Strip */}
       <AudienceStrip />
 
-      {/* Featured Programs - FULL BLUE background */}
+      {/* Featured Programs */}
       <section className="section-padding bg-blue-section">
         <div className="container-content">
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8">
@@ -109,7 +105,7 @@ const Index = () => {
                 key={filter.id}
                 onClick={() => setActiveFilter(filter.id)}
                 className={`
-                  px-5 py-2.5 rounded-full text-sm font-bold transition-all duration-300
+                  px-5 py-2.5 rounded-full text-sm font-bold transition-all duration-200
                   ${activeFilter === filter.id 
                     ? 'shadow-lg' 
                     : 'bg-secondary text-muted-foreground hover:text-foreground hover:bg-muted border border-divider'
@@ -119,11 +115,9 @@ const Index = () => {
                   backgroundColor: filter.color === 'primary' ? 'hsl(var(--primary))' :
                                    filter.color === 'accent' ? 'hsl(var(--accent))' :
                                    filter.color === 'accent-green' ? 'hsl(var(--accent-green))' :
-                                   filter.color === 'accent-orange' ? 'hsl(var(--accent-orange))' :
                                    filter.color === 'electrical' ? 'hsl(var(--electrical))' :
                                    'hsl(var(--primary))',
                   color: 'white',
-                  boxShadow: `0 10px 25px -5px hsl(var(--${filter.color}) / 0.4)`
                 } : undefined}
               >
                 {filter.label}
@@ -145,12 +139,12 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Engineering Domains - Teal section */}
+      {/* Engineering Domains */}
       <section className="section-padding bg-teal-section">
         <div className="container-content">
           <div className="text-center max-w-2xl mx-auto mb-14">
             <h2 className="font-display text-4xl font-bold text-white">
-              <span className="text-accent-orange">Engineering</span> Domains
+              <span className="text-accent-green">Engineering</span> Domains
             </h2>
             <p className="mt-4 text-lg text-muted-foreground">
               Explore programs organized by engineering discipline and industry systems
@@ -178,27 +172,23 @@ const Index = () => {
       {/* Enterprise Training Preview */}
       <section className="section-padding bg-blue-section">
         <div className="container-content">
-          <div className="bg-card rounded-2xl border border-divider p-10 lg:p-14 border-gradient-animated shadow-2xl">
+          <div className="bg-card rounded-2xl border border-divider p-10 lg:p-14 shadow-2xl">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <div>
                 <h2 className="font-display text-4xl font-bold text-foreground">
-                  <span className="text-accent-orange text-glow-orange">Enterprise</span> & <span className="text-accent-green">Institutional</span> Training
+                  <span className="text-accent-green">Enterprise</span> & Institutional Training
                 </h2>
-                <p className="mt-5 text-lg text-[hsl(210_30%_82%)] leading-relaxed">
+                <p className="mt-5 text-lg text-muted-foreground leading-relaxed">
                   Customized engineering and STEM training solutions for organizations, 
-                  universities, and government agencies. We deliver cohort-based programs, 
-                  curriculum customization, and faculty enablement aligned to industry workflows.
+                  universities, and government agencies.
                 </p>
                 <ul className="mt-8 space-y-4">
-                  {enterpriseBenefits.map((benefit, index) => {
-                    const iconColors = ["text-primary", "text-accent", "text-accent-green"];
-                    return (
-                      <li key={benefit} className="flex items-start gap-3">
-                        <CheckCircle2 className={`h-6 w-6 ${iconColors[index % iconColors.length]} mt-0.5 flex-shrink-0`} />
-                        <span className="text-foreground text-lg">{benefit}</span>
-                      </li>
-                    );
-                  })}
+                  {enterpriseBenefits.map((benefit) => (
+                    <li key={benefit} className="flex items-start gap-3">
+                      <CheckCircle2 className="h-6 w-6 text-accent-green mt-0.5 flex-shrink-0" />
+                      <span className="text-foreground text-lg">{benefit}</span>
+                    </li>
+                  ))}
                 </ul>
                 <div className="mt-10">
                   <Button asChild size="lg" variant="hero">
@@ -211,12 +201,10 @@ const Index = () => {
               </div>
               <div className="hidden lg:block">
                 <div className="aspect-[4/3] rounded-2xl bg-gradient-to-br from-primary/20 via-accent/15 to-accent-green/15 border border-divider flex items-center justify-center relative overflow-hidden shadow-2xl">
-                  {/* Multi-color glow orbs */}
-                  <div className="absolute top-10 left-10 w-24 h-24 rounded-full bg-primary/35 blur-2xl" />
-                  <div className="absolute bottom-10 right-10 w-20 h-20 rounded-full bg-accent-orange/35 blur-2xl" />
-                  <div className="absolute top-1/2 right-1/4 w-16 h-16 rounded-full bg-accent-green/35 blur-xl" />
+                  <div className="absolute top-10 left-10 w-24 h-24 rounded-full bg-primary/25 blur-2xl" />
+                  <div className="absolute bottom-10 right-10 w-20 h-20 rounded-full bg-accent-green/25 blur-2xl" />
                   <div className="text-center p-8 relative z-10">
-                    <div className="text-7xl font-display font-extrabold text-primary text-glow">
+                    <div className="text-7xl font-display font-extrabold text-primary">
                       500+
                     </div>
                     <p className="mt-3 text-lg text-muted-foreground font-medium">

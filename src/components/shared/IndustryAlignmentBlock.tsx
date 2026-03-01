@@ -34,7 +34,7 @@ export function IndustryAlignmentBlock({ variant = "default" }: IndustryAlignmen
       <div className="container-content">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="font-display text-4xl font-bold text-foreground">
-            Industry-Aligned <span className="text-primary text-glow">STEM</span> Curriculum
+            Industry-Aligned <span className="text-primary">STEM</span> Curriculum
           </h2>
           <p className="mt-5 text-lg text-[hsl(210_30%_82%)] leading-relaxed">
             Aliko Academy STEM designs its programs based on globally recognized 

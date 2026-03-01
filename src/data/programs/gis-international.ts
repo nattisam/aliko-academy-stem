@@ -22,7 +22,8 @@ export const gisInternationalPrograms: Program[] = [
       { title: "Module 3: Advanced", topics: ["3D scenes", "Layout", "Sharing"] }
     ],
     alignmentStatement: "Aligned with Esri ArcGIS certification.",
-    featured: true
+    featured: true,
+    careerOutcomes: ["GIS Analyst", "Geospatial Engineer", "Mapping Specialist"]
   },
   {
     id: "arcgis-online",

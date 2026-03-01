@@ -22,7 +22,8 @@ export const chemicalPrograms: Program[] = [
       { title: "Module 3: Advanced Simulation", topics: ["Design specs", "Sensitivity analysis", "Optimization", "Convergence"] }
     ],
     alignmentStatement: "Aligned with AspenTech professional certification pathways.",
-    featured: true
+    featured: true,
+    careerOutcomes: ["Process Engineer", "Chemical Plant Designer", "Simulation Specialist"]
   },
   {
     id: "aspen-hysys",
@@ -45,7 +46,8 @@ export const chemicalPrograms: Program[] = [
       { title: "Module 3: Specialized Workflows", topics: ["Pipeline hydraulics", "Flare networks", "Upstream facilities"] }
     ],
     alignmentStatement: "Aligned with AspenTech HYSYS certification requirements.",
-    featured: true
+    featured: true,
+    careerOutcomes: ["Process Simulation Engineer", "Oil & Gas Engineer", "Refinery Specialist"]
   },
   {
     id: "aspen-pims",

@@ -105,12 +105,12 @@ export function EnhancedDomainCard({ domain, className }: EnhancedDomainCardProp
           Engineering Domain
         </span>
         
-        <h3 className="font-display text-xl font-extrabold text-white leading-tight group-hover:text-glow transition-all duration-300">
+        <h3 className="font-display text-xl font-extrabold text-white leading-tight transition-all duration-300">
           {domain.shortName}
         </h3>
         
         <p className="mt-2 text-sm text-white/85 font-medium flex items-center gap-2">
-          <span className="w-2 h-2 rounded-full bg-accent-green animate-pulse" />
+          <span className="w-2 h-2 rounded-full bg-accent-green" />
           {programCount} programs available
         </p>
       </div>

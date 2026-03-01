@@ -22,7 +22,8 @@ export const civilStructuralPrograms: Program[] = [
       { title: "Module 3: Annotation & Output", topics: ["Dimensioning", "Text", "Plotting"] }
     ],
     alignmentStatement: "Aligned with Autodesk AutoCAD certification requirements.",
-    featured: true
+    featured: true,
+    careerOutcomes: ["CAD Technician", "Drafting Specialist", "Design Engineer"]
   },
   {
     id: "civil-3d",
@@ -46,7 +47,8 @@ export const civilStructuralPrograms: Program[] = [
       { title: "Module 4: Pipe Networks", topics: ["Storm drainage", "Sanitary systems", "Analysis"] }
     ],
     alignmentStatement: "Aligned with Autodesk Civil 3D official workflows.",
-    featured: true
+    featured: true,
+    careerOutcomes: ["Civil Design Engineer", "Infrastructure Designer", "Site Development Specialist"]
   },
   {
     id: "microstation",
@@ -161,7 +163,8 @@ export const civilStructuralPrograms: Program[] = [
       { title: "Module 3: Design", topics: ["Steel design", "Concrete design", "Reports"] }
     ],
     alignmentStatement: "Aligned with CSI ETABS professional workflows.",
-    featured: true
+    featured: true,
+    careerOutcomes: ["Structural Engineer", "Building Analyst", "Seismic Design Specialist"]
   },
   {
     id: "sap2000",
@@ -460,7 +463,8 @@ export const civilStructuralPrograms: Program[] = [
       { title: "Module 3: Coordination", topics: ["Clash detection", "Worksharing", "Navisworks"] }
     ],
     alignmentStatement: "Aligned with Autodesk Revit Structure workflows.",
-    featured: true
+    featured: true,
+    careerOutcomes: ["Structural BIM Engineer", "Revit Modeler", "BIM Manager"]
   },
   {
     id: "protastructure",

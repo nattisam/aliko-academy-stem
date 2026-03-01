@@ -22,7 +22,8 @@ export const mechanicalPrograms: Program[] = [
       { title: "Module 3: Drawings & More", topics: ["Detailing", "Sheet metal", "Weldments"] }
     ],
     alignmentStatement: "Aligned with CSWA/CSWP certification requirements.",
-    featured: true
+    featured: true,
+    careerOutcomes: ["Mechanical Design Engineer", "Product Designer", "CAD Specialist"]
   },
   {
     id: "catia",
@@ -137,7 +138,8 @@ export const mechanicalPrograms: Program[] = [
       { title: "Module 3: Manufacturing", topics: ["2D/3D CAM", "Additive", "Drawings"] }
     ],
     alignmentStatement: "Aligned with Autodesk Fusion 360 certification.",
-    featured: true
+    featured: true,
+    careerOutcomes: ["Product Engineer", "Industrial Designer", "Manufacturing Engineer"]
   },
   {
     id: "ansys-mechanical",
@@ -160,7 +162,8 @@ export const mechanicalPrograms: Program[] = [
       { title: "Module 3: Dynamics & Optimization", topics: ["Modal", "Harmonic", "Topology optimization"] }
     ],
     alignmentStatement: "Aligned with ANSYS professional certification.",
-    featured: true
+    featured: true,
+    careerOutcomes: ["Simulation Engineer", "Stress Analyst", "FEA Specialist"]
   },
   {
     id: "ansys-fluent",

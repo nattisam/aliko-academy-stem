@@ -45,7 +45,8 @@ export const architecturalPrograms: Program[] = [
       { title: "Module 3: Advanced", topics: ["Families", "Worksharing", "Rendering"] }
     ],
     alignmentStatement: "Aligned with Autodesk Revit certification.",
-    featured: true
+    featured: true,
+    careerOutcomes: ["BIM Coordinator", "Architectural Designer", "Building Modeler"]
   },
   {
     id: "archicad",
@@ -114,7 +115,8 @@ export const architecturalPrograms: Program[] = [
       { title: "Module 3: Presentation", topics: ["Scenes", "Styles", "Layout"] }
     ],
     alignmentStatement: "Aligned with Trimble SketchUp workflows.",
-    featured: true
+    featured: true,
+    careerOutcomes: ["3D Visualization Specialist", "Architectural Modeler", "Interior Designer"]
   },
   {
     id: "rhino",

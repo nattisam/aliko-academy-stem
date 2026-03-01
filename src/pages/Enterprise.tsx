@@ -32,7 +32,7 @@ const whoWeServe = [
   { icon: Factory, title: "Engineering & Construction Firms", description: "EPC contractors and engineering consultancies", iconBg: "bg-primary/15 border border-primary/30", iconColor: "text-primary" },
   { icon: Building2, title: "Infrastructure & Utilities", description: "Power, water, and transportation authorities", iconBg: "bg-accent/15 border border-accent/30", iconColor: "text-accent" },
   { icon: GraduationCap, title: "Universities & TVETs", description: "Engineering faculties and technical institutes", iconBg: "bg-accent-green/15 border border-accent-green/30", iconColor: "text-accent-green" },
-  { icon: Landmark, title: "Government Agencies", description: "Infrastructure and development ministries", iconBg: "bg-accent-orange/15 border border-accent-orange/30", iconColor: "text-accent-orange" },
+  { icon: Landmark, title: "Government Agencies", description: "Infrastructure and development ministries", iconBg: "bg-primary/15 border border-primary/30", iconColor: "text-primary" },
   { icon: Globe, title: "NGOs & Development Partners", description: "International development organizations", iconBg: "bg-primary/15 border border-primary/30", iconColor: "text-primary" },
 ];
 
@@ -40,7 +40,7 @@ const trainingModels = [
   { icon: BookOpen, title: "Custom Curriculum Design", description: "Tailored content aligned to your technology stack and workflows", iconBg: "bg-primary/15", iconColor: "text-primary" },
   { icon: Users, title: "Cohort-Based Training", description: "Structured programs for groups of 10-100+ participants", iconBg: "bg-accent/15", iconColor: "text-accent" },
   { icon: GraduationCap, title: "Faculty & Trainer Enablement", description: "Train-the-trainer programs for internal capacity building", iconBg: "bg-accent-green/15", iconColor: "text-accent-green" },
-  { icon: Settings, title: "Software Transformation Support", description: "Implementation support during technology transitions", iconBg: "bg-accent-orange/15", iconColor: "text-accent-orange" },
+  { icon: Settings, title: "Software Transformation Support", description: "Implementation support during technology transitions", iconBg: "bg-primary/15", iconColor: "text-primary" },
   { icon: MonitorPlay, title: "Flexible Delivery", description: "Online, hybrid, or fully onsite options", iconBg: "bg-primary/15", iconColor: "text-primary" },
 ];
 
@@ -116,7 +116,7 @@ const Enterprise = () => {
         <div className="container-content">
           <div className="max-w-3xl">
             <h1 className="font-display text-5xl font-extrabold text-foreground sm:text-6xl leading-tight">
-              Customized <span className="text-accent-orange text-glow-orange">Engineering</span> & STEM Training
+              Customized <span className="text-accent-green">Engineering</span> & STEM Training
             </h1>
             <p className="mt-6 text-xl text-[hsl(210_30%_82%)] leading-relaxed">
               Cohort-based upskilling, curriculum customization, and faculty enablement 
@@ -193,7 +193,7 @@ const Enterprise = () => {
       <section className="section-padding bg-surface-elevated border-y border-divider">
         <div className="container-content">
           <h2 className="font-display text-4xl font-bold text-foreground text-center mb-14">
-            Program <span className="text-accent-green text-glow-green">Areas</span>
+            Program <span className="text-accent-green">Areas</span>
           </h2>
           <div className="flex flex-wrap justify-center gap-4">
             {programAreas.map((area) => (

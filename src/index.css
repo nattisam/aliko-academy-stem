@@ -61,11 +61,7 @@
     /* Navbar - lighter blue */
     --navbar: 210 45% 28%;
 
-    /* Glow effects */
-    --glow-primary: 207 90% 54%;
-    --glow-accent: 195 100% 50%;
-    --glow-green: 142 70% 50%;
-    --glow-orange: 155 55% 45%;
+    /* Reserved for future use */
 
     /* Domain colors - mapped to blue-green palette */
     --civil: 155 55% 45%;

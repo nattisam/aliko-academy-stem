@@ -156,7 +156,7 @@ const Certifications = () => {
             <h2 className="font-display text-xl lg:text-2xl font-bold text-primary">
               Core Engineering Licensure
             </h2>
-            <Badge variant="outline" className="text-xs bg-accent-orange/20 text-accent-orange border-accent-orange/40 ml-auto">
+            <Badge variant="outline" className="text-xs bg-primary/20 text-primary border-primary/40 ml-auto">
               Prep Coming Soon
             </Badge>
           </div>
@@ -213,7 +213,7 @@ const Certifications = () => {
             <h2 className="font-display text-xl lg:text-2xl font-bold text-accent">
               Domain-Specific Certifications
             </h2>
-            <Badge variant="outline" className="text-xs bg-accent-orange/20 text-accent-orange border-accent-orange/40 ml-auto">
+            <Badge variant="outline" className="text-xs bg-primary/20 text-primary border-primary/40 ml-auto">
               Prep Coming Soon
             </Badge>
           </div>
@@ -240,7 +240,7 @@ const Certifications = () => {
             <h2 className="font-display text-xl lg:text-2xl font-bold text-accent-green">
               Aviation Domain
             </h2>
-            <Badge variant="outline" className="text-xs bg-accent-orange/20 text-accent-orange border-accent-orange/40 ml-auto">
+            <Badge variant="outline" className="text-xs bg-primary/20 text-primary border-primary/40 ml-auto">
               Prep Coming Soon
             </Badge>
           </div>
