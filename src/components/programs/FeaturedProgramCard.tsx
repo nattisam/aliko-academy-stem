@@ -2,24 +2,43 @@ import { Link } from "react-router-dom";
 import { Program } from "@/data/programs";
 import { Badge } from "@/components/ui/badge";
 import { ArrowRight } from "lucide-react";
-import { cn } from "@/lib/utils";
 
-// Domain thumbnail imports
-import civilThumb from "@/assets/programs/civil-engineering-thumb.jpg";
-import electricalThumb from "@/assets/programs/electrical-engineering-thumb.jpg";
-import mechanicalThumb from "@/assets/programs/mechanical-engineering-thumb.jpg";
-import architecturalThumb from "@/assets/programs/architectural-engineering-thumb.jpg";
+// Program-specific thumbnail imports
+import autocadThumb from "@/assets/programs/autocad-thumb.jpg";
+import civil3dThumb from "@/assets/programs/civil3d-thumb.jpg";
+import etabsThumb from "@/assets/programs/etabs-thumb.jpg";
+import revitStructureThumb from "@/assets/programs/revit-structure-thumb.jpg";
+import solidworksThumb from "@/assets/programs/solidworks-thumb.jpg";
+import fusion360Thumb from "@/assets/programs/fusion360-thumb.jpg";
+import ansysThumb from "@/assets/programs/ansys-thumb.jpg";
+import aspenPlusThumb from "@/assets/programs/aspen-plus-thumb.jpg";
+import aspenHysysThumb from "@/assets/programs/aspen-hysys-thumb.jpg";
+import etapThumb from "@/assets/programs/etap-thumb.jpg";
+import revitArchThumb from "@/assets/programs/revit-arch-thumb.jpg";
+import sketchupThumb from "@/assets/programs/sketchup-thumb.jpg";
+import primaveraThumb from "@/assets/programs/primavera-thumb.jpg";
+import arcgisThumb from "@/assets/programs/arcgis-thumb.jpg";
+import catiaThumb from "@/assets/programs/catia-thumb.jpg";
+import ansysFluentThumb from "@/assets/programs/ansys-fluent-thumb.jpg";
+import civilEngThumb from "@/assets/programs/civil-engineering-thumb.jpg";
 
-const domainThumbnails: Record<string, string> = {
-  "Civil Engineering": civilThumb,
-  "Structural / BIM & Infrastructure": civilThumb,
-  "Architectural Engineering": architecturalThumb,
-  "Mechanical Engineering": mechanicalThumb,
-  "Chemical Engineering": mechanicalThumb,
-  "Electrical Engineering": electricalThumb,
-  "Construction Planning & Project Controls": civilThumb,
-  "GIS & Infrastructure Intelligence": civilThumb,
-  "Aviation & Aerospace Engineering": electricalThumb,
+const programThumbnails: Record<string, string> = {
+  "autocad": autocadThumb,
+  "civil-3d": civil3dThumb,
+  "etabs": etabsThumb,
+  "revit-structure": revitStructureThumb,
+  "solidworks": solidworksThumb,
+  "fusion-360": fusion360Thumb,
+  "ansys-mechanical": ansysThumb,
+  "aspen-plus": aspenPlusThumb,
+  "aspen-hysys": aspenHysysThumb,
+  "etap": etapThumb,
+  "revit-architecture": revitArchThumb,
+  "sketchup": sketchupThumb,
+  "primavera-p6": primaveraThumb,
+  "arcgis": arcgisThumb,
+  "catia-v5": catiaThumb,
+  "ansys-fluent-aerospace": ansysFluentThumb,
 };
 
 interface FeaturedProgramCardProps {
@@ -27,7 +46,7 @@ interface FeaturedProgramCardProps {
 }
 
 export function FeaturedProgramCard({ program }: FeaturedProgramCardProps) {
-  const thumbnail = domainThumbnails[program.domain] || civilThumb;
+  const thumbnail = programThumbnails[program.slug] || civilEngThumb;
   const highlights = program.skillsGained.slice(0, 3);
 
   return (
