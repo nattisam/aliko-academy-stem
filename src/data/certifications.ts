@@ -97,7 +97,7 @@ export const domainCertifications: CertificationCategory[] = [
     title: "Civil & Structural Engineering",
     description: "Professional certifications for civil and structural engineering professionals.",
     icon: "Building2",
-    accentColor: "accent-orange",
+    accentColor: "accent-green",
     certifications: [
       {
         id: "pmp",
@@ -324,7 +324,7 @@ export const domainCertifications: CertificationCategory[] = [
     title: "Project Controls & Construction Planning",
     description: "Professional certifications for project controls, scheduling, and construction planning.",
     icon: "ClipboardList",
-    accentColor: "accent-orange",
+    accentColor: "primary",
     certifications: [
       {
         id: "pmp-controls",
